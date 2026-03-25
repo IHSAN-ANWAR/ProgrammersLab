@@ -1,0 +1,134 @@
+PROGRAMMERS LAB - FORM SETUP INSTRUCTIONS
+==========================================
+
+WHAT'S BEEN CREATED:
+-------------------
+1. connect.php - Handles contact form submissions
+2. enroll.php - Handles course enrollment form submissions
+3. manage-courses.php - Admin panel to manage courses
+4. create-database.sql - Creates database and tables
+5. Updated EnrollForm.html - Now submits data to database
+
+DATABASE SETUP:
+--------------
+1. Open phpMyAdmin or MySQL command line
+2. Run the SQL file: create-database.sql
+   This will create:
+   - Database: programmerslab_db
+   - Table: contact (for contact form)
+   - Table: courses (stores all courses)
+   - Table: enrollments (for course enrollments)
+
+DATABASE TABLES EXPLAINED:
+-------------------------
+
+1. CONTACT TABLE (7 columns):
+   - id (Primary Key)
+   - name
+   - email
+   - phone
+   - subject
+   - message
+   - created_at
+
+2. COURSES TABLE (10 columns):
+   - id (Primary Key)
+   - course_name (e.g., "React Js Development")
+   - course_slug (e.g., "react-js-development")
+   - description (course details)
+   - duration (e.g., "3 months")
+   - fee (course price in Rs.)
+   - category (e.g., "Web Development")
+   - is_active (1=active, 0=inactive)
+   - created_at
+   - updated_at
+
+3. ENROLLMENTS TABLE (14 columns):
+   - id (Primary Key)
+   - full_name
+   - father_name
+   - email
+   - phone
+   - gender (male/female/other)
+   - course_interest
+   - study_mode (online/onsite)
+   - qualification_file (uploaded file name)
+   - passport_photo (uploaded file name)
+   - cnic_file (uploaded file name)
+   - previous_experience
+   - reason_for_joining
+   - status (pending/approved/rejected/completed)
+   - created_at
+
+MANAGE COURSES:
+--------------
+Open: http://localhost/your-folder/manage-courses.php
+
+You can:
+- View all courses
+- Add new courses
+- Edit existing courses (name, duration, fee, category)
+- Delete courses
+- Activate/Deactivate courses
+
+All 29 courses are pre-loaded including:
+- Web Development (Front End, Full Stack, React, PHP, etc.)
+- Mobile Development (React Native, Flutter, Android, iOS)
+- Programming (C++, C#, Java, Python, JavaScript)
+- Database (MySQL, SQL)
+- Digital Marketing (SEO, Social Media Marketing)
+- Design (UI/UX, Graphic Design, Canva, Video Editing)
+- IT Fundamentals (Basic IT, MS Office)
+- Testing (Quality Assurance)
+- Career Development (Freelancing)
+
+FILE UPLOADS:
+------------
+- Enrollment form uploads files to 'uploads/' folder
+- The folder will be created automatically
+- Make sure your server has write permissions
+
+TESTING:
+--------
+1. Make sure XAMPP/WAMP is running (Apache + MySQL)
+2. Place all files in htdocs folder
+3. Open http://localhost/your-folder/EnrollForm.html
+4. Fill the form and submit
+5. Check phpMyAdmin to see the data
+
+DATABASE CREDENTIALS:
+--------------------
+Default settings in PHP files:
+- Host: localhost
+- Username: root
+- Password: (empty)
+- Database: programmerslab_db
+
+If your credentials are different, update them in:
+- connect.php (lines 42-45)
+- enroll.php (lines 103-106)
+- manage-courses.php (lines 2-5)
+
+TROUBLESHOOTING:
+---------------
+- If form doesn't submit: Check browser console (F12)
+- If database error: Verify MySQL is running
+- If file upload fails: Check folder permissions
+- If connection fails: Verify database credentials
+
+WHAT EACH FORM DOES:
+-------------------
+Contact Form (prgrammers-lab-contact.html):
+- Stores: name, email, phone, subject, message
+- Submits to: connect.php
+
+Enrollment Form (EnrollForm.html):
+- Stores: full name, father name, email, phone, gender, course, study mode, files, etc.
+- Submits to: enroll.php
+- Uploads: qualification, photo, CNIC files
+
+Course Management (manage-courses.php):
+- Add/Edit/Delete courses
+- Set course duration and fees
+- Organize by categories
+- Activate/Deactivate courses

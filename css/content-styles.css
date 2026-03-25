@@ -1,0 +1,223 @@
+/* General Layout */
+#main-content {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.left-section {
+    width: 60%;
+    height: 50%;
+    padding: 20px;
+}
+
+
+
+/* Right Section Styling */
+.right-section {
+    flex: 1 0 30%;
+
+    padding: 10px;
+    height: 600px;
+    overflow-y: scroll;
+    margin-top: 22px;
+}
+
+/* Scrollable Cards Container */
+.scrollable-cards {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+/* News Card Styling */
+.news-card {
+    display: flex;
+    flex-direction: row;
+    background-color: #ffffff;
+
+    padding: 15px;
+
+    text-align: left;
+}
+
+/* Card Content Alignment */
+.news-card .content {
+    padding-top: 10px;
+    flex-direction: column;
+    width: 80%;
+    margin-top: -9px;
+    padding-left: 5px;
+}
+
+.news-card .date {
+    font-size: 0.9rem;
+    color: #888888;
+    margin-bottom: 5px;
+}
+
+.news-card h3 {
+    font-size: 1.2rem;
+    line-height: 1.4;
+    margin: 10px 0;
+    padding-left: 2px;
+    /* Align text for consistent spacing */
+}
+
+.news-card p {
+    font-size: 1rem;
+    line-height: 1.5;
+    padding-left: 2px;
+    /* Consistent padding on text */
+}
+
+/* Button Styling */
+
+.news-card iframe {
+    width: 100%;
+    /* Make the iframe take full width */
+    max-width: 300px;
+    /* Restrict the iframe width if needed */
+    height: 180px;
+    /* Consistent height */
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
+
+/* Modal Styles */
+
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    #main-content {
+        flex-direction: column;
+    }
+
+    .left-section {
+        width: 100%;
+    }
+
+    .left-section img {
+        height: 300px;
+        /* Fixed height */
+        width: 100vw;
+        /* Make image responsive to full width */
+        object-fit: cover;
+        /* Maintain aspect ratio while covering the area */
+        flex: 1;
+    }
+
+    .right-section {
+        width: 100%;
+        margin: 10px 0;
+    }
+
+    /* Adjust Cards for Small Screens */
+    .scrollable-cards {
+        gap: 10px;
+        /* Add spacing between stacked cards */
+    }
+
+    .news-card {
+        flex-direction: column;
+        /* Stack iframe and content vertically */
+        align-items: flex-start;
+        /* Align content to the left */
+        text-align: left;
+        /* Align all text to the left */
+        padding: 10px;
+        /* Add padding for readability */
+    }
+
+    .news-card iframe {
+        width: 100%;
+        /* Make iframe full width */
+        max-width: 500px;
+        /* Optional max width for larger screens */
+        height: auto;
+        /* Maintain responsive height */
+        margin-bottom: 10px;
+        /* Add spacing below iframe */
+    }
+
+    .news-card .content {
+        width: 100%;
+        /* Allow content to span full width */
+        padding: 10px;
+        /* Add padding for readability */
+    }
+
+    .news-card .date,
+    .news-card h3,
+    .news-card p {
+        text-align: left;
+        /* Ensure all text is consistently aligned */
+    }
+}
+
+
+
+
+
+/* Media query for screen height less than 600px */
+
+
+.dated {
+    padding-right: 175px;
+}
+
+footer {
+    text-align: left;
+}
+
+
+
+.left {
+    text-align: justify;
+    padding: 10px;
+}
+
+.paragraph {
+    text-align: justify;
+}
+
+.paras {
+    padding: 10px;
+}
+
+.reduced-height {
+    height: 150px;
+}
+
+.card-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    /* Align items at the top */
+    padding: 15px;
+    /* Optional padding for spacing */
+    flex-grow: 1;
+    /* Allow content to fill available space */
+}
+
+.datedd,
+.descriptions {
+    margin: 0;
+    /* Remove default margins */
+    text-align: left;
+    /* Ensure text is aligned to the left */
+    padding-left: 5px;
+}
+
+/* Optional: Add some spacing between elements */
+.datedd {
+    margin-bottom: 5px;
+    /* Space between the date and title */
+    padding-left: 7px;
+}
+
+.descriptions {
+    margin-top: 1px;
+    /* Space between the title and description */
+    padding-left: 6px;
+    line-height: 1.5;
+}

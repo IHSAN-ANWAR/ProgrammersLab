@@ -1,0 +1,157 @@
+/* .course-item {
+    margin: 0;
+    padding: 0;
+}
+
+.course-thumb {
+       position: relative;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 100%;
+}
+
+.course-thumb img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.course-thumb:hover .overlay {
+    opacity: 1;
+}
+
+.price {
+    color: #fff;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 5px 10px;
+}
+
+.stars {
+    color: #f07b14;
+    margin-bottom: 10px;
+}
+
+.details {
+    color: #fff;
+    text-decoration: underline;
+    cursor: pointer;
+    display: none;
+}
+
+.course-thumb:hover .details {
+    display: block;
+}
+
+.course-info {
+    margin-top: 10px;
+    text-align: center;
+}
+
+.course-text {
+    margin: 0;
+    padding: 0;
+} */
+
+
+
+
+/* General styling for course items */
+.course-item {
+    position: relative;
+    overflow: hidden;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    transition: 0.3s;
+}
+
+.course-thumb {
+    position: relative;
+    
+}
+
+/* Styling for the overlay when hovering over the course item */
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.course-item:hover .overlay {
+    opacity: 1;
+    /* Show the overlay on hover */
+}
+
+/* Styling for the course fee */
+.price {
+    margin-bottom: 10px;
+    background-color: #f44336;
+    color: #ffffff;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+/* Styling for the star rating */
+.stars {
+    font-size: 16px;
+}
+
+.stars i {
+    color: #f07b14;
+    /* Set the color for the stars */
+    margin-right: 3px;
+}
+
+/* Styling for "Click for details" */
+.details {
+    background-color: rgba(0, 0, 0, 0.8);
+    color: #ffffff;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+/* Hide the elements by default */
+.price,
+.stars,
+.details {
+    display: none;
+}
+
+/* Show the elements on hover */
+.course-item:hover .price,
+.course-item:hover .stars,
+.course-item:hover .details {
+    display: block;
+}

@@ -1,0 +1,48 @@
+/* Career Section */
+.career-section {
+    background: #f8f9fb;
+}
+
+.career-card {
+    background: #ffffff;
+    padding: 25px;
+    margin-bottom: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    transition: all 0.3s ease;
+}
+
+.career-card:hover {
+    transform: translateY(-5px);
+}
+
+.career-card h4 {
+    color: #0094d9;
+    margin-bottom: 15px;
+}
+
+.career-card ul {
+    padding-left: 18px;
+}
+
+.career-card ul li {
+    margin-bottom: 8px;
+    color: #333;
+}
+
+.career-card.highlight {
+    border-top: 4px solid #f07b14;
+}
+
+.career-apply-box {
+    background: #ffffff;
+    padding: 30px;
+    margin-top: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+.career-apply-box h3 {
+    color: #f07b14;
+    margin-bottom: 10px;
+}

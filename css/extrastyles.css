@@ -1,0 +1,318 @@
+/* Responsive Navbar Styles - Universal for all pages */
+/* Desktop First - Hide mobile elements by default */
+.nav-switch {
+    display: none !important;
+}
+
+/* Ensure header is positioned properly for absolute menu positioning */
+.header-section {
+    position: relative;
+}
+
+/* Logo and text responsive adjustments */
+.logo-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.logo-image {
+    max-width: 250px;
+    height: auto;
+}
+/* 
+.logo-text h6 {
+    margin: 0;
+    font-size: 14px;
+    line-height: 1.2;
+} */
+
+
+
+
+/* Main menu default styles */
+.main-menu ul {
+    display: flex;
+    align-items: center;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    /* flex-wrap: wrap; */
+    gap: 5px;
+}
+
+.main-menu ul li {
+    display: inline-block;
+}
+
+.main-menu ul li a {
+    display: block;
+    padding: 10px 5px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+
+}
+
+
+
+
+
+
+/* Tablet Styles - 768px to 991px */
+@media only screen and (max-width: 991px) {
+    .main-menu ul {
+        gap: 3px;
+    }
+    
+    .main-menu ul li a {
+        padding: 8px 2px;
+        font-size: 14px;
+    }
+      
+.main-menu ul li a::after {
+	content: "";
+	position: absolute;
+	left: 0;
+	bottom: 0;
+	width: 0;
+	height: 2px;
+	background: #f07b14;
+	transition: width 0.3s ease;
+	
+}
+
+.main-menu ul li a:hover::after {
+	width: 100%;
+/* transform: translateX(-50%); */
+
+}
+
+
+    
+    .logo-text h6 {
+        font-size: 13px;
+    }
+    .logo-image{
+     max-width: 200px;   
+    }
+}
+
+/* Mobile Styles - Below 768px */
+@media only screen and (max-width: 767px) {
+    /* Show hamburger menu */
+    .nav-switch {
+        display: block !important;
+        float: right;
+        color: #333;
+        font-size: 24px;
+        cursor: pointer;
+        padding: 2px;
+        background: #fff;
+        margin-bottom: 25px;
+        border-radius: 4px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        transition: all 0.3s ease;
+    }
+    
+    .nav-switch:hover {
+        background: #f07b14;
+        color: #fff;
+    }
+    
+    /* Hide menu by default on mobile */
+    .main-menu {
+        display: none;
+        position: absolute;
+        width: 100%;
+        left: 0;
+        top: 100%;
+        background: #fff;
+        z-index: 999;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    }
+    
+    /* Show menu when opened */
+    .main-menu.active,
+    .main-menu.open {
+        display: block !important;
+    }
+    
+    /* Mobile menu styles */
+    .main-menu ul {
+        display: block !important;
+        padding: 10px 0;
+    }
+    
+    .main-menu ul li {
+        display: block !important;
+        border-bottom: 1px solid #eee;
+    }
+    
+    .main-menu ul li:last-child {
+        border-bottom: none;
+    }
+    
+    .main-menu ul li a {
+        padding: 15px 20px;
+        color: #333;
+        font-size: 16px;
+        display: block;
+    }
+    
+    .main-menu ul li a:hover {
+        background: #f07b14;
+        color: #fff;
+    }
+    
+    /* Logo adjustments for mobile */
+    .logo-image {
+        max-width: 190px;
+    }
+    
+    .logo-text h6 {
+        font-size: 12px;
+    }
+}
+
+/* Extra small devices - Below 576px */
+@media only screen and (max-width: 575px) {
+    .logo-image {
+        max-width: 190px;
+    }
+
+    
+    
+    /* .logo-text h6 {
+        font-size: 11px;
+        line-height: 1.1;
+    }
+     */
+    .nav-switch {
+        font-size: 20px;
+        padding: 6px;
+    }
+    
+    .main-menu ul li a {
+        padding: 12px 15px;
+        font-size: 14px;
+    }
+
+      
+.main-menu ul li a::after {
+	content: "";
+	position: absolute;
+	left: 0;
+	bottom: 0;
+	width: 0;
+	height: 2px;
+	background: #f07b14;
+	transition: width 0.3s ease;
+	
+}
+
+.main-menu ul li a:hover::after {
+	width: 100%;
+/* transform: translateX(-50%); */
+
+}
+
+.certification-img{
+    margin-left: 20px;
+    width: 250px;
+}
+    
+    /* Ensure container doesn't overflow */
+    .container,
+    .container-fluid {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+}
+
+/* Fix for jQuery slideToggle compatibility */
+.main-menu[style*="display: block"] {
+    display: block !important;
+}
+
+.whatsapp-button {
+    position: fixed;
+    bottom: 45px;
+    right: 30px;
+    width: 60px;
+    height: 60px;
+    background-color: green;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    transition: all 0.3s ease-in-out;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+.whatsapp-button:hover {
+    transform: scale(1.1);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.whatsapp-button img {
+    width: 40px;
+    height: 40px;
+    transition: all 0.3s ease-in-out;
+}
+
+.whatsapp-button:hover img {
+    transform: scale(1.1);
+}
+
+.rc-slider .course-item {
+    position: relative;
+    overflow: hidden;
+}
+
+.rc-slider .course-thumb {
+    position: relative;
+    background-size: cover;
+    background-position: center;
+    width: 100%;
+    height: 200px;
+}
+
+.rc-slider .course-thumb .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+}
+
+.rc-slider .course-thumb:hover .overlay {
+    opacity: 1;
+}
+
+.rc-slider .overlay .price {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.rc-slider .overlay .stars {
+    font-size: 14px;
+    color: gold;
+    margin-bottom: 10px;
+}
+
+.rc-slider .overlay .details {
+    font-size: 14px;
+    font-weight: bold;
+    text-transform: uppercase;
+    cursor: pointer;
+}

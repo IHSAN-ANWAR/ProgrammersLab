@@ -1,0 +1,16 @@
+# Sensitive config — never commit
+config.php
+
+# Uploaded files
+uploads/*
+!uploads/.htaccess
+
+# Error logs
+logs/*
+!logs/.htaccess
+!logs/.gitkeep
+
+# OS / editor junk
+.DS_Store
+Thumbs.db
+.vscode/

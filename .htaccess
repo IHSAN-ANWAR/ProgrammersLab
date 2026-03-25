@@ -1,0 +1,18 @@
+# ============================================================
+# Programmers Lab — Apache Security Rules
+# ============================================================
+
+# Prevent directory listing
+Options -Indexes
+
+# Block direct access to config and sensitive files
+<FilesMatch "(config\.php|\.env|\.gitkeep)$">
+    Order allow,deny
+    Deny from all
+</FilesMatch>
+
+# Block access to logs directory
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteRule ^logs/ - [F,L]
+</IfModule>
