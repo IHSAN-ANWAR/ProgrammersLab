@@ -1,11 +1,15 @@
-# Sensitive config — never commit
+# ============================================================
+# Programmers Lab — .gitignore
+# ============================================================
+
+# Sensitive config — NEVER commit (contains DB credentials)
 config.php
 
-# Uploaded files
+# Uploaded user files — runtime data, not source code
 uploads/*
 !uploads/.htaccess
 
-# Error logs
+# Error logs — runtime data
 logs/*
 !logs/.htaccess
 !logs/.gitkeep
@@ -14,3 +18,11 @@ logs/*
 .DS_Store
 Thumbs.db
 .vscode/
+.qoder/
+
+# PHP temp / cache
+*.cache
+*.tmp
+
+# XAMPP / local server files
+*.log
