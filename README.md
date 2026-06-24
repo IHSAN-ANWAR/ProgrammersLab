@@ -171,7 +171,7 @@ Yeh diagram dikhata hai kaunsi file kis file se connected hai:
 
 ```
 ┌─────────────────────────────────────────────────────────────┐
-│                    FRONTEND (HTML Pages)                     │
+│                    FRONTEND (HTML Pages)                    │
 ├─────────────────────────────────────────────────────────────┤
 │                                                             │
 │  index.html ──────────────────────────────────────────────► enroll-form.html
@@ -190,21 +190,21 @@ Yeh diagram dikhata hai kaunsi file kis file se connected hai:
 ├──────────────────────────────────────────────────────────────┤
 │                                                             │
 │  Contact Form                Enrollment Form                │
-│  ─────────────               ─────────────────             │
+│  ─────────────               ─────────────────              │
 │  HTML Form                   HTML Form                      │
 │      │                           │                          │
 │      ▼                           ▼                          │
-│  get_csrf.php ◄──────────── get_csrf.php                   │
+│  get_csrf.php ◄──────────── get_csrf.php                    │
 │      │                           │                          │
 │      ▼                           ▼                          │
 │  connect.php                 enroll.php                     │
 │      │                           │                          │
-│      └──────────┐   ┌────────────┘                         │
-│                 ▼   ▼                                        │
+│      └──────────┐   ┌────────────┘                          │
+│                 ▼   ▼                                       │
 │              config.php                                     │
 │            (DB + helpers)                                   │
-│                 │                                            │
-│                 ▼                                            │
+│                 │                                           │
+│                 ▼                                           │
 │           MySQL Database                                    │
 │         programmerslab_db                                   │
 │           │           │                                     │
@@ -218,11 +218,11 @@ Yeh diagram dikhata hai kaunsi file kis file se connected hai:
 │  login.php                                                  │
 │      │ (session set)                                        │
 │      ▼                                                      │
-│  admin_layout.php ◄─── index.php (dashboard)               │
+│  admin_layout.php ◄─── index.php (dashboard)                │
 │         │              messages.php                         │
 │         │              enrollments.php                      │
 │         │                   │                               │
-│         └───────────────────┘                              │
+│         └───────────────────┘                               │
 │                             │                               │
 │                    AJAX calls ──► get_message.php           │
 │                             │    get_enrollment.php         │
@@ -523,43 +523,43 @@ VALUES ('admin', '$2y$12$...');
 │                                                                 │
 │  VISITOR                                                        │
 │     │                                                           │
-│     ├──► Views courses (30+ HTML pages)                        │
-│     │         └── Uses: css/course-detail.css                  │
-│     │                   js/main.js                             │
-│     │                   img/ + courses-images/                 │
+│     ├──► Views courses (30+ HTML pages)                         │
+│     │         └── Uses: css/course-detail.css                   │
+│     │                   js/main.js                              │
+│     │                   img/ + courses-images/                  │
 │     │                                                           │
-│     ├──► Fills Contact Form                                    │
-│     │         └── HTML → get_csrf.php → connect.php            │
-│     │                         └── MySQL: contact table         │
+│     ├──► Fills Contact Form                                     │
+│     │         └── HTML → get_csrf.php → connect.php             │
+│     │                         └── MySQL: contact table          │
 │     │                                                           │
-│     └──► Fills Enrollment Form                                 │
-│               └── HTML → get_csrf.php → enroll.php             │
-│                               └── MySQL: enroll table          │
-│                               └── File → uploads/ folder       │
+│     └──► Fills Enrollment Form                                  │
+│               └── HTML → get_csrf.php → enroll.php              │
+│                               └── MySQL: enroll table           │
+│                               └── File → uploads/ folder        │
 │                                                                 │
 │  ADMIN                                                          │
 │     │                                                           │
-│     ├──► login.php → Session → Dashboard                       │
+│     ├──► login.php → Session → Dashboard                        │
 │     │                                                           │
-│     ├──► messages.php → contact table → View/Delete            │
-│     │         └── get_message.php (AJAX view)                  │
-│     │         └── delete_message.php (AJAX delete)             │
+│     ├──► messages.php → contact table → View/Delete             │
+│     │         └── get_message.php (AJAX view)                   │
+│     │         └── delete_message.php (AJAX delete)              │
 │     │                                                           │
-│     └──► enrollments.php → enroll table → View/Delete          │
-│               └── get_enrollment.php (AJAX view)               │
-│               └── delete_enrollment.php (AJAX delete)          │
+│     └──► enrollments.php → enroll table → View/Delete           │
+│               └── get_enrollment.php (AJAX view)                │
+│               └── delete_enrollment.php (AJAX delete)           │
 │                                                                 │
 │  EVERY PHP FILE uses:                                           │
-│     └── config.php                                             │
-│               ├── get_db()         DB connection               │
-│               ├── csrf_token()     CSRF generate               │
-│               ├── csrf_verify()    CSRF check                  │
-│               ├── session_init()   Session start               │
-│               ├── require_admin()  Auth check                  │
-│               ├── validate_email() Email check                 │
-│               ├── validate_phone() Phone check                 │
-│               ├── log_activity()   Audit log                   │
-│               └── h()              XSS safe output             │
+│     └── config.php                                              │
+│               ├── get_db()         DB connection                │
+│               ├── csrf_token()     CSRF generate                │
+│               ├── csrf_verify()    CSRF check                   │
+│               ├── session_init()   Session start                │
+│               ├── require_admin()  Auth check                   │
+│               ├── validate_email() Email check                  │
+│               ├── validate_phone() Phone check                  │
+│               ├── log_activity()   Audit log                    │
+│               └── h()              XSS safe output              │
 │                                                                 │
 └─────────────────────────────────────────────────────────────────┘
 ```
