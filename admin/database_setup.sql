@@ -76,9 +76,9 @@ CREATE TABLE IF NOT EXISTS admin_logs (
     created_at     TIMESTAMP    DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB;
 
--- ------------------------------------------------------------
--- Sample data (optional — remove in production)
--- ------------------------------------------------------------
-INSERT IGNORE INTO contact (id, name, email, phone, subject, message) VALUES
-(1, 'John Doe',   'john@example.com',  '03001234567', 'Web Development Inquiry', 'I am interested in the web development course.'),
-(2, 'Sarah Khan', 'sarah@example.com', '03009876543', 'Python Course',           'Please share details about the Python course.');
+
+-- ============================================================
+-- NOTE: Admin user create karne ke liye:
+-- localhost/pl/admin/create_admin.php use karo (phir delete karo)
+-- ============================================================
+
