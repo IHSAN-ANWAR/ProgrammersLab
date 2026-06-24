@@ -1,730 +1,546 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <title>Website Designing Course In Rawalpidni Islamabad</title>
-    <meta charset="UTF-8">
-    <meta name="description"
-        content="Become a Front end Developer  expert in Rawalpindi-Islamabad with our comprehensive course. Discover the fundamentals and delve into advanced concepts while engaging in hands-on coding exercises and projects. Benefit from the expertise of our experienced instructors who provide personalized guidance throughout your learning journey. With flexible schedules tailored to suit your needs, you can acquire the skills needed to launch your programming career with confidence. Join our React Native course today and unlock a world of endless possibilities in the field of software development.">
-    <meta name="keywords" content="Website development classes online free,free Website development online course,Website developer course fees,free online Website design certificate programs,Website designing  web development in rawalpindi islamabad, Website development course in rawalpindi islamabad,free Website development course with certificate,professional web development,,online web designing course with certificateweb development Course ,web Website advance course, webdesigning development course in rawalpindi,web development courses in rawalpindi, Website development course in islamabad,   Best Computer Institute in Rawalpindid Islamabad
-    ">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Favicon -->
-    <link href="img//favicon-16x16.png" rel="shortcut icon" />
-    <!-- font awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+	<title>Frontend Web Development Course in Rawalpindi Islamabad | Programmers Lab</title>
+	<meta charset="UTF-8">
+	<meta name="description" content="Become a Front-End Developer in just 3 months. Learn HTML, CSS, JavaScript, Bootstrap & jQuery with 15+ real projects. Best frontend web development course in Rawalpindi Islamabad at Programmers Lab.">
+	<meta name="keywords" content="frontend web development course rawalpindi, web designing course rawalpindi islamabad, HTML CSS JavaScript course, Bootstrap jQuery course, best computer institute rawalpindi">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link href="img/favicon-16x16.png" rel="shortcut icon"/>
+	<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-TLSHTX5P');</script>
+	<link href="https://fonts.googleapis.com/css?family=Raleway:400,500,600,700,800" rel="stylesheet">
+	<link rel="stylesheet" href="css/bootstrap.min.css"/>
+	<link rel="stylesheet" href="css/font-awesome.min.css"/>
+	<link rel="stylesheet" href="css/style.css"/>
+	<link rel="stylesheet" href="css/extrastyles.css"/>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+	<style>
+/* NAVBAR */
+.pl-navbar{position:fixed;top:0;left:0;right:0;z-index:1000;background:#fff;border-bottom:1px solid #e8e8e8;transition:box-shadow .35s;padding:0}
+.pl-navbar.scrolled{box-shadow:0 4px 24px rgba(0,0,0,.10)}
+.pl-nav-inner{display:flex;align-items:center;justify-content:space-between;height:68px;gap:12px}
+.pl-nav-logo{flex-shrink:0}.pl-nav-logo img{display:block;max-height:48px;width:auto}
+.pl-nav-menu{display:flex;align-items:center;flex:1;justify-content:center}
+.pl-nav-menu ul{list-style:none;margin:0;padding:0;display:flex;align-items:center;gap:2px}
+.pl-nav-link{display:inline-flex;align-items:center;gap:5px;padding:8px 12px;color:#0d1b2a;font-size:14px;font-weight:600;text-decoration:none;border-radius:8px;transition:color .2s,background .2s;white-space:nowrap}
+.pl-nav-link:hover{color:#f07b14;background:rgba(240,123,20,.07);text-decoration:none}
+.pl-nav-link.active{color:#f07b14;background:rgba(240,123,20,.07)}
+.pl-nav-dropdown{position:relative}
+.pl-dropdown-panel{position:absolute;top:calc(100% + 10px);left:50%;transform:translateX(-50%) translateY(8px);background:#fff;border:1px solid #e8e8e8;border-radius:16px;padding:16px;width:420px;opacity:0;pointer-events:none;transition:opacity .25s,transform .25s;box-shadow:0 16px 48px rgba(0,0,0,.12);z-index:999}
+.pl-nav-dropdown:hover .pl-dropdown-panel{opacity:1;pointer-events:all;transform:translateX(-50%) translateY(0)}
+.pl-dp-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.pl-dp-item{display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:10px;color:#0d1b2a;font-size:13px;font-weight:500;text-decoration:none;transition:background .2s,color .2s}
+.pl-dp-item:hover{background:#f5f5f5;color:#f07b14;text-decoration:none}
+.pl-dp-icon{width:32px;height:32px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:13px;flex-shrink:0}
+.pl-nav-right{display:flex;align-items:center;gap:10px;flex-shrink:0}
+.pl-nav-cta{display:inline-flex;align-items:center;padding:9px 20px;background:#f07b14;color:#fff;border-radius:50px;font-size:14px;font-weight:700;text-decoration:none;white-space:nowrap;transition:background .25s,transform .25s}
+.pl-nav-cta:hover{background:#d96a00;transform:translateY(-1px);text-decoration:none;color:#fff}
+.pl-hamburger{display:none;flex-direction:column;justify-content:center;align-items:center;gap:5px;width:40px;height:40px;background:#f5f5f5;border:1px solid #e8e8e8;border-radius:10px;cursor:pointer;padding:0;flex-shrink:0}
+.pl-hamburger span{display:block;width:20px;height:2px;background:#0d1b2a;border-radius:2px;transition:transform .3s,opacity .3s}
+.pl-hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.pl-hamburger.open span:nth-child(2){opacity:0}
+.pl-hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+body{padding-top:68px}
+.pl-mobile-enroll{display:none}
+@media(max-width:991px){
+.pl-hamburger{display:flex}.pl-nav-cta{display:none}
+.pl-nav-menu{display:block;position:fixed;top:68px;left:0;right:0;background:#fff;border-top:1px solid #e8e8e8;box-shadow:0 8px 24px rgba(0,0,0,.08);max-height:0;overflow-y:auto;overflow-x:hidden;transition:max-height .4s cubic-bezier(.22,1,.36,1);justify-content:flex-start}
+.pl-nav-menu.open{max-height:80vh}
+.pl-nav-menu ul{flex-direction:column;align-items:stretch;gap:0;padding:12px 16px 20px}
+.pl-nav-link{display:flex;justify-content:space-between;width:100%;padding:13px 16px;border-radius:10px;font-size:15px}
+.pl-mobile-enroll{display:block;margin:12px 16px 4px;padding:13px;background:#f07b14;color:#fff;border-radius:10px;text-align:center;font-weight:700;font-size:15px;text-decoration:none}
+.pl-nav-dropdown{position:static}
+.pl-dropdown-panel{position:static!important;transform:none!important;width:100%!important;opacity:1!important;pointer-events:all!important;box-shadow:none!important;border:none!important;background:#fafafa!important;padding:8px!important;margin:0!important;display:none}
+.pl-nav-dropdown.open .pl-dropdown-panel{display:block}
+.pl-dp-grid{grid-template-columns:1fr 1fr;gap:6px}}
+@media(max-width:480px){.pl-dp-grid{grid-template-columns:1fr}}
 
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Raleway:400,400i,500,500i,600,600i,700,700i,800,800i"
-        rel="stylesheet">
+/* COURSE HERO */
+.pl-course-hero{background:#0d1b2a;padding:64px 0 52px;position:relative;overflow:hidden}
+.pl-course-hero::before{content:'';position:absolute;top:-100px;left:-100px;width:400px;height:400px;border-radius:50%;background:radial-gradient(circle,rgba(240,123,20,.08) 0%,transparent 70%);pointer-events:none}
+.pl-course-hero::after{content:'';position:absolute;bottom:-80px;right:-80px;width:350px;height:350px;border-radius:50%;background:radial-gradient(circle,rgba(0,148,217,.07) 0%,transparent 70%);pointer-events:none}
+.pl-course-breadcrumb{display:flex;align-items:center;gap:6px;margin-bottom:16px;font-size:12.5px}
+.pl-course-breadcrumb a{color:#f07b14;text-decoration:none;font-weight:600}
+.pl-course-breadcrumb a:hover{color:#d96a00}
+.pl-course-breadcrumb span{color:rgba(255,255,255,.35)}
+.pl-bc-current{color:rgba(255,255,255,.55)}
+.pl-course-badge{display:inline-block;background:#f07b14;color:#fff;padding:5px 16px;border-radius:50px;font-size:12px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;margin-bottom:18px}
+.pl-course-hero h1{color:#fff;font-size:38px;font-weight:800;line-height:1.2;margin-bottom:14px}
+.pl-course-hero-desc{color:rgba(255,255,255,.6);font-size:15.5px;line-height:1.65;margin-bottom:28px;max-width:560px}
+.pl-stat-pills{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:32px}
+.pl-stat-pill{display:inline-flex;align-items:center;gap:7px;padding:8px 16px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);border-radius:50px;color:#fff;font-size:13px;font-weight:600;backdrop-filter:blur(8px)}
+.pl-stat-pill i{color:#f07b14;font-size:13px}
+.pl-hero-btns{display:flex;flex-wrap:wrap;gap:12px}
+.pl-hero-btn-primary{display:inline-flex;align-items:center;gap:8px;padding:13px 28px;background:#f07b14;color:#fff;border-radius:50px;font-size:15px;font-weight:700;text-decoration:none;transition:background .25s,transform .25s,box-shadow .25s}
+.pl-hero-btn-primary:hover{background:#d96a00;transform:translateY(-2px);box-shadow:0 8px 28px rgba(240,123,20,.4);text-decoration:none;color:#fff}
+.pl-hero-btn-outline{display:inline-flex;align-items:center;gap:8px;padding:13px 28px;background:transparent;color:#fff;border:2px solid rgba(255,255,255,.35);border-radius:50px;font-size:15px;font-weight:700;text-decoration:none;transition:border-color .25s,background .25s,transform .25s}
+.pl-hero-btn-outline:hover{border-color:#f07b14;background:rgba(240,123,20,.08);transform:translateY(-2px);text-decoration:none;color:#fff}
+.pl-course-hero-img{width:100%;border-radius:20px;box-shadow:0 24px 64px rgba(0,0,0,.45);display:block;object-fit:cover;max-height:380px}
+.pl-hero-img-wrap{position:relative;margin-top:0}
+.pl-hero-img-badge{position:absolute;bottom:-18px;left:24px;background:#f07b14;color:#fff;padding:10px 20px;border-radius:12px;font-size:13px;font-weight:700;box-shadow:0 8px 24px rgba(240,123,20,.4)}
+.pl-instructors-line{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);border-radius:10px;padding:14px 20px;margin-top:28px;display:flex;align-items:center;gap:10px;width:fit-content}
+.pl-instructors-line i{color:#f07b14}
+.pl-instructors-line span{color:rgba(255,255,255,.55);font-size:13.5px;font-weight:500}
+.pl-instructors-line strong{color:rgba(255,255,255,.85);font-size:13.5px;font-weight:700}
 
-    <!-- Stylesheets -->
-    <link rel="stylesheet" href="css/bootstrap.min.css" />
-    <link rel="stylesheet" href="css/font-awesome.min.css" />
-    <link rel="stylesheet" href="css/owl.carousel.css" />
-    <link rel="stylesheet" href="css/style.css" />
-    <link rel="stylesheet" href="css/extrastyles.css">
-    <style>
+/* INFO STRIP */
+.pl-info-strip{background:#fff;padding:52px 0;border-bottom:1px solid #f0f0f0}
+.pl-info-strip-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.pl-info-card{display:flex;align-items:center;gap:16px;padding:20px 22px;background:#f8f9fc;border-radius:16px;border:1px solid #eee;transition:box-shadow .3s,transform .3s}
+.pl-info-card:hover{box-shadow:0 8px 28px rgba(0,0,0,.08);transform:translateY(-3px)}
+.pl-info-icon{width:48px;height:48px;border-radius:12px;background:rgba(240,123,20,.1);display:flex;align-items:center;justify-content:center;font-size:20px;color:#f07b14;flex-shrink:0}
+.pl-info-label{font-size:12px;color:#9ca3af;font-weight:600;text-transform:uppercase;letter-spacing:.5px;display:block;margin-bottom:3px}
+.pl-info-value{font-size:16px;color:#0d1b2a;font-weight:800}
 
+/* SECTION TAGS */
+.pl-section-tag{display:inline-block;background:rgba(240,123,20,.1);color:#f07b14;padding:6px 16px;border-radius:20px;font-size:12px;font-weight:700;letter-spacing:1px;text-transform:uppercase;margin-bottom:12px}
+.pl-section-title{color:#0d1b2a;font-size:32px;font-weight:800;margin-bottom:10px}
+.pl-section-title-white{color:#fff}
+.pl-section-sub{color:#6b7280;font-size:15px;margin-bottom:48px;max-width:540px}
+.pl-section-sub-white{color:rgba(255,255,255,.45)}
 
-    .course-meta-area {
-  background: #fff; /* white box */
-  border: 2px solid #f07b14; /* orange border */
-  border-radius: 1rem;
-  box-shadow: 0 0 0 rgba(255, 106, 0, 0); /* no shadow by default */
-  transition: box-shadow 0.3s ease, transform 0.3s ease;
-  padding: 20px;
-}
+/* DESCRIPTION */
+.pl-course-desc-section{background:#fff;padding:56px 0}
+.pl-desc-card{background:#f8f9fc;border-radius:20px;padding:40px;border:1px solid #eee}
+.pl-desc-card h3{color:#0d1b2a;font-size:22px;font-weight:800;margin-bottom:16px}
+.pl-desc-card p{color:#4b5563;font-size:15px;line-height:1.8;margin:0;text-align:justify}
 
-.course-meta-area:hover {
-  box-shadow: 0 8px 25px rgba(255, 106, 0, 0.35); /* orange glow */
-  transform: translateY(-4px); /* smooth lift effect */
-}
+/* WHAT YOU'LL LEARN */
+.pl-learn-section{background:#f8f9fc;padding:72px 0}
+.pl-learn-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.pl-learn-item{display:flex;align-items:flex-start;gap:16px;background:#fff;border-radius:16px;padding:24px;border:1px solid #eee;transition:box-shadow .3s,transform .3s}
+.pl-learn-item:hover{box-shadow:0 12px 32px rgba(0,0,0,.08);transform:translateY(-3px)}
+.pl-learn-check{width:40px;height:40px;border-radius:10px;background:rgba(240,123,20,.1);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.pl-learn-check i{color:#f07b14;font-size:16px}
+.pl-learn-body h4{color:#0d1b2a;font-size:16px;font-weight:700;margin-bottom:6px}
+.pl-learn-body p{color:#6b7280;font-size:14px;line-height:1.6;margin:0}
 
+/* SKILLS */
+.pl-skills-section{background:#fff;padding:48px 0}
+.pl-skill-tags{display:flex;flex-wrap:wrap;gap:12px;margin-top:8px}
+.pl-skill-tag{display:inline-flex;align-items:center;gap:7px;padding:8px 18px;border:1.5px solid #e5e7eb;border-radius:50px;color:#0d1b2a;font-size:14px;font-weight:600;background:#fff;transition:border-color .25s,background .25s,color .25s,transform .25s;cursor:default}
+.pl-skill-tag:hover{border-color:#f07b14;background:rgba(240,123,20,.06);color:#f07b14;transform:translateY(-2px)}
+.pl-skill-tag i{color:#f07b14;font-size:13px}
 
-        .learning-outcomes ul {
-            list-style-type: none;
-        }
+/* CURRICULUM */
+.pl-curriculum-section{background:#0d1b2a;padding:72px 0}
+.pl-accordion{display:flex;flex-direction:column;gap:12px;margin-top:40px}
+.pl-acc-item{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:14px;overflow:hidden;transition:border-color .3s}
+.pl-acc-item.open{border-color:rgba(240,123,20,.4)}
+.pl-acc-header{display:flex;align-items:center;justify-content:space-between;padding:18px 24px;cursor:pointer;user-select:none;gap:12px}
+.pl-acc-header:hover{background:rgba(255,255,255,.03)}
+.pl-acc-title{display:flex;align-items:center;gap:12px;flex:1}
+.pl-acc-num{width:32px;height:32px;border-radius:8px;background:rgba(240,123,20,.15);border:1px solid rgba(240,123,20,.3);display:flex;align-items:center;justify-content:center;color:#f07b14;font-size:12px;font-weight:800;flex-shrink:0}
+.pl-acc-header h5{color:#fff;font-size:15.5px;font-weight:700;margin:0}
+.pl-acc-toggle{width:32px;height:32px;border-radius:8px;background:rgba(240,123,20,.1);border:1px solid rgba(240,123,20,.2);display:flex;align-items:center;justify-content:center;color:#f07b14;font-size:16px;flex-shrink:0;transition:transform .3s,background .3s}
+.pl-acc-item.open .pl-acc-toggle{transform:rotate(45deg);background:rgba(240,123,20,.2)}
+.pl-acc-body{max-height:0;overflow:hidden;transition:max-height .4s cubic-bezier(.22,1,.36,1)}
+.pl-acc-body-inner{padding:0 24px 22px}
+.pl-acc-divider{border-top:1px solid rgba(255,255,255,.06);margin-bottom:14px}
+.pl-acc-body ul{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:1fr 1fr;gap:6px 20px}
+.pl-acc-body ul li{color:rgba(255,255,255,.6);font-size:13.5px;line-height:1.6;padding:4px 0 4px 18px;position:relative}
+.pl-acc-body ul li::before{content:'';position:absolute;left:0;top:11px;width:6px;height:6px;border-radius:50%;background:#f07b14}
 
-        .learning-outcomes ul li {
-            font-size: 14.1px;
-            color: #878787;
-            line-height: 2.2;
-            font-weight: 500;
-        }
+/* ENROLL CTA */
+.pl-enroll-cta{background:linear-gradient(135deg,#f07b14 0%,#d96a00 100%);padding:64px 0;text-align:center;position:relative;overflow:hidden}
+.pl-enroll-cta h2{color:#fff;font-size:36px;font-weight:800;margin-bottom:12px}
+.pl-enroll-cta p{color:rgba(255,255,255,.85);font-size:16px;margin-bottom:32px}
+.pl-enroll-cta-btn{display:inline-flex;align-items:center;gap:10px;padding:14px 36px;background:#fff;color:#f07b14;border-radius:50px;font-size:16px;font-weight:800;text-decoration:none;transition:transform .25s,box-shadow .25s}
+.pl-enroll-cta-btn:hover{transform:translateY(-2px);box-shadow:0 10px 32px rgba(0,0,0,.2);text-decoration:none;color:#f07b14}
 
-        .learning-outcomes ul li:before {
-            content: "\2022";
-            color: #f07b14;
-            font-weight: bold;
-            display: inline-block;
+/* RELATED */
+.pl-related-section{background:#fff;padding:60px 0 72px}
+.pl-related-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;margin-top:40px}
+.pl-course-tile{border-radius:18px;overflow:hidden;border:1px solid #eee;background:#fff;text-decoration:none;display:flex;flex-direction:column;transition:transform .3s,box-shadow .3s,border-color .3s}
+.pl-course-tile:hover{transform:translateY(-6px);box-shadow:0 20px 48px rgba(0,0,0,.10);border-color:#f07b14;text-decoration:none}
+.pl-tile-img{width:100%;height:200px;object-fit:cover;display:block}
+.pl-tile-body{padding:20px 22px 22px;flex:1;display:flex;flex-direction:column}
+.pl-tile-body h4{color:#0d1b2a;font-size:17px;font-weight:800;margin-bottom:8px}
+.pl-tile-body p{color:#6b7280;font-size:13.5px;line-height:1.6;margin-bottom:16px;flex:1}
+.pl-tile-link{display:inline-flex;align-items:center;gap:6px;color:#f07b14;font-size:13.5px;font-weight:700;text-decoration:none;transition:gap .2s}
+.pl-tile-link:hover{gap:10px;text-decoration:none;color:#d96a00}
 
-            width: 1.5em;
-            margin-left: -1em;
-        }
-    </style>
-    <!-- Google Tag Manager -->
-    <script>(function (w, d, s, l, i) {
-            w[l] = w[l] || []; w[l].push({
-                'gtm.start':
-                    new Date().getTime(), event: 'gtm.js'
-            }); var f = d.getElementsByTagName(s)[0],
-                j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
-                    'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
-        })(window, document, 'script', 'dataLayer', 'GTM-TLSHTX5P');</script>
-    <!-- End Google Tag Manager -->
+/* FOOTER */
+.pl-footer{background:#080f18;color:rgba(255,255,255,.7)}
+.pl-footer-main{padding:70px 0 50px;border-bottom:1px solid rgba(255,255,255,.07)}
+.pl-footer-grid{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:48px}
+.pl-footer-logo{font-size:24px;font-weight:800;color:#fff;margin-bottom:16px}
+.pl-footer-brand p{font-size:14px;line-height:1.7;color:rgba(255,255,255,.5);margin-bottom:24px}
+.pl-footer-contact{display:flex;flex-direction:column;gap:10px}
+.pl-footer-contact a{display:flex;align-items:flex-start;gap:10px;color:rgba(255,255,255,.5);font-size:13.5px;text-decoration:none;transition:color .2s;line-height:1.5}
+.pl-footer-contact a i{color:#f07b14;margin-top:2px;flex-shrink:0}
+.pl-footer-contact a:hover{color:#fff}
+.pl-footer-col h5{color:#fff;font-size:15px;font-weight:700;margin-bottom:20px;position:relative;padding-bottom:12px}
+.pl-footer-col h5::after{content:'';position:absolute;bottom:0;left:0;width:30px;height:2px;background:#f07b14;border-radius:2px}
+.pl-footer-col ul{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:10px}
+.pl-footer-col ul li a{color:rgba(255,255,255,.5);font-size:13.5px;text-decoration:none;display:flex;align-items:center;gap:8px;transition:color .2s,gap .2s}
+.pl-footer-col ul li a i{font-size:10px;color:#f07b14}
+.pl-footer-col ul li a:hover{color:#fff;gap:12px}
+.pl-footer-socials{display:flex;flex-wrap:wrap;gap:10px}
+.pl-social-btn{width:38px;height:38px;border-radius:10px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.08);display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,.6);font-size:14px;text-decoration:none;transition:background .25s,color .25s,border-color .25s,transform .25s}
+.pl-social-btn:hover{background:var(--sc);border-color:var(--sc);color:#fff;transform:translateY(-3px)}
+.pl-footer-hours{margin-top:24px}
+.pl-footer-hours h5{color:#fff;font-size:14px;font-weight:700;margin-bottom:10px;padding-bottom:0}
+.pl-footer-hours h5::after{display:none}
+.pl-footer-hours p{color:rgba(255,255,255,.5);font-size:13.5px;margin-bottom:6px;display:flex;align-items:center;gap:8px}
+.pl-footer-hours p i{color:#f07b14}
+.pl-footer-bottom{padding:22px 0}
+.pl-footer-bottom-inner{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px}
+.pl-footer-bottom p{color:rgba(255,255,255,.35);font-size:13px;margin:0}
+.pl-footer-bottom strong{color:rgba(255,255,255,.6)}
 
+/* WHATSAPP */
+.whatsapp-button{position:fixed;bottom:28px;right:24px;z-index:999}
+.whatsapp-button img{width:56px;height:56px;border-radius:50%;box-shadow:0 4px 16px rgba(0,0,0,.2);transition:transform .25s}
+.whatsapp-button:hover img{transform:scale(1.1)}
+
+/* RESPONSIVE */
+@media(max-width:991px){
+.pl-course-hero h1{font-size:30px}
+.pl-info-strip-grid{grid-template-columns:repeat(2,1fr)}
+.pl-learn-grid{grid-template-columns:1fr}
+.pl-related-grid{grid-template-columns:repeat(2,1fr)}
+.pl-footer-grid{grid-template-columns:1fr 1fr;gap:36px}
+.pl-acc-body ul{grid-template-columns:1fr}
+.pl-hero-img-wrap{margin-top:40px}}
+@media(max-width:767px){.pl-course-hero{padding:48px 0 40px}.pl-enroll-cta h2{font-size:26px}.pl-related-grid{grid-template-columns:1fr}}
+@media(max-width:575px){.pl-info-strip-grid{grid-template-columns:1fr}.pl-footer-grid{grid-template-columns:1fr;gap:28px}.pl-footer-bottom-inner{flex-direction:column;text-align:center}.pl-course-hero h1{font-size:26px}.pl-section-title{font-size:24px}}
+	</style>
+    <link rel="stylesheet" href="css/course-detail.css"/>
 </head>
-
 <body>
-    <!-- Google Tag Manager (noscript) -->
-    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TLSHTX5P" height="0" width="0"
-            style="display:none;visibility:hidden"></iframe></noscript>
-    <!-- End Google Tag Manager (noscript) -->
-    <!-- Page Preloder -->
-    <div id="preloder">
-        <div class="loader"></div>
-    </div>
+	<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TLSHTX5P" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+	<div id="preloder"><div class="loader"><span></span><span></span><span></span></div></div>
 
- 	<!-- Header section -->
-	<header class="header-section">
+	<!-- NAVBAR -->
+	<header class="pl-navbar" id="plNavbar">
 		<div class="container">
-			<div class="row align-items-center">
-
-
-
-				<div class="col-lg-3 col-md-3 d-flex align-items-center justify-content-between">
-					<div class="site-logo">
-						<a href="index.html" class="d-inline-block">
-							<img src="update images/Programmers Lab.png" alt="logo" class="img-fluid"
-								style="max-height: 60px;">
-						</a>
-					</div>
-					<div class="nav-switch d-lg-none">
-						<i class="fa fa-bars"></i>
-					</div>
+			<div class="pl-nav-inner">
+				<a href="index.html" class="pl-nav-logo"><img src="update images/Programmers Lab.png" alt="Programmers Lab"></a>
+				<nav class="pl-nav-menu" id="plNavMenu">
+					<ul>
+						<li><a href="index.html" class="pl-nav-link">Home</a></li>
+						<li class="pl-nav-dropdown">
+							<a href="best-computer-courses-rawalpidni.html" class="pl-nav-link active">Courses <i class="fa fa-angle-down"></i></a>
+							<div class="pl-dropdown-panel"><div class="pl-dp-grid">
+								<a href="best-web-development-courses-in-rawalpindi.html" class="pl-dp-item"><span class="pl-dp-icon" style="background:rgba(240,123,20,0.12);color:#f07b14;"><i class="fa fa-code"></i></span><span>Web Development</span></a>
+								<a href="best-mobile-app-development-courses-in-rawalpindi.html" class="pl-dp-item"><span class="pl-dp-icon" style="background:rgba(0,148,217,0.12);color:#0094d9;"><i class="fa fa-mobile"></i></span><span>Mobile App Dev</span></a>
+								<a href="best-designing-courses-rawalpidni.html" class="pl-dp-item"><span class="pl-dp-icon" style="background:rgba(139,92,246,0.12);color:#8b5cf6;"><i class="fa fa-paint-brush"></i></span><span>Graphic Designing</span></a>
+								<a href="best-digital-marketing-course-rawalpidni.html" class="pl-dp-item"><span class="pl-dp-icon" style="background:rgba(16,185,129,0.12);color:#10b981;"><i class="fa fa-line-chart"></i></span><span>Digital Marketing</span></a>
+								<a href="best-programming-courses-institute-in-rawalpidni-islamabad.html" class="pl-dp-item"><span class="pl-dp-icon" style="background:rgba(245,158,11,0.12);color:#f59e0b;"><i class="fa fa-terminal"></i></span><span>Programming</span></a>
+								<a href="best-freelancing-institute-in-rawalpindi-islamabd.html" class="pl-dp-item"><span class="pl-dp-icon" style="background:rgba(236,72,153,0.12);color:#ec4899;"><i class="fa fa-briefcase"></i></span><span>Freelancing</span></a>
+								<a href="best-database-courses-institute-in-rawalpidni-islamabad.html" class="pl-dp-item"><span class="pl-dp-icon" style="background:rgba(6,182,212,0.12);color:#06b6d4;"><i class="fa fa-database"></i></span><span>Database Mgmt</span></a>
+								<a href="best-computer-courses-rawalpidni.html" class="pl-dp-item"><span class="pl-dp-icon" style="background:rgba(99,102,241,0.12);color:#6366f1;"><i class="fa fa-th-large"></i></span><span>All Courses →</span></a>
+							</div></div>
+						</li>
+						<li><a href="services.html" class="pl-nav-link">Services</a></li>
+						<li><a href="career.html" class="pl-nav-link">Career</a></li>
+						<li><a href="prgrammers-lab-contact.html" class="pl-nav-link">Contact</a></li>
+					</ul>
+					<a href="enroll-form.html" class="pl-mobile-enroll">Enroll Now</a>
+				</nav>
+				<div class="pl-nav-right">
+					<a href="enroll-form.html" class="pl-nav-cta">Enroll Now</a>
+					<button class="pl-hamburger" id="plHamburger" aria-label="Toggle menu"><span></span><span></span><span></span></button>
 				</div>
-
-
-
-	
-
-				<!-- Menu -->
-				<div class="col-lg-9 col-md-9 d-flex justify-content-end">
-					<nav class="main-menu">
-						<ul class="d-flex align-items-center mb-0">
-							<li class="mx-2"><a href="index.html">Home</a></li>
-							<li class="mx-2"><a href="best-computer-courses-rawalpidni.html">Courses</a></li>
-							<li class="mx-2"><a href="services.html">Services</a></li>
-							<li class="mx-2"><a href="career.html">Career</a></li>
-							<li class="mx-2"><a href="prgrammers-lab-contact.html">Contact</a></li>
-						</ul>
-					</nav>
-				</div>
-
 			</div>
 		</div>
 	</header>
-	<!-- Header section end -->
 
-
-
-
-
-    <!-- search section -->
-    <!-- <section class="search-section ss-other-page">
+	<!-- HERO -->
+	<section class="pl-course-hero">
 		<div class="container">
-			<div class="search-warp">
-				<div class="section-title text-white">
-					<h2><span>Search your course</span></h2>
+			<div class="row align-items-center">
+				<div class="col-lg-7">
+					<nav class="pl-course-breadcrumb">
+						<a href="index.html">Home</a><span>›</span>
+						<a href="best-computer-courses-rawalpidni.html">Courses</a><span>›</span>
+						<span class="pl-bc-current">Frontend Development</span>
+					</nav>
+					<span class="pl-course-badge">Web Development</span>
+					<h1>Frontend Web Development Course</h1>
+					<p class="pl-course-hero-desc">Build responsive websites from scratch using HTML, CSS, JavaScript, Bootstrap &amp; jQuery. Go from beginner to job-ready in just 3 months.</p>
+					<div class="pl-stat-pills">
+						<span class="pl-stat-pill"><i class="fa fa-clock-o"></i> 3 Months</span>
+						<span class="pl-stat-pill"><i class="fa fa-tag"></i> Rs. 23,000</span>
+						<span class="pl-stat-pill"><i class="fa fa-laptop"></i> 15+ Projects</span>
+						<span class="pl-stat-pill"><i class="fa fa-certificate"></i> Certificate</span>
+					</div>
+					<div class="pl-hero-btns">
+						<a href="enroll-form.html" class="pl-hero-btn-primary"><i class="fa fa-rocket"></i> Enroll Now</a>
+						<a href="#curriculum" class="pl-hero-btn-outline pl-smooth"><i class="fa fa-list"></i> View Curriculum</a>
+					</div>
+					<div class="pl-instructors-line">
+						<i class="fa fa-users"></i>
+						<span>Instructors:</span>
+						<strong>Programmers Lab Skills Network Team</strong>
+					</div>
 				</div>
-				<div class="row">
-					<div class="col-lg-10 offset-lg-1">
-					
-						<form class="course-search-form">
-							<input type="text" placeholder="Course">
-							<input type="text" class="last-m" placeholder="Category">
-							<button class="site-btn btn-dark">Search Couse</button>
-						</form>
+				<div class="col-lg-5">
+					<div class="pl-hero-img-wrap">
+						<img src="courses-images/COURSES/web-designing.jpg" alt="Frontend Web Development Course Rawalpindi" class="pl-course-hero-img">
+						<div class="pl-hero-img-badge"><i class="fa fa-star" style="color:#ffe082;margin-right:6px;"></i> 3000+ Students Enrolled</div>
 					</div>
 				</div>
 			</div>
 		</div>
-	</section> -->
-    <!-- search section end -->
+	</section>
 
-<!-- 
-    <h1 class="heading11">Website Designing Course In
-        Rawalpindi Islamabad</h1> -->
+	<!-- INFO STRIP -->
+	<section class="pl-info-strip">
+		<div class="container">
+			<div class="pl-info-strip-grid">
+				<div class="pl-info-card"><div class="pl-info-icon"><i class="fa fa-clock-o"></i></div><div><span class="pl-info-label">Duration</span><span class="pl-info-value">3 Months</span></div></div>
+				<div class="pl-info-card"><div class="pl-info-icon"><i class="fa fa-calendar"></i></div><div><span class="pl-info-label">Schedule</span><span class="pl-info-value">Mon–Thu, 2 hrs/day</span></div></div>
+				<div class="pl-info-card"><div class="pl-info-icon"><i class="fa fa-money"></i></div><div><span class="pl-info-label">Course Fee</span><span class="pl-info-value">Rs. 23,000</span></div></div>
+				<div class="pl-info-card"><div class="pl-info-icon"><i class="fa fa-briefcase"></i></div><div><span class="pl-info-label">Internship</span><span class="pl-info-value">Available</span></div></div>
+			</div>
+		</div>
+	</section>
 
-    <!-- single course section -->
-    <section class=" single-course spad pb-0">
+	<!-- DESCRIPTION -->
+	<section class="pl-course-desc-section">
+		<div class="container">
+			<div class="pl-desc-card">
+				<h3>About This Course</h3>
+				<p>The Frontend Web Development course at Programmers Lab is a comprehensive 3-month program that equips students with the skills to build visually appealing and interactive websites. Students will master HTML, CSS, JavaScript, Bootstrap, jQuery, and website deployment. The course blends practical knowledge with immersive hands-on projects — giving students real problem-solving experience. By the end, students will be able to create professional responsive websites and launch a career in web development or freelancing.</p>
+			</div>
+		</div>
+	</section>
 
-        <div class="container">
-            <div class="course-meta-area">
-                <div class="row">
-                    <div class="col-lg-10 offset-lg-1">
-                    
-                        <h3 class= "full-stack"> Frontend Developer Course</h3>
+	<!-- WHAT YOU'LL LEARN -->
+	<section class="pl-learn-section">
+		<div class="container">
+			<div class="pl-section-tag">Learning Outcomes</div>
+			<h2 class="pl-section-title">What You'll Learn</h2>
+			<p class="pl-section-sub">A practical, project-driven curriculum designed to make you job-ready.</p>
+			<div class="pl-learn-grid">
+				<div class="pl-learn-item"><div class="pl-learn-check"><i class="fa fa-check"></i></div><div class="pl-learn-body"><h4>Front-End Development</h4><p>Build modern, responsive websites using HTML, CSS, JavaScript, jQuery and Bootstrap.</p></div></div>
+				<div class="pl-learn-item"><div class="pl-learn-check"><i class="fa fa-check"></i></div><div class="pl-learn-body"><h4>Practical Experience</h4><p>Work on 15+ real-world projects and gain hands-on skills through an internship program.</p></div></div>
+				<div class="pl-learn-item"><div class="pl-learn-check"><i class="fa fa-check"></i></div><div class="pl-learn-body"><h4>Responsive &amp; Optimized Websites</h4><p>Master layout techniques, media queries, and best practices for performance and SEO.</p></div></div>
+				<div class="pl-learn-item"><div class="pl-learn-check"><i class="fa fa-check"></i></div><div class="pl-learn-body"><h4>Interactive Design</h4><p>Add animations, dynamic features and DOM manipulation with JavaScript and jQuery.</p></div></div>
+			</div>
+		</div>
+	</section>
 
-<h5 class="mt-4">
-    
-Get everything you need to reach your goals in one convenient bundle
-</h5>   
+	<!-- SKILLS -->
+	<section class="pl-skills-section">
+		<div class="container">
+			<div class="pl-section-tag">Tech Stack</div>
+			<h2 class="pl-section-title">Skills You'll Gain</h2>
+			<div class="pl-skill-tags">
+				<span class="pl-skill-tag"><i class="fab fa-html5"></i> HTML5</span>
+				<span class="pl-skill-tag"><i class="fab fa-css3-alt"></i> CSS3</span>
+				<span class="pl-skill-tag"><i class="fab fa-js-square"></i> JavaScript</span>
+				<span class="pl-skill-tag"><i class="fab fa-bootstrap"></i> Bootstrap</span>
+				<span class="pl-skill-tag"><i class="fa fa-code"></i> jQuery</span>
+				<span class="pl-skill-tag"><i class="fa fa-globe"></i> Freelancing</span>
+				<span class="pl-skill-tag"><i class="fab fa-git-alt"></i> GIT &amp; GitHub</span>
+			</div>
+		</div>
+	</section>
 
-<div class="row align-items-center justify-content-between mt-4">
+	<!-- CURRICULUM -->
+	<section class="pl-curriculum-section" id="curriculum">
+		<div class="container">
+			<div class="pl-section-tag">Full Syllabus</div>
+			<h2 class="pl-section-title pl-section-title-white">Course Curriculum</h2>
+			<p class="pl-section-sub pl-section-sub-white">8 comprehensive modules — from basics to deployment and freelancing.</p>
+			<div class="pl-accordion">
 
-    <div class="col-lg-6 col-md-12">
-        <ul class="mt-3 mb-3 mx-3">
-            <li>Become a <strong>Front-end Developer</strong> in just <strong>3 Months</strong>.</li>
-            
-            <li><strong>Lecture Schedule:</strong> Monday to Thursday | 2 Hours Daily</li>
-            
-            
-            <li  style="margin-top: 6px;"  ><strong>Course Fee:</strong> Rs. 23,000  ( onFull Payment )</li>
-            <li ><strong>Installment Plan:</strong> Rs. 25,000</li>
-            
-            <li  ><strong>15+ Real Projects</strong> for hands-on development experience</li>
-            <li style="margin-top: 6px;" ><strong>8+ Professional Modules</strong> covering frontend from Scratch.</li>
-        </ul>
-    </div>
+				<div class="pl-acc-item open">
+					<div class="pl-acc-header"><div class="pl-acc-title"><span class="pl-acc-num">01</span><h5>HTML — HyperText Markup Language</h5></div><span class="pl-acc-toggle"><i class="fa fa-plus"></i></span></div>
+					<div class="pl-acc-body"><div class="pl-acc-divider"></div><div class="pl-acc-body-inner"><ul>
+						<li>Introduction to HTML and its role in Website Designing</li><li>Structure of an HTML document</li><li>Headings, paragraphs, and line breaks</li><li>Text formatting — bold, italic, underline</li><li>Ordered and unordered lists</li><li>Inserting and formatting images</li><li>Hyperlinks and linking to external websites</li><li>Building tables for tabular data</li><li>Forms to capture user input</li><li>Multimedia elements — audio and video</li><li>Semantic HTML tags for accessibility and SEO</li><li>HTML5 elements and their usage</li><li>Embedding external content (YouTube, social media)</li><li>HTML entities and special characters</li><li>Responsive web design principles</li><li>Validating and troubleshooting HTML markup</li>
+					</ul></div></div>
+				</div>
 
-    
-    <div class="col-lg-5 col-md-12 text-center ">
-        <img src="courses-images/COURSES/web-designing.jpg" alt="Certificate" class=" certificate-img">
-    </div>
-    
-</div>
+				<div class="pl-acc-item">
+					<div class="pl-acc-header"><div class="pl-acc-title"><span class="pl-acc-num">02</span><h5>CSS — Cascading Style Sheets</h5></div><span class="pl-acc-toggle"><i class="fa fa-plus"></i></span></div>
+					<div class="pl-acc-body"><div class="pl-acc-divider"></div><div class="pl-acc-body-inner"><ul>
+						<li>Introduction to CSS and selectors</li><li>Applying styles to HTML elements</li><li>Text and fonts (font properties, formatting)</li><li>Box model — margin, padding, border</li><li>Positioning — floats, flexbox, grid</li><li>CSS colors and backgrounds</li><li>Styling links and navigation menus</li><li>CSS transitions and animations</li><li>Responsive designs — media queries, fluid layouts</li><li>CSS frameworks (Bootstrap)</li><li>CSS preprocessors (Sass)</li><li>CSS architecture and best practices</li><li>Debugging and troubleshooting CSS</li>
+					</ul></div></div>
+				</div>
 
-                                <div class="mt-5 mb-5 mx-3 "> INSTRUCTORS: <span class="ml-3"><a href=""> Programmer Lab Skills Netwrok Team </a></span> 
-            
-                                </div>
-                                <a href="EnrollForm.html" class="btn btn-success mt-3 mb-3">Enroll Now</a>
+				<div class="pl-acc-item">
+					<div class="pl-acc-header"><div class="pl-acc-title"><span class="pl-acc-num">03</span><h5>Bootstrap — Responsive Framework</h5></div><span class="pl-acc-toggle"><i class="fa fa-plus"></i></span></div>
+					<div class="pl-acc-body"><div class="pl-acc-divider"></div><div class="pl-acc-body-inner"><ul>
+						<li>Introduction to Bootstrap and setup</li><li>Bootstrap grid system and responsive design</li><li>Pre-built components — navbars, buttons, forms, modals</li><li>Customizing Bootstrap components</li><li>Responsive utilities — hiding/showing content</li><li>Responsive navigation menus</li><li>Form components and validation</li><li>Responsive image and video content</li><li>Card layouts and content containers</li><li>Bootstrap carousel for sliders</li><li>Bootstrap JavaScript plugins</li><li>Customizing Bootstrap themes</li>
+					</ul></div></div>
+				</div>
 
-                </div>
-            </div>
-            </div><br><br><br><br><br>
-<div class="container">
+				<div class="pl-acc-item">
+					<div class="pl-acc-header"><div class="pl-acc-title"><span class="pl-acc-num">04</span><h5>JavaScript — Core Programming</h5></div><span class="pl-acc-toggle"><i class="fa fa-plus"></i></span></div>
+					<div class="pl-acc-body"><div class="pl-acc-divider"></div><div class="pl-acc-body-inner"><ul>
+						<li>JavaScript syntax and basic programming concepts</li><li>Variables, data types, and operators</li><li>Control flow — if/else, switch</li><li>Looping — for, while loops</li><li>Functions and reusable code</li><li>Arrays and array manipulation</li><li>DOM manipulation</li><li>Event handling</li><li>Forms and form validation</li><li>JSON and APIs</li><li>Asynchronous programming and AJAX</li><li>Error handling and debugging</li><li>Modern JavaScript features — ES6+</li><li>Introduction to React and Vue.js</li>
+					</ul></div></div>
+				</div>
 
-  <!-- What you'll learn section -->
-  <div class="row">
-    <div class="col-12">
-      <h4 class="mb-5">What you'll learn</h4>
-    </div>
+				<div class="pl-acc-item">
+					<div class="pl-acc-header"><div class="pl-acc-title"><span class="pl-acc-num">05</span><h5>jQuery — DOM Manipulation &amp; AJAX</h5></div><span class="pl-acc-toggle"><i class="fa fa-plus"></i></span></div>
+					<div class="pl-acc-body"><div class="pl-acc-divider"></div><div class="pl-acc-body-inner"><ul>
+						<li>jQuery syntax and selectors</li><li>Manipulating HTML elements and CSS with jQuery</li><li>Event handling with jQuery</li><li>Animations and transitions</li><li>DOM traversal and manipulation</li><li>AJAX requests and responses</li><li>jQuery plugins and extensions</li><li>Form validation with jQuery</li><li>jQuery UI widgets</li><li>Optimizing and debugging jQuery code</li>
+					</ul></div></div>
+				</div>
 
-    <div class="col-lg-6 col-md-12">
-      <ul>
-        <li class="mb-3">
-            <strong>
-    
-                Front-End Development :
+				<div class="pl-acc-item">
+					<div class="pl-acc-header"><div class="pl-acc-title"><span class="pl-acc-num">06</span><h5>Website Uploading &amp; Deployment</h5></div><span class="pl-acc-toggle"><i class="fa fa-plus"></i></span></div>
+					<div class="pl-acc-body"><div class="pl-acc-divider"></div><div class="pl-acc-body-inner"><ul>
+						<li>Web hosting concepts</li><li>FTP — File Transfer Protocol</li><li>Using FileZilla FTP client</li><li>Domain registration and DNS configuration</li><li>Uploading files to a live server</li><li>Troubleshooting common deployment issues</li>
+					</ul></div></div>
+				</div>
 
-            </strong>
-        Learn to build modern, responsive websites using HTML, CSS, JavaScript,jQuery and Bootstrap. </li>
-        <li class="mb-3">
-            <strong>
-                Practical Experience :
+				<div class="pl-acc-item">
+					<div class="pl-acc-header"><div class="pl-acc-title"><span class="pl-acc-num">07</span><h5>Freelancing — Earn Online</h5></div><span class="pl-acc-toggle"><i class="fa fa-plus"></i></span></div>
+					<div class="pl-acc-body"><div class="pl-acc-divider"></div><div class="pl-acc-body-inner"><ul>
+						<li>Understanding the freelancing industry</li><li>Fiverr, Upwork and other platforms</li><li>Crafting an effective freelancer profile</li><li>Showcasing skills and portfolio</li><li>Finding and attracting clients</li><li>Writing proposals and bids</li><li>Communication and negotiation skills</li><li>Building reputation and client referrals</li><li>Setting rates and pricing your services</li>
+					</ul></div></div>
+				</div>
 
-            </strong>
-          Work on 15+ real-world projects and gain hands-on skills through an internship.
-        </li>
-      </ul>
-    </div>
+				<div class="pl-acc-item">
+					<div class="pl-acc-header"><div class="pl-acc-title"><span class="pl-acc-num">08</span><h5>Course Completion &amp; Certificate</h5></div><span class="pl-acc-toggle"><i class="fa fa-plus"></i></span></div>
+					<div class="pl-acc-body"><div class="pl-acc-divider"></div><div class="pl-acc-body-inner"><ul>
+						<li>Final project presentation and code review</li><li>Portfolio building and GitHub profile setup</li><li>Certificate of completion awarded</li><li>Career guidance and job placement assistance</li>
+					</ul></div></div>
+				</div>
 
-    <div class="col-lg-6 col-md-12">
-      <ul>
-        <li class="mb-3">
-            <strong>
-                Responsive & Optimized Websites :
+			</div>
+		</div>
+	</section>
 
-            </strong>
-           Master layout techniques, media queries, and best practices for performance and SEO
-        </li>
-        <li class="mb-3">
-            <strong>
-                Interactive Design: 
+	<!-- ENROLL CTA -->
+	<section class="pl-enroll-cta">
+		<div class="container" style="position:relative;z-index:1;">
+			<h2>Ready to Start Learning?</h2>
+			<p>Join 3000+ students — enroll today and start building real websites.</p>
+			<a href="enroll-form.html" class="pl-enroll-cta-btn"><i class="fa fa-rocket"></i> Enroll Now</a>
+		</div>
+	</section>
 
-            </strong>
-             Add animations, dynamic features and DOM manipulation with JavaScript and jQuery.
-        </li>
-      </ul>
-    </div>
-  </div>
+	<!-- RELATED COURSES -->
+	<section class="pl-related-section">
+		<div class="container">
+			<div class="pl-section-tag">Keep Learning</div>
+			<h2 class="pl-section-title">Related Courses</h2>
+			<div class="pl-related-grid">
+				<a href="best-institute-for-asp.net-course-rawalpidni.html" class="pl-course-tile">
+					<img src="courses-images/COURSES/ASP.-net-3.jpg" alt="ASP.NET Course" class="pl-tile-img">
+					<div class="pl-tile-body"><h4>ASP.NET Course</h4><p>Build powerful web applications with Microsoft ASP.NET and C#.</p><span class="pl-tile-link">View Course <i class="fa fa-arrow-right"></i></span></div>
+				</a>
+				<a href="best-institute-php-mysql-course-rawalpidni.html" class="pl-course-tile">
+					<img src="courses-images/COURSES/PHP-MY-SQL.jpg" alt="PHP MySQL Course" class="pl-tile-img">
+					<div class="pl-tile-body"><h4>PHP &amp; MySQL Course</h4><p>Master server-side scripting with PHP and MySQL database management.</p><span class="pl-tile-link">View Course <i class="fa fa-arrow-right"></i></span></div>
+				</a>
+				<a href="best-institute-react-js-course-rawalpidni.html" class="pl-course-tile">
+					<img src="courses-images/COURSES/Js-React-3.jpg" alt="React JS Course" class="pl-tile-img">
+					<div class="pl-tile-body"><h4>React JS Course</h4><p>Learn the most popular JS library for building fast, interactive UIs.</p><span class="pl-tile-link">View Course <i class="fa fa-arrow-right"></i></span></div>
+				</a>
+			</div>
+		</div>
+	</section>
 
-  <!-- Skills you'll gain section -->
-  <div class="row mt-5">
-    <div class="col-12">
-      <h4 class="mb-4">Skills you'll Gain</h4>
-    </div>
+	<!-- FOOTER -->
+	<footer class="pl-footer">
+		<div class="pl-footer-main">
+			<div class="container">
+				<div class="pl-footer-grid">
+					<div class="pl-footer-brand">
+						<div class="pl-footer-logo"><span style="color:#f07b14;">Programmers</span> Lab</div>
+						<p>A leading IT training institute &amp; software house in Rawalpindi. 30+ professional courses and real-world project experience.</p>
+						<div class="pl-footer-contact">
+							<a href="https://www.google.com/maps/place/Programmers+Lab+Training+Institute/@33.631884,73.0705072,17z" target="_blank"><i class="fa fa-map-marker"></i> Office No. 8, First Floor, Mian Plaza, Chandni Chowk, Rawalpindi</a>
+							<a href="tel:+923331912898"><i class="fa fa-phone"></i> +92 333 1912898</a>
+							<a href="mailto:infoprogrammerslabs@gmail.com"><i class="fa fa-envelope"></i> infoprogrammerslabs@gmail.com</a>
+						</div>
+					</div>
+					<div class="pl-footer-col">
+						<h5>Courses</h5>
+						<ul>
+							<li><a href="best-web-development-courses-in-rawalpindi.html"><i class="fa fa-chevron-right"></i> Web Development</a></li>
+							<li><a href="best-mobile-app-development-courses-in-rawalpindi.html"><i class="fa fa-chevron-right"></i> Mobile App Dev</a></li>
+							<li><a href="best-designing-courses-rawalpidni.html"><i class="fa fa-chevron-right"></i> Graphic Designing</a></li>
+							<li><a href="best-digital-marketing-course-rawalpidni.html"><i class="fa fa-chevron-right"></i> Digital Marketing</a></li>
+							<li><a href="best-programming-courses-institute-in-rawalpidni-islamabad.html"><i class="fa fa-chevron-right"></i> Programming</a></li>
+							<li><a href="best-freelancing-institute-in-rawalpindi-islamabd.html"><i class="fa fa-chevron-right"></i> Freelancing</a></li>
+						</ul>
+					</div>
+					<div class="pl-footer-col">
+						<h5>Quick Links</h5>
+						<ul>
+							<li><a href="index.html"><i class="fa fa-chevron-right"></i> Home</a></li>
+							<li><a href="best-computer-courses-rawalpidni.html"><i class="fa fa-chevron-right"></i> All Courses</a></li>
+							<li><a href="services.html"><i class="fa fa-chevron-right"></i> Services</a></li>
+							<li><a href="enroll-form.html"><i class="fa fa-chevron-right"></i> Enroll Now</a></li>
+							<li><a href="prgrammers-lab-contact.html"><i class="fa fa-chevron-right"></i> Contact Us</a></li>
+						</ul>
+					</div>
+					<div class="pl-footer-col">
+						<h5>Follow Us</h5>
+						<div class="pl-footer-socials">
+							<a href="https://www.facebook.com/programmerslabs" target="_blank" class="pl-social-btn" style="--sc:#1877f2"><i class="fab fa-facebook-f"></i></a>
+							<a href="https://www.instagram.com/programmers_lab_institute/" target="_blank" class="pl-social-btn" style="--sc:#e1306c"><i class="fab fa-instagram"></i></a>
+							<a href="https://www.linkedin.com/company/programmerslabs/" target="_blank" class="pl-social-btn" style="--sc:#0a66c2"><i class="fab fa-linkedin-in"></i></a>
+							<a href="https://youtube.com/@programmerslabs" target="_blank" class="pl-social-btn" style="--sc:#ff0000"><i class="fab fa-youtube"></i></a>
+							<a href="https://wa.me/03331912898" target="_blank" class="pl-social-btn" style="--sc:#25d366"><i class="fab fa-whatsapp"></i></a>
+							<a href="https://twitter.com/progra39834" target="_blank" class="pl-social-btn" style="--sc:#1da1f2"><i class="fab fa-twitter"></i></a>
+						</div>
+						<div class="pl-footer-hours">
+							<h5>Office Hours</h5>
+							<p><i class="fa fa-calendar"></i> Monday – Saturday</p>
+							<p><i class="fa fa-clock-o"></i> 09:00 AM – 06:00 PM</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="pl-footer-bottom">
+			<div class="container">
+				<div class="pl-footer-bottom-inner">
+					<p>© 2026 <strong>Programmers Lab</strong>. All rights reserved.</p>
+					<p>Designed &amp; Developed by <a href="#" style="color:#f07b14;">Programmers Lab Team</a></p>
+				</div>
+			</div>
+		</div>
+	</footer>
 
-    <!-- Use col-6 for half width on large screens -->
-    <div class="col-6 col-sm-6 col-md-4 col-lg-3 mb-3">
-      <div class="card shadow-sm p-3 text-center">HTML5</div>
-    </div>
+	<a href="https://wa.me/message/DROOVWVA3B5XK1" target="_blank" class="whatsapp-button"><img src="img/WHATSAPICON.png" alt="WhatsApp Chat"/></a>
 
-    <div class="col-6 col-sm-6 col-md-4 col-lg-3 mb-3">
-      <div class="card shadow-sm p-3 text-center">CSS3</div>
-    </div>
+	<script src="js/jquery-3.2.1.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/main.js"></script>
+	<script>
+	(function(){
+		// Navbar
+		var nav=document.getElementById('plNavbar');
+		window.addEventListener('scroll',function(){nav.classList.toggle('scrolled',window.scrollY>40);});
+		var ham=document.getElementById('plHamburger'),menu=document.getElementById('plNavMenu');
+		ham.addEventListener('click',function(){ham.classList.toggle('open');menu.classList.toggle('open');});
+		document.querySelectorAll('.pl-nav-dropdown').forEach(function(dd){
+			dd.querySelector('.pl-nav-link').addEventListener('click',function(e){
+				if(window.innerWidth<=991){e.preventDefault();dd.classList.toggle('open');}
+			});
+		});
 
-    <div class="col-6 col-sm-6 col-md-4 col-lg-3 mb-3">
-      <div class="card shadow-sm p-3 text-center">JavaScript</div>
-    </div>
+		// Accordion
+		document.querySelectorAll('.pl-acc-header').forEach(function(h){
+			h.addEventListener('click',function(){
+				var item=h.closest('.pl-acc-item'),body=item.querySelector('.pl-acc-body'),isOpen=item.classList.contains('open');
+				document.querySelectorAll('.pl-acc-item').forEach(function(i){i.classList.remove('open');i.querySelector('.pl-acc-body').style.maxHeight=null;});
+				if(!isOpen){item.classList.add('open');body.style.maxHeight=body.scrollHeight+'px';}
+			});
+		});
+		// Open first by default
+		var first=document.querySelector('.pl-acc-item.open');
+		if(first){var fb=first.querySelector('.pl-acc-body');fb.style.maxHeight=fb.scrollHeight+'px';}
 
-    <div class="col-6 col-sm-6 col-md-4 col-lg-3 mb-3">
-      <div class="card shadow-sm p-3 text-center">Bootstrap</div>
-    </div>
-
-    <div class="col-6 col-sm-6 col-md-4 col-lg-3 mb-3">
-      <div class="card shadow-sm p-3 text-center">jQuery</div>
-    </div>
-
-      
-    <div class="col-6 col-sm-6 col-md-4 col-lg-3 mb-3">
-      <div class="card shadow-sm p-3 text-center">Freelancing</div>
-        </div>
-     
-    <div class="col-6 col-sm-6 col-md-4 col-lg-3 mb-3">
-      <div class="card shadow-sm p-3 text-center">GIT & GitHub</div>
-
-
-    </div>
-  </div>
-</div>         
-        </div>
-
-
-        <!-- <div class="container">
-            <div class="course-meta-area">
-                <div class="row">
-                    <div class="col-lg-10 offset-lg-1">
-                        <div class="course-note">Featured Course</div>
-                        <h3>Website Designing</h3>
-                        <div class="course-metas">
-                            <div class="course-meta">
-                                <div class="cm-info">
-                                    <h6>Course Duration</h6>
-                                    <p>3 Months</p>
-                                </div>
-                            </div>
-                            <div class="course-meta">
-                                <div class="cm-info">
-                                    <h6>Lectures</h6>
-                                    <p>48+</p>
-                                </div>
-                            </div>
-                            <div class="course-meta">
-                                <div class="cm-info">
-                                    <h6>Projects</h6>
-                                    <p>5 </p>
-                                </div>
-                            </div>
-
-
-                            <div class="course-meta">
-                                <div class="cm-info">
-                                    <h6>Lectures Days</h6>
-                                   <p>M,T,W,T,F</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="course-metas">
-                            <div class="course-meta">
-                                <div class="cm-info">
-                                    <h6>Fee Installment</h6>
-                                    <p>22k</p>
-                                </div>
-                            </div>
-                            <div class="course-meta">
-                                <div class="cm-info">
-                                    <h6>Complete Fee</h6>
-                                    <p>20K</p>
-                                </div>
-                            </div>
-
-                            <div class="course-meta">
-                                <div class="cm-info">
-                                    <h6>Assignments</h6>
-                                    <p>15 </p>
-                                </div>
-                            </div>
-                            <div class="course-meta">
-                                <div class="cm-info">
-                                    <h6>Internship</h6>
-                                    <p>yes </p>
-                                </div>
-                            </div>
-
-
-                        </div>
-                    </div>
-                </div>
-            </div><br><br><br><br><br>
- -->
-
-
-
-            <div class="row">
-                <div class="col-lg-10 offset-lg-1 course-list">
-                    <div class="cl-item">
-                        <h4>Course Description</h4>
-                        <p style="text-align: justify;"> Website Designing course offered by Programmers Lab
-                            is a comprehensive program
-                            that equips students with the necessary skills to build visually appealing and interactive
-                            websites. Throughout the course, students at Programmers Lab will delve into front-end
-                            technologies such as HTML, CSS, JavaScript, Bootstrap, and website deployment. They will
-                            gain proficiency in structuring web pages using clean and semantic HTML markup, enhancing
-                            visual appearance with CSS styling techniques, and adding interactivity through JavaScript
-                            and DOM manipulation. Additionally, students will learn to leverage Bootstrap, a popular
-                            front-end framework, to develop responsive and mobile-first websites efficiently. The course
-                            also covers website deployment, including domain registration, web hosting, and uploading
-                            files to a live server. By blending practical knowledge with immersive, hands-on projects,
-                            students at Programmers Lab will cultivate problem-solving acumen and foster their critical
-                            thinking capabilities. By the end of the course, they will be able to create
-                            professional websites and effectively collaborate within a Website Designing team.
-                        </p>
-                    </div>
-                    <div class="cl-item">
-                        <div class="learning-outcomes">
-                            <h4>Course Content</h4>
-                            <ul>
-                                <h5>HTML</h5>
-                                <li>Introduction to HTML and its role in Website Designing</li>
-                                <li>Understanding the structure of an HTML document</li>
-                                <li>Creating headings, paragraphs, and line breaks</li>
-                                <li>Adding text formatting using tags like bold, italic, and underline</li>
-                                <li>Creating lists (ordered and unordered)</li>
-                                <li>Inserting and formatting images</li>
-                                <li>Creating hyperlinks and linking to external websites</li>
-                                <li>Building tables for tabular data</li>
-                                <li>Utilizing forms to capture user input</li>
-                                <li>Incorporating multimedia elements such as audio and video</li>
-                                <li>Implementing semantic HTML tags for improved accessibility and SEO</li>
-                                <li>Understanding HTML5 elements and their usage</li>
-                                <li>Working with CSS (Cascading Style Sheets) for styling and layout</li>
-                                <li>Embedding and displaying content from external sources (e.g., YouTube videos, social
-                                    media widgets)</li>
-                                <li>Handling HTML entities and special characters</li>
-                                <li>Optimizing HTML code for performance and compatibility</li>
-                                <li>Introduction to responsive web design principles</li>
-                                <li>Validating and troubleshooting HTML markup</li>
-                                <li>Best practices for organizing and structuring HTML code</li>
-                            </ul>
-                            <ul>
-                                <h5>CSS</h5>
-                                <li>Introduction to CSS and its role in Website Designing</li>
-                                <li>CSS syntax and selectors</li>
-                                <li>Applying styles to HTML elements</li>
-                                <li>Working with text and fonts (font properties, text formatting)</li>
-                                <li>Box model (margin, padding, border)</li>
-                                <li>Positioning and layout (floats, positioning properties, flexbox, grid)</li>
-                                <li>CSS colors and backgrounds</li>
-                                <li>Working with images and backgrounds</li>
-                                <li>Styling links and navigation menus</li>
-                                <li>CSS transitions and animations</li>
-                                <li>Creating responsive designs (media queries, fluid layouts)</li>
-                                <li>CSS frameworks (e.g., Bootstrap)</li>
-                                <li>CSS preprocessors (e.g., Sass)</li>
-                                <li>CSS architecture and best practices</li>
-                                <li>Debugging and troubleshooting CSS code</li>
-                            </ul>
-                            <ul>
-                                <h5>Bootstrap</h5>
-                                <li>Introduction to Bootstrap and its features</li>
-                                <li>Setting up and integrating Bootstrap into web projects</li>
-                                <li>Bootstrap grid system and responsive design principles</li>
-                                <li>Using Bootstrap's pre-built components (e.g., navigation bars, buttons, forms,
-                                    modals)</li>
-                                <li>Customizing and styling Bootstrap components</li>
-                                <li>Working with Bootstrap's responsive utilities (e.g., hiding/showing content,
-                                    adjusting spacing)</li>
-                                <li>Creating responsive layouts using Bootstrap's grid classes</li>
-                                <li>Building responsive navigation menus with Bootstrap's Navbar component</li>
-                                <li>Utilizing Bootstrap's form components and validation features</li>
-                                <li>Implementing responsive image and video content with Bootstrap</li>
-                                <li>Creating responsive card layouts and content containers</li>
-                                <li>Incorporating Bootstrap's modal windows for displaying interactive content</li>
-                                <li>Implementing Bootstrap's carousel for image sliders and content rotation</li>
-                                <li>Introduction to Bootstrap's JavaScript plugins (e.g., tooltips, popovers)</li>
-                                <li>Customizing Bootstrap themes and using third-party Bootstrap themes</li>
-                                <li>Optimizing and troubleshooting Bootstrap code</li>
-                            </ul>
-                            <ul>
-                                <h5>Javascript</h5>
-                                <li>Introduction to JavaScript and its role in Website Designing</li>
-                                <li>JavaScript syntax and basic programming concepts</li>
-                                <li>Working with variables, data types, and operators</li>
-                                <li>Control flow and conditional statements (if/else, switch)</li>
-                                <li>Looping and iteration (for loop, while loop)</li>
-                                <li>Functions and reusable code</li>
-                                <li>Working with arrays and manipulating array data</li>
-                                <li>Manipulating the DOM (Document Object Model) with JavaScript</li>
-                                <li>Event handling and responding to user interactions</li>
-                                <li>Working with forms and form validation</li>
-                                <li>Working with JSON and APIs (Application Programming Interfaces)</li>
-                                <li>Asynchronous programming and AJAX (Asynchronous JavaScript and XML)</li>
-                                <li>Error handling and debugging JavaScript code</li>
-                                <li>Working with JavaScript libraries and frameworks (e.g., jQuery)</li>
-                                <li>Introduction to modern JavaScript features (ES6 and beyond)</li>
-                                <li>Introduction to JavaScript frameworks (e.g., React, Vue.js)</li>
-                                <li>Optimizing JavaScript code for performance</li>
-                                <li>Security considerations and best practices in JavaScript</li>
-                            </ul>
-                            <ul>
-                                <h5>J Query</h5>
-                                <li>Introduction to jQuery and its role in Website Designing</li>
-                                <li>jQuery syntax and selectors</li>
-                                <li>Manipulating HTML elements and CSS styles with jQuery</li>
-                                <li>Event handling and responding to user interactions</li>
-                                <li>Animating elements and creating transitions with jQuery</li>
-                                <li>Working with DOM traversal and manipulation methods</li>
-                                <li>Managing and manipulating data using jQuery</li>
-                                <li>Performing AJAX requests and handling responses</li>
-                                <li>Using jQuery plugins and extending functionality</li>
-                                <li>Implementing form validation with jQuery</li>
-                                <li>Creating interactive user interfaces and widgets with jQuery UI</li>
-                                <li>Optimizing jQuery code for performance</li>
-                                <li>Troubleshooting common issues and debugging jQuery code</li>
-                            </ul>
-                            <!-- <ul>
-                                <h5>Postman</h5>
-                                <li>Introduction to Postman</li>
-                                <li>Creating and managing API requests</li>
-                                <li>Setting request headers and parameters</li>
-                                <li>Testing and debugging APIs</li>
-                                <li>Working with response data</li>
-                            </ul> -->
-                            <ul>
-                                <h5>Website Uploading</h5>
-                                <li>Web Hosting: Understand the concept of web hosting for making websites accessible
-                                    online.</li>
-                                <li>FTP: Learn about File Transfer Protocol and its role in uploading files to a web
-                                    server.</li>
-                                <li>FTP Clients: Use FTP client software like FileZilla to establish a connection
-                                    between your computer and the server.</li>
-                                <li>Connect and Upload: Enter server credentials in the FTP client and transfer website
-                                    files to the server's directory.</li>
-                                <li>Troubleshooting: Address common issues and ensure proper file organization and
-                                    permissions for successful uploading.</li>
-                                <h5>Freelancing</h5>
-                                <li>Understanding the freelancing industry and its benefits</li>
-                                <li>Exploring different freelancing platforms and marketplaces</li>
-                                <li>Crafting an effective freelancer profile</li>
-                                <li>Showcasing skills, experience, and portfolio</li>
-                                <li>Strategies for finding and attracting clients</li>
-                                <li>Effective communication and negotiation skills</li>
-                                <li>Writing compelling proposals and bids</li>
-                                <li>Building a reputation and client referrals</li>
-                                <li>Setting rates and pricing your services</li>
-                            </ul>
-                            <br>
-                            <H5>Note</H5>
-                            <p>After successfully completing the course, students will be awarded a certificate of
-                                completion
-                            </p>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- single course section end -->
-
-
-    <!-- Page -->
-    <section class="realated-courses spad">
-        <div class="course-warp">
-            <h2 class="rc-title">Related Courses</h2>
-            <div class="rc-slider owl-carousel">
-                <!-- Course 1 -->
-                <a href="./best-institute-for-asp.net-course-rawalpidni.html">
-                    <div class="course-item">
-                        <div class="course-thumb set-bg" data-setbg="courses-images/COURSES/ASP.-net-3.jpg">
-                            <div class="overlay">
-
-                                <div class="stars">
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                </div>
-                                <div class="details">Click for details</div>
-                            </div>
-                        </div>
-                        <div class="course-info">
-                            <div class="course-text" style="background-color: #f07b14;">
-                                <h5 id="h5">ASP.net</h5>
-                            </div>
-                        </div>
-                    </div>
-                </a>
-                <!-- Course 2 -->
-                <a href="./best-institute-php-mysql-course-rawalpidni.html">
-                    <div class="course-item">
-                        <div class="course-thumb set-bg" data-setbg="courses-images/COURSES/PHP-MY-SQL.jpg">
-                            <div class="overlay">
-
-                                <div class="stars">
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                </div>
-                                <div class="details">Click for details</div>
-                            </div>
-                        </div>
-                        <div class="course-info">
-                            <div class="course-text" style="background-color: #f07b14;">
-                                <h5 id="h5">PHP-MY-SQL</h5>
-                            </div>
-                        </div>
-                    </div>
-                </a>
-                <!-- Course 3 -->
-                <a href="./best-MYSQL-course-institute-in-rawalpindi-islamabd.html">
-                    <div class="course-item">
-                        <div class="course-thumb set-bg" data-setbg="courses-images/COURSES/MY-SQL.jpg">
-                            <div class="overlay">
-
-                                <div class="stars">
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                </div>
-                                <div class="details">Click for details</div>
-                            </div>
-                        </div>
-                        <div class="course-info">
-                            <div class="course-text" style="background-color: #f07b14;">
-                                <h5 id="h5">MYSQL</h5>
-                            </div>
-                        </div>
-                    </div>
-                </a>
-                <!-- Course 4 -->
-                <a href="./best-computer-courses-rawalpidni.html">
-                    <div class="course-item">
-                        <div class="course-thumb set-bg" data-setbg="courses-images/COURSES/Freelancing.jpg">
-                            <div class="overlay">
-
-                                <div class="stars">
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                </div>
-                                <div class="details">Click for details</div>
-                            </div>
-                        </div>
-                        <div class="course-info">
-                            <div class="course-text" style="background-color: #f07b14; ">
-                                <h5 id="h5">Freelancing</h5>
-                            </div>
-                        </div>
-                    </div>
-                </a>
-            </div>
-
-        </div>
-    </section>
-    <!-- Page end -->
-    <a href="https://wa.me/message/DROOVWVA3B5XK1" target="_blank" class="whatsapp-button">
-        <img src="img/WHATSAPICON.png" alt="WhatsApp Chat" />
-    </a>
-
-
-
-    <!-- footer section -->
-<footer class="footer-section">
-    <div class="footer-top">
-        <div class="container">
-            <div class="footer-row">
-                <!-- About / Info -->
-                <div class="footer-widget">
-                    <h4>About Us</h4>
-                    <p >Programmers Lab is a leading IT training institute and software House in Rawalpindi, offering professional courses to help you grow your career.</p>
-                 
-                </div>
-
-                <!-- Courses -->
-                <div class="footer-widget">
-                    <h4>Courses</h4>
-                    <ul>
-                        <li><a href="best-institute-Cplus-plus-course-rawalpidni.html">C++ Course</a></li>
-                        <li><a href="best-react-native-course-institute-rawalpindi.html">React Native</a></li>
-                        <li><a href="best-institute-for-MS-office-course-rawalpidni.html">MS Office</a></li>
-                        <li><a href="best-institute-seo-course-rawalpidni.html">SEO Course</a></li>
-                    </ul>
-                </div>
-
-                <!-- Services -->
-                <div class="footer-widget">
-                    <h4>Services</h4>
-                    <ul>
-                        <li><a href="#">Freelancing Guidance</a></li>
-                        <li><a href="#">Career Counseling</a></li>
-                        <li><a href="#">Project Assistance</a></li>
-                        <li><a href="#">Online Support</a></li>
-                    </ul>
-                </div>
-
-          <!-- Font Awesome CDN for icons -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
-
-<!-- Footer Widget -->
-<div class="footer-widget">
-    <h4>Connect With Us</h4>
-    
-    <!-- Contact Info -->
-    <ul class="contact-info">
-        <li><a href="https://www.google.com/maps/place/Programmers+Lab+Training+Institute/@33.631884,73.0705072,17z" target="_blank">Office No. 8, First Floor, Mian Plaza, Chandni Chowk, Rawalpindi</a></li>
-        <li><a href="tel:+923331912898">+92 333 1912898</a></li>
-        <li><a href="mailto:infoprogrammerslabs@gmail.com">infoprogrammerslabs@gmail.com</a></li>
-    </ul>
-
-    <!-- Social Media Icons -->
-    <ul class="social-icons">
-        <li><a href="https://www.facebook.com/programmerslabs" target="_blank"><i class="fab fa-facebook-f"></i></a></li>
-        <li><a href="https://www.linkedin.com/company/programmerslabs/" target="_blank"><i class="fab fa-linkedin-in"></i></a></li>
-        <li><a href="https://wa.me/03331912898" target="_blank"><i class="fab fa-whatsapp"></i></a></li>
-        <li><a href="https://twitter.com/progra39834" target="_blank"><i class="fab fa-twitter"></i></a></li>
-        <li><a href="https://youtube.com/@programmerslabs" target="_blank"><i class="fab fa-youtube"></i></a></li>
-        <li><a href="https://www.instagram.com/programmers_lab_institute/" target="_blank"><i class="fab fa-instagram"></i></a></li>
-        <li><a href="https://medium.com/@mediapromoteprogrammerslabs" target="_blank"><i class="fab fa-medium"></i></a></li>
-    </ul>
-</div>
-
-<!-- CSS -->
-
-
-            </div>
-        </div>
-    </div>
-
-    <!-- Footer Bottom -->
-    <div class="footer-bottom">
-        <p>© 2026 All rights reserved by <strong>Programmers Lab</strong></p>
-    </div>
-</footer>
-    <!-- footer section end -->
-
-
-    <!--====== Javascripts & Jquery ======-->
-    <script src="js/jquery-3.2.1.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/mixitup.min.js"></script>
-    <script src="js/circle-progress.min.js"></script>
-    <script src="js/owl.carousel.min.js"></script>
-    <script src="js/main.js"></script>
-
-
-
-
+		// Smooth scroll
+		document.querySelectorAll('.pl-smooth').forEach(function(l){
+			l.addEventListener('click',function(e){
+				var t=document.querySelector(l.getAttribute('href'));
+				if(t){e.preventDefault();window.scrollTo({top:t.getBoundingClientRect().top+window.scrollY-80,behavior:'smooth'});}
+			});
+		});
+	})();
+	</script>
 </body>
-
 </html>

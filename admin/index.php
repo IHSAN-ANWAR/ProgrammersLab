@@ -1,100 +1,122 @@
 <?php
 require_once __DIR__ . '/../config.php';
+require_once __DIR__ . '/admin_layout.php';
 send_security_headers();
 require_admin();
 
 $conn = get_db();
 
-// Count queries with error handling
-$result = $conn->query("SELECT COUNT(*) AS c FROM contact");
-$msg_count = $result ? (int)$result->fetch_assoc()['c'] : 0;
-if (!$result) error_log('Dashboard msg count error: ' . $conn->error);
+$msg_count = (int)($conn->query("SELECT COUNT(*) AS c FROM contact")->fetch_assoc()['c'] ?? 0);
+$enr_count = (int)($conn->query("SELECT COUNT(*) AS c FROM enroll")->fetch_assoc()['c']  ?? 0);
 
-$result = $conn->query("SELECT COUNT(*) AS c FROM enroll");
-$enr_count = $result ? (int)$result->fetch_assoc()['c'] : 0;
-if (!$result) error_log('Dashboard enr count error: ' . $conn->error);
+// Recent 5 enrollments
+$recent_enroll = $conn->query("SELECT full_name, course_interest, created_at FROM enroll ORDER BY id DESC LIMIT 5");
+// Recent 5 messages
+$recent_msgs   = $conn->query("SELECT name, subject, created_at FROM contact ORDER BY id DESC LIMIT 5");
 
-// Audit log this dashboard view
 log_activity($conn, 'VIEW_DASHBOARD', 'Viewed admin dashboard');
-
 $conn->close();
+
+admin_head('Dashboard', 'dashboard');
 ?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard - Admin Panel</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Raleway:400,500,600,700" rel="stylesheet">
-    <style>
-        body { font-family: 'Raleway', sans-serif; }
-        .sidebar { background: linear-gradient(135deg, #f07b14 0%, #d56e00 100%); min-height: 100vh; display: flex; flex-direction: column; }
-        .main-content { background: #f8f9fa; min-height: 100vh; }
-        .dashboard-card { border-radius: 15px; box-shadow: 0 4px 6px rgba(0,0,0,.1); transition: transform .3s; }
-        .dashboard-card:hover { transform: translateY(-5px); }
-        .bg-brand { background-color: #f07b14 !important; }
-        .nav-link.active { background: rgba(255,255,255,.15); border-radius: 8px; }
-    </style>
-</head>
-<body>
-<div class="container-fluid">
-    <div class="row">
-        <div class="col-md-3 col-lg-2 sidebar p-0">
-            <div class="p-3 d-flex flex-column" style="height:100vh">
-                <h4 class="text-white mb-4"><i class="fas fa-code me-2"></i>Admin Panel</h4>
-                <nav class="nav flex-column">
-                    <a class="nav-link text-white active" href="index.php"><i class="fas fa-tachometer-alt me-2"></i>Dashboard</a>
-                    <a class="nav-link text-white" href="messages.php"><i class="fas fa-envelope me-2"></i>Messages</a>
-                    <a class="nav-link text-white" href="enrollments.php"><i class="fas fa-users me-2"></i>Enrollments</a>
-                </nav>
-                <div class="mt-auto pt-3" style="border-top:1px solid rgba(255,255,255,.25)">
-                    <a class="nav-link text-white" href="logout.php"><i class="fas fa-sign-out-alt me-2"></i>Logout</a>
-                </div>
+
+<div class="pl-page-header">
+    <div>
+        <h1>Dashboard</h1>
+        <div class="pl-breadcrumb">Welcome back, <span><?= h($_SESSION['admin_username'] ?? 'Admin') ?></span></div>
+    </div>
+</div>
+
+<!-- Stat Cards -->
+<div class="row g-3 mb-4">
+    <div class="col-sm-6">
+        <a href="messages.php" class="stat-card">
+            <div class="stat-icon" style="background:rgba(240,123,20,.1);color:#f07b14;">
+                <i class="fas fa-envelope"></i>
+            </div>
+            <div>
+                <div class="stat-value"><?= $msg_count ?></div>
+                <div class="stat-label">Total Messages</div>
+                <div class="stat-trend up"><i class="fas fa-arrow-up"></i> View all</div>
+            </div>
+        </a>
+    </div>
+    <div class="col-sm-6">
+        <a href="enrollments.php" class="stat-card">
+            <div class="stat-icon" style="background:rgba(16,185,129,.1);color:#10b981;">
+                <i class="fas fa-user-graduate"></i>
+            </div>
+            <div>
+                <div class="stat-value"><?= $enr_count ?></div>
+                <div class="stat-label">Enrollments</div>
+                <div class="stat-trend up"><i class="fas fa-arrow-up"></i> View all</div>
+            </div>
+        </a>
+    </div>
+
+</div>
+
+<!-- Recent Tables -->
+<div class="row g-3">
+    <!-- Recent Enrollments -->
+    <div class="col-lg-6">
+        <div class="pl-card">
+            <div class="pl-card-header">
+                <h5><i class="fas fa-user-graduate me-2" style="color:#10b981"></i>Recent Enrollments</h5>
+                <a href="enrollments.php" style="font-size:13px;color:#f07b14;text-decoration:none;font-weight:600;">View All →</a>
+            </div>
+            <div class="pl-card-body">
+                <?php if ($recent_enroll && $recent_enroll->num_rows > 0): ?>
+                <table class="pl-table">
+                    <thead>
+                        <tr><th>Student</th><th>Course</th><th>Date</th></tr>
+                    </thead>
+                    <tbody>
+                    <?php while ($r = $recent_enroll->fetch_assoc()): ?>
+                    <tr>
+                        <td><strong><?= h($r['full_name']) ?></strong></td>
+                        <td><span class="pl-badge pl-badge-green"><?= h(mb_substr($r['course_interest'], 0, 22)) ?></span></td>
+                        <td style="color:#9ca3af;font-size:12px"><?= h(date('d M Y', strtotime($r['created_at']))) ?></td>
+                    </tr>
+                    <?php endwhile; ?>
+                    </tbody>
+                </table>
+                <?php else: ?>
+                <div class="pl-empty"><i class="fas fa-user-graduate"></i><p>No enrollments yet</p></div>
+                <?php endif; ?>
             </div>
         </div>
+    </div>
 
-        <div class="col-md-9 col-lg-10 main-content p-4">
-            <div class="d-flex justify-content-between align-items-center mb-4">
-                <h2>Dashboard</h2>
-                <span class="text-muted">Welcome, <?php echo h($_SESSION['admin_username'] ?? 'Admin'); ?></span>
+    <!-- Recent Messages -->
+    <div class="col-lg-6">
+        <div class="pl-card">
+            <div class="pl-card-header">
+                <h5><i class="fas fa-envelope me-2" style="color:#f07b14"></i>Recent Messages</h5>
+                <a href="messages.php" style="font-size:13px;color:#f07b14;text-decoration:none;font-weight:600;">View All →</a>
             </div>
-
-            <div class="row mb-4">
-                <div class="col-md-6 mb-3">
-                    <div class="card dashboard-card bg-brand text-white">
-                        <div class="card-body d-flex justify-content-between align-items-center">
-                            <div>
-                                <h3><?php echo (int)$msg_count; ?></h3>
-                                <p class="mb-0">Total Messages</p>
-                            </div>
-                            <i class="fas fa-envelope fa-2x opacity-75"></i>
-                        </div>
-                        <div class="card-footer bg-transparent border-0">
-                            <a href="messages.php" class="btn btn-light btn-sm">View Messages</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 mb-3">
-                    <div class="card dashboard-card bg-success text-white">
-                        <div class="card-body d-flex justify-content-between align-items-center">
-                            <div>
-                                <h3><?php echo (int)$enr_count; ?></h3>
-                                <p class="mb-0">Course Enrollments</p>
-                            </div>
-                            <i class="fas fa-users fa-2x opacity-75"></i>
-                        </div>
-                        <div class="card-footer bg-transparent border-0">
-                            <a href="enrollments.php" class="btn btn-light btn-sm">View Enrollments</a>
-                        </div>
-                    </div>
-                </div>
+            <div class="pl-card-body">
+                <?php if ($recent_msgs && $recent_msgs->num_rows > 0): ?>
+                <table class="pl-table">
+                    <thead>
+                        <tr><th>Name</th><th>Subject</th><th>Date</th></tr>
+                    </thead>
+                    <tbody>
+                    <?php while ($r = $recent_msgs->fetch_assoc()): ?>
+                    <tr>
+                        <td><strong><?= h($r['name']) ?></strong></td>
+                        <td style="color:#6b7280"><?= h(mb_substr($r['subject'], 0, 28)) ?>…</td>
+                        <td style="color:#9ca3af;font-size:12px"><?= h(date('d M Y', strtotime($r['created_at']))) ?></td>
+                    </tr>
+                    <?php endwhile; ?>
+                    </tbody>
+                </table>
+                <?php else: ?>
+                <div class="pl-empty"><i class="fas fa-envelope"></i><p>No messages yet</p></div>
+                <?php endif; ?>
             </div>
-
         </div>
     </div>
 </div>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-</body>
-</html>
+
+<?php admin_foot(); ?>

@@ -5,8 +5,8 @@
 # Prevent directory listing
 Options -Indexes
 
-# Block direct access to config and sensitive files
-<FilesMatch "(config\.php|\.env|\.gitkeep)$">
+# Block direct access to sensitive PHP config files
+<FilesMatch "(config\.php|\.env|\.gitkeep|test_forms\.php|create_admin\.php)$">
     Order allow,deny
     Deny from all
 </FilesMatch>
@@ -16,3 +16,38 @@ Options -Indexes
     RewriteEngine On
     RewriteRule ^logs/ - [F,L]
 </IfModule>
+
+# Block PHP execution inside uploads folder (security critical)
+<IfModule mod_rewrite.c>
+    RewriteRule ^uploads/.*\.(php|php5|phtml|pl|py|cgi|sh)$ - [F,NC,L]
+</IfModule>
+
+# Block access to .git folder
+<IfModule mod_rewrite.c>
+    RewriteRule ^\.git/ - [F,L]
+</IfModule>
+
+# Force HTTPS (uncomment on live server with SSL)
+# <IfModule mod_rewrite.c>
+#     RewriteCond %{HTTPS} off
+#     RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+# </IfModule>
+
+# Prevent hotlinking of images
+<IfModule mod_rewrite.c>
+    RewriteCond %{HTTP_REFERER} !^$
+    RewriteCond %{HTTP_REFERER} !^https?://(www\.)?programmerslabs\.com [NC]
+    RewriteCond %{HTTP_REFERER} !^https?://localhost [NC]
+    RewriteRule \.(jpg|jpeg|png|gif|webp)$ - [F,NC,L]
+</IfModule>
+
+# Security Headers
+<IfModule mod_headers.c>
+    Header always set X-Frame-Options "DENY"
+    Header always set X-Content-Type-Options "nosniff"
+    Header always set X-XSS-Protection "1; mode=block"
+    Header always set Referrer-Policy "strict-origin-when-cross-origin"
+</IfModule>
+
+# Disable server signature
+ServerSignature Off

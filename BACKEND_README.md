@@ -1,226 +1,132 @@
-# Programmers Lab — Backend README
+# Programmers Lab — Backend Documentation
 
-## Overview
-
-PHP + MySQL backend for the Programmers Lab website. Handles contact form submissions, course enrollments, and a secured admin panel to manage both.
-
----
-
-## Quick Setup
-
-1. Start Apache + MySQL in XAMPP
-2. Visit: `http://localhost/pl/admin/setup_database.php`
-3. Log in at: `http://localhost/pl/admin/login.php`
-   - Username: `admin` | Password: `Admin@1234`
-4. Immediately change the password at: `http://localhost/pl/admin/reset_admin_password.php`
-5. Delete `admin/setup_database.php` after setup (or it auto-prompts you)
+## Project Overview
+PHP + MySQL backend for the Programmers Lab website.  
+Handles contact form messages and course enrollment submissions with a secure admin panel.
 
 ---
 
-## File Structure
+## Folder Structure
 
 ```
 pl/
-├── config.php                    # Central config — DB, session, CSRF, helpers
-├── connect.php                   # Contact form POST handler
-├── enroll.php                    # Enrollment form POST handler
-├── .htaccess                     # Blocks config.php, logs/, directory listing
-├── uploads/                      # Uploaded files (qual docs, photos, CNICs)
-│   └── .htaccess                 # Blocks PHP execution inside uploads
-├── logs/                         # PHP error logs (web access blocked)
-│   └── .htaccess
-└── admin/
-    ├── login.php                 # Login with rate limiting + bcrypt
-    ├── logout.php                # Destroys session, clears cookie, logs action
-    ├── index.php                 # Dashboard (message + enrollment counts)
-    ├── messages.php              # View all contact messages
-    ├── enrollments.php           # View all course enrollments
-    ├── get_message.php           # Fetch single message (JSON, for modal)
-    ├── get_enrollment.php        # Fetch single enrollment (JSON, for modal)
-    ├── delete_message.php        # Delete message by ID (POST + CSRF)
-    ├── delete_enrollment.php     # Delete enrollment by ID (POST + CSRF)
-    ├── reset_admin_password.php  # Change admin password — self-deletes after use
-    ├── setup_database.php        # One-time DB + table creation + admin seed
-    └── database_setup.sql        # Raw SQL — import via phpMyAdmin or CLI
+├── config.php              # DB credentials, helpers, security functions
+├── connect.php             # Contact form handler (POST → contact table)
+├── enroll.php              # Enrollment form handler (POST → enroll table)
+├── get_csrf.php            # Returns CSRF token for AJAX forms
+├── .htaccess               # Apache security rules
+├── uploads/                # Student uploaded files (qual, photo, cnic)
+│
+├── admin/
+│   ├── login.php           # Admin login page
+│   ├── logout.php          # Session destroy + redirect
+│   ├── index.php           # Dashboard (message + enrollment counts)
+│   ├── messages.php        # View/delete contact messages
+│   ├── enrollments.php     # View/delete course enrollments
+│   ├── get_message.php     # AJAX: fetch single message
+│   ├── get_enrollment.php  # AJAX: fetch single enrollment
+│   ├── delete_message.php  # AJAX: delete message (POST + CSRF)
+│   ├── delete_enrollment.php # AJAX: delete enrollment (POST + CSRF)
+│   ├── admin_layout.php    # Shared sidebar/topbar layout
+│   ├── create_admin.php    # ⚠️ One-time admin user setup (DELETE after use)
+│   └── database_setup.sql  # Full DB schema — run once in phpMyAdmin
 ```
 
 ---
 
-## config.php
+## Admin Panel Access
 
-Single source of truth for the entire backend. Every file starts with:
-```php
-require_once __DIR__ . '/../config.php'; // from admin/
-require_once __DIR__ . '/config.php';    // from root
+```
+Login:        /admin/login.php
+Dashboard:    /admin/index.php
+Messages:     /admin/messages.php
+Enrollments:  /admin/enrollments.php
 ```
 
-### Constants
-
-| Constant | Default | Purpose |
-|---|---|---|
-| `DB_HOST` | `localhost` | MySQL host |
-| `DB_USER` | `root` | MySQL user |
-| `DB_PASS` | `` | MySQL password |
-| `DB_NAME` | `programmerslab_db` | Database name |
-| `SESSION_TIMEOUT` | `1800` | 30-min session expiry (seconds) |
-| `MAX_FILE_SIZE` | `5242880` | 5MB upload limit (bytes) |
-| `ALLOWED_MIME_TYPES` | array | JPEG, PNG, GIF, PDF |
-| `MAX_LOGIN_ATTEMPTS` | `5` | Failed attempts before lockout |
-| `LOCKOUT_TIME` | `900` | 15-min IP lockout (seconds) |
-| `APP_ENV` | `development` | Set to `production` on live server |
-
-### Helper Functions
-
-| Function | Purpose |
-|---|---|
-| `get_db()` | Returns a MySQLi connection, dies safely on failure |
-| `send_security_headers()` | Sends CSP, X-Frame-Options, XSS headers |
-| `csrf_token()` | Generates + stores CSRF token in session |
-| `csrf_verify()` | Validates CSRF token, returns 403 on mismatch |
-| `session_init()` | Starts session with secure cookie settings |
-| `check_session_timeout()` | Redirects to login after 30 min inactivity |
-| `check_session_fingerprint()` | Detects session hijacking via IP + User Agent hash |
-| `require_admin()` | Combines session init + timeout + fingerprint checks |
-| `log_activity()` | Writes admin actions to `admin_logs` table |
-| `validate_email()` | `filter_var` email format check |
-| `validate_phone()` | Regex phone check (7–20 chars) |
-| `h()` | `htmlspecialchars()` shorthand — use on all output |
+**Admin user kaise banayein:**
+1. `http://yourdomain.com/admin/create_admin.php` open karo
+2. Username aur password set karo
+3. **File turant delete karo** after use
 
 ---
 
-## Database Schema
+## Security Features
 
-### `contact`
-Messages from the contact form.
-
-| Column | Type |
-|---|---|
-| id | INT PK AI |
-| name | VARCHAR(255) |
-| email | VARCHAR(255) |
-| phone | VARCHAR(20) |
-| subject | VARCHAR(500) |
-| message | TEXT |
-| created_at | TIMESTAMP |
-
-### `enroll`
-Full enrollment form submissions.
-
-| Column | Type |
-|---|---|
-| id | INT PK AI |
-| full_name | VARCHAR(255) |
-| father_name | VARCHAR(255) |
-| email | VARCHAR(255) |
-| phone | VARCHAR(20) |
-| gender | VARCHAR(20) |
-| course_interest | VARCHAR(255) |
-| study_mode | VARCHAR(50) |
-| qualification_file | VARCHAR(255) |
-| passport_photo | VARCHAR(255) |
-| cnic_file | VARCHAR(255) |
-| previous_experience | TEXT |
-| reason_for_joining | TEXT |
-| created_at | TIMESTAMP |
-
-### `admin_users`
-Admin accounts with bcrypt-hashed passwords.
-
-| Column | Type |
-|---|---|
-| id | INT PK AI |
-| username | VARCHAR(100) UNIQUE |
-| password_hash | VARCHAR(255) |
-| created_at | TIMESTAMP |
-
-### `login_attempts`
-Tracks failed login attempts per IP for rate limiting.
-
-| Column | Type |
-|---|---|
-| id | INT PK AI |
-| ip_address | VARCHAR(45) |
-| attempted_at | TIMESTAMP |
-
-### `admin_logs`
-Audit trail of all admin actions.
-
-| Column | Type |
-|---|---|
-| id | INT PK AI |
-| admin_username | VARCHAR(100) |
-| action | VARCHAR(255) |
-| details | TEXT |
-| ip_address | VARCHAR(45) |
-| user_agent | VARCHAR(500) |
-| created_at | TIMESTAMP |
+| Feature | Status |
+|---------|--------|
+| CSRF token on all forms | ✅ |
+| Bcrypt password hashing (cost 12) | ✅ |
+| Prepared statements (SQL injection safe) | ✅ |
+| Session timeout (30 min) | ✅ |
+| Session fingerprinting (hijack protection) | ✅ |
+| Login rate limiting (5 attempts, 15 min lockout) | ✅ |
+| Input validation (email, phone, length) | ✅ |
+| File upload MIME validation (not extension) | ✅ |
+| PHP execution blocked in uploads/ | ✅ |
+| Directory listing disabled | ✅ |
+| config.php direct access blocked | ✅ |
+| Security headers (X-Frame, XSS, nosniff) | ✅ |
 
 ---
 
-## Security Implementation
+## Live Server Pe Jane Se Pehle — Checklist
 
-### Prepared Statements
-Every query uses `$conn->prepare()` + `bind_param()`. No raw `$_POST` or `$_GET` ever touches SQL.
+### ✅ Must Do (Required)
 
-### Admin Authentication
-- Passwords stored as bcrypt hashes (`PASSWORD_BCRYPT`, cost 12)
-- `password_verify()` used for login — no plain-text comparison
-- Auto-rehash if cost factor is upgraded in future
-- Session ID regenerated on login to prevent session fixation
+- [ ] `config.php` mein `APP_ENV` → `'production'` kar do
+- [ ] `config.php` mein `DB_USER` → root ki bajaye limited user banao
+- [ ] `config.php` mein `DB_PASS` → strong password set karo
+- [ ] `admin/create_admin.php` **DELETE** karo
+- [ ] `test_forms.php` **DELETE** karo (agar exist kare)
+- [ ] Database `programmerslab_db` hosting pe import karo (`database_setup.sql`)
+- [ ] `uploads/` folder create karo aur chmod `750` set karo
+- [ ] SSL certificate lagao (HTTPS)
+- [ ] `.htaccess` mein HTTPS redirect uncomment karo
 
-### Session Security
-- 30-minute inactivity timeout via `check_session_timeout()`
-- Fingerprint = `sha256(User-Agent + IP)` — mismatch destroys session immediately
-- Secure, HttpOnly, SameSite=Strict cookie flags set on session start
+### ⚠️ Recommended
 
-### CSRF Protection
-- All POST forms include `<input type="hidden" name="csrf_token">`
-- AJAX delete calls send token in request body
-- Server verifies with `hash_equals()` (timing-safe)
-
-### Rate Limiting
-- Failed logins recorded in `login_attempts` table
-- IP blocked for 15 minutes after 5 failures
-- 500ms `usleep()` delay added on each failed attempt to slow brute force
-
-### File Upload Security
-- MIME type validated via PHP `finfo` — not file extension
-- Max 5MB enforced before processing
-- Files saved with `bin2hex(random_bytes(16))` random names
-- PHP execution blocked inside `uploads/` via `.htaccess`
-
-### Password Reset (`reset_admin_password.php`)
-- Requires active admin session — unauthenticated requests redirect to login
-- CSRF protected form
-- Minimum 8-character password enforced
-- Calls `@unlink(__FILE__)` to self-delete after a successful reset
-- Action logged to `admin_logs`
-
-### Security Headers
-Sent on every admin page via `send_security_headers()`:
-- `Content-Security-Policy`
-- `X-Frame-Options: DENY`
-- `X-Content-Type-Options: nosniff`
-- `X-XSS-Protection: 1; mode=block`
-- `Referrer-Policy: strict-origin-when-cross-origin`
-
-### Activity Logging
-Every login, logout, password reset, dashboard view, messages view, enrollments view, and every delete is recorded in `admin_logs` with IP and user agent.
-
-### Error Handling
-- `APP_ENV = development` — errors shown on screen
-- `APP_ENV = production` — errors logged to `logs/error.log`, nothing exposed to user
-- All DB queries check return value and call `error_log()` on failure
+- [ ] Strong admin password use karo (12+ chars, mixed)
+- [ ] Regular DB backups set karo
+- [ ] Error logs monitor karo (`logs/error.log`)
 
 ---
 
-## Production Checklist
+## Database Tables
 
-- [ ] Set `APP_ENV` to `production` in `config.php`
-- [ ] Set a strong `DB_PASS` in `config.php`
-- [ ] Create a MySQL user with only `SELECT, INSERT, DELETE` — don't use `root`
-- [ ] Delete `admin/setup_database.php` after first run
-- [ ] Change default admin password via `reset_admin_password.php` (self-deletes after use)
-- [ ] Move `config.php` above `public_html` and update `require_once` paths
-- [ ] Enable HTTPS and set `'secure' => true` in session cookie params in `config.php`
-- [ ] Confirm `logs/` and `uploads/` are not publicly accessible
+| Table | Purpose |
+|-------|---------|
+| `contact` | Contact form submissions |
+| `enroll` | Course enrollment submissions |
+| `admin_users` | Admin login credentials (bcrypt) |
+| `login_attempts` | Rate limiting tracking |
+| `admin_logs` | Admin activity audit trail |
+
+---
+
+## Forms Flow
+
+```
+Contact Form (prgrammers-lab-contact.html)
+  → fetch get_csrf.php   (get token)
+  → POST connect.php     (validate + insert contact table)
+  → JSON response        (success/error shown to user)
+
+Enrollment Form (enroll-form.html)
+  → fetch get_csrf.php   (get token)
+  → POST enroll.php      (validate + file upload + insert enroll table)
+  → JSON response        (success/error shown to user)
+```
+
+---
+
+## Local Development
+
+Requirements: XAMPP (Apache + MySQL + PHP 8+)
+
+```
+1. XAMPP start karo (Apache + MySQL)
+2. phpMyAdmin → database_setup.sql import karo
+3. http://localhost/pl/admin/create_admin.php → admin user banao
+4. http://localhost/pl/ → website test karo
+5. http://localhost/pl/admin/ → admin panel
+```

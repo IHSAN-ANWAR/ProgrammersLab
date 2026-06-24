@@ -1,4 +1,4 @@
-<!-- <!DOCTYPE html>
+﻿<!-- <!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -20,6 +20,7 @@
     <link rel="stylesheet" href="css/owl.carousel.css" />
     <link rel="stylesheet" href="css/style.css" />
     <link rel="stylesheet" href="css/extrastyles.css">
+<link rel="stylesheet" href="css/course-detail.css"/>
     <link rel="stylesheet" href="css/Faqss.css">
     <link rel="canonical" href="https://www.programmerslabs.com/"> --> -->
     <!--[if lt IE 9]>
@@ -49,6 +50,7 @@
 
 
 
+    <link rel="stylesheet" href="css/course-detail.css"/>
 </head>
 <style>
     #hea {
@@ -63,48 +65,44 @@
             style="display:none;visibility:hidden"></iframe></noscript>
     <!-- End Google Tag Manager (noscript) -->
     <!-- Page Preloder -->
-    <div id="preloder">
-        <div class="loader"></div>
-    </div>
+    <div id="preloder"><div class="loader"><span></span><span></span><span></span></div></div>
 
 
     <!-- Header section -->
-    <header class="header-section">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-3 col-md-3 d-flex align-items-center justify-content-between">
-                    <div class="site-logo">
-                        <a href="index.html" class="logo-link">
-                            <div class="logo-wrapper">
-                                <img src="update images//Programmers Lab.png" alt="logo" class="logo-image">
-                                <!-- <div class="logo-text">
-                                    <h6 style="color: #f07b14">Programmers Lab</h6>
-                                    <h6 style="color: #0094d9;">Best Training Institute</h6>
-                                </div> -->
-                            </div>
-                        </a>
-                    </div>
-                    <div class="nav-switch">
-                        <i class="fa fa-bars"></i>
-                    </div>
-                </div>
-                <div class="col-lg-9 col-md-9">
-                    <nav class="main-menu">
-                        <ul>
-                            <li><a href="index.html">Home</a></li>
-                            <li><a href="best-computer-courses-rawalpidni.html">Courses</a></li>
-                            
-                            <li><a href="best-computer-courses-rawalpidni.html">FAQs</a></li>
-                            <li><a href="internships-rawalpindi.html">Internship</a></li>
-                            <li><a href="prgrammers-lab-contact.html">Contact</a></li>
-
-                        </ul>
-                    </nav>
-                </div>
-            </div>
-        </div>
-    </header>
-    <!-- Header section end -->
+<header class="pl-navbar" id="plNavbar">
+<div class="container">
+<div class="pl-nav-inner">
+<a href="index.html" class="pl-nav-logo"><img src="update images/Programmers Lab.png" alt="Programmers Lab"></a>
+<nav class="pl-nav-menu" id="plNavMenu">
+<ul>
+<li><a href="index.html" class="pl-nav-link">Home</a></li>
+<li class="pl-nav-dropdown">
+<a href="best-computer-courses-rawalpidni.html" class="pl-nav-link active">Courses <i class="fa fa-angle-down"></i></a>
+<div class="pl-dropdown-panel"><div class="pl-dp-grid">
+<a href="best-web-development-courses-in-rawalpindi.html" class="pl-dp-item"><span class="pl-dp-icon" style="background:rgba(240,123,20,0.12);color:#f07b14;"><i class="fa fa-code"></i></span><span>Web Development</span></a>
+<a href="best-mobile-app-development-courses-in-rawalpindi.html" class="pl-dp-item"><span class="pl-dp-icon" style="background:rgba(0,148,217,0.12);color:#0094d9;"><i class="fa fa-mobile"></i></span><span>Mobile App Dev</span></a>
+<a href="best-designing-courses-rawalpidni.html" class="pl-dp-item"><span class="pl-dp-icon" style="background:rgba(139,92,246,0.12);color:#8b5cf6;"><i class="fa fa-paint-brush"></i></span><span>Graphic Designing</span></a>
+<a href="best-digital-marketing-course-rawalpidni.html" class="pl-dp-item"><span class="pl-dp-icon" style="background:rgba(16,185,129,0.12);color:#10b981;"><i class="fa fa-line-chart"></i></span><span>Digital Marketing</span></a>
+<a href="best-programming-courses-institute-in-rawalpidni-islamabad.html" class="pl-dp-item"><span class="pl-dp-icon" style="background:rgba(245,158,11,0.12);color:#f59e0b;"><i class="fa fa-terminal"></i></span><span>Programming</span></a>
+<a href="best-freelancing-institute-in-rawalpindi-islamabd.html" class="pl-dp-item"><span class="pl-dp-icon" style="background:rgba(236,72,153,0.12);color:#ec4899;"><i class="fa fa-briefcase"></i></span><span>Freelancing</span></a>
+<a href="best-database-courses-institute-in-rawalpidni-islamabad.html" class="pl-dp-item"><span class="pl-dp-icon" style="background:rgba(6,182,212,0.12);color:#06b6d4;"><i class="fa fa-database"></i></span><span>Database Mgmt</span></a>
+<a href="best-computer-courses-rawalpidni.html" class="pl-dp-item"><span class="pl-dp-icon" style="background:rgba(99,102,241,0.12);color:#6366f1;"><i class="fa fa-th-large"></i></span><span>All Courses</span></a>
+</div></div>
+</li>
+<li><a href="services.html" class="pl-nav-link">Services</a></li>
+<li><a href="career.html" class="pl-nav-link">Career</a></li>
+<li><a href="prgrammers-lab-contact.html" class="pl-nav-link">Contact</a></li>
+</ul>
+<a href="enroll-form.html" class="pl-mobile-enroll">Enroll Now</a>
+</nav>
+<div class="pl-nav-right">
+<a href="enroll-form.html" class="pl-nav-cta">Enroll Now</a>
+<button class="pl-hamburger" id="plHamburger" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+</div>
+</div>
+</div>
+</header>
+<!-- Header section end -->
 
 
 
@@ -242,78 +240,69 @@
     <br><br>
 
     <!-- footer section -->
-<footer class="footer-section">
-    <div class="footer-top">
-        <div class="container">
-            <div class="footer-row">
-                <!-- About / Info -->
-                <div class="footer-widget">
-                    <h4>About Us</h4>
-                    <p >Programmers Lab is a leading IT training institute and software House in Rawalpindi, offering professional courses to help you grow your career.</p>
-                 
-                </div>
-
-                <!-- Courses -->
-                <div class="footer-widget">
-                    <h4>Courses</h4>
-                    <ul>
-                        <li><a href="best-institute-Cplus-plus-course-rawalpidni.html">C++ Course</a></li>
-                        <li><a href="best-react-native-course-institute-rawalpindi.html">React Native</a></li>
-                        <li><a href="best-institute-for-MS-office-course-rawalpidni.html">MS Office</a></li>
-                        <li><a href="best-institute-seo-course-rawalpidni.html">SEO Course</a></li>
-                    </ul>
-                </div>
-
-                <!-- Services -->
-                <div class="footer-widget">
-                    <h4>Services</h4>
-                    <ul>
-                        <li><a href="#">Freelancing Guidance</a></li>
-                        <li><a href="#">Career Counseling</a></li>
-                        <li><a href="#">Project Assistance</a></li>
-                        <li><a href="#">Online Support</a></li>
-                    </ul>
-                </div>
-
-          <!-- Font Awesome CDN for icons -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
-
-<!-- Footer Widget -->
-<div class="footer-widget">
-    <h4>Connect With Us</h4>
-    
-    <!-- Contact Info -->
-    <ul class="contact-info">
-        <li><a href="https://www.google.com/maps/place/Programmers+Lab+Training+Institute/@33.631884,73.0705072,17z" target="_blank">Office No. 8, First Floor, Mian Plaza, Chandni Chowk, Rawalpindi</a></li>
-        <li><a href="tel:+923331912898">+92 333 1912898</a></li>
-        <li><a href="mailto:infoprogrammerslabs@gmail.com">infoprogrammerslabs@gmail.com</a></li>
-    </ul>
-
-    <!-- Social Media Icons -->
-    <ul class="social-icons">
-        <li><a href="https://www.facebook.com/programmerslabs" target="_blank"><i class="fab fa-facebook-f"></i></a></li>
-        <li><a href="https://www.linkedin.com/company/programmerslabs/" target="_blank"><i class="fab fa-linkedin-in"></i></a></li>
-        <li><a href="https://wa.me/03331912898" target="_blank"><i class="fab fa-whatsapp"></i></a></li>
-        <li><a href="https://twitter.com/progra39834" target="_blank"><i class="fab fa-twitter"></i></a></li>
-        <li><a href="https://youtube.com/@programmerslabs" target="_blank"><i class="fab fa-youtube"></i></a></li>
-        <li><a href="https://www.instagram.com/programmers_lab_institute/" target="_blank"><i class="fab fa-instagram"></i></a></li>
-        <li><a href="https://medium.com/@mediapromoteprogrammerslabs" target="_blank"><i class="fab fa-medium"></i></a></li>
-    </ul>
+<footer class="pl-footer">
+<div class="pl-footer-main">
+<div class="container">
+<div class="pl-footer-grid">
+<div class="pl-footer-brand">
+<div class="pl-footer-logo"><span style="color:#f07b14;">Programmers</span> Lab</div>
+<p>A leading IT training institute &amp; software house in Rawalpindi. 30+ professional courses and real-world project experience.</p>
+<div class="pl-footer-contact">
+<a href="https://www.google.com/maps/place/Programmers+Lab+Training+Institute/@33.631884,73.0705072,17z" target="_blank"><i class="fa fa-map-marker"></i> Office No. 8, First Floor, Mian Plaza, Chandni Chowk, Rawalpindi</a>
+<a href="tel:+923331912898"><i class="fa fa-phone"></i> +92 333 1912898</a>
+<a href="mailto:infoprogrammerslabs@gmail.com"><i class="fa fa-envelope"></i> infoprogrammerslabs@gmail.com</a>
 </div>
-
-<!-- CSS -->
-
-
-            </div>
-        </div>
-    </div>
-
-    <!-- Footer Bottom -->
-    <div class="footer-bottom">
-        <p>© 2026 All rights reserved by <strong>Programmers Lab</strong></p>
-    </div>
+</div>
+<div class="pl-footer-col">
+<h5>Courses</h5>
+<ul>
+<li><a href="best-web-development-courses-in-rawalpindi.html"><i class="fa fa-chevron-right"></i> Web Development</a></li>
+<li><a href="best-mobile-app-development-courses-in-rawalpindi.html"><i class="fa fa-chevron-right"></i> Mobile App Dev</a></li>
+<li><a href="best-designing-courses-rawalpidni.html"><i class="fa fa-chevron-right"></i> Graphic Designing</a></li>
+<li><a href="best-digital-marketing-course-rawalpidni.html"><i class="fa fa-chevron-right"></i> Digital Marketing</a></li>
+<li><a href="best-programming-courses-institute-in-rawalpidni-islamabad.html"><i class="fa fa-chevron-right"></i> Programming</a></li>
+<li><a href="best-freelancing-institute-in-rawalpindi-islamabd.html"><i class="fa fa-chevron-right"></i> Freelancing</a></li>
+</ul>
+</div>
+<div class="pl-footer-col">
+<h5>Quick Links</h5>
+<ul>
+<li><a href="index.html"><i class="fa fa-chevron-right"></i> Home</a></li>
+<li><a href="best-computer-courses-rawalpidni.html"><i class="fa fa-chevron-right"></i> All Courses</a></li>
+<li><a href="services.html"><i class="fa fa-chevron-right"></i> Services</a></li>
+<li><a href="enroll-form.html"><i class="fa fa-chevron-right"></i> Enroll Now</a></li>
+<li><a href="prgrammers-lab-contact.html"><i class="fa fa-chevron-right"></i> Contact Us</a></li>
+</ul>
+</div>
+<div class="pl-footer-col">
+<h5>Follow Us</h5>
+<div class="pl-footer-socials">
+<a href="https://www.facebook.com/programmerslabs" target="_blank" class="pl-social-btn" style="--sc:#1877f2"><i class="fab fa-facebook-f"></i></a>
+<a href="https://www.instagram.com/programmers_lab_institute/" target="_blank" class="pl-social-btn" style="--sc:#e1306c"><i class="fab fa-instagram"></i></a>
+<a href="https://www.linkedin.com/company/programmerslabs/" target="_blank" class="pl-social-btn" style="--sc:#0a66c2"><i class="fab fa-linkedin-in"></i></a>
+<a href="https://youtube.com/@programmerslabs" target="_blank" class="pl-social-btn" style="--sc:#ff0000"><i class="fab fa-youtube"></i></a>
+<a href="https://wa.me/03331912898" target="_blank" class="pl-social-btn" style="--sc:#25d366"><i class="fab fa-whatsapp"></i></a>
+<a href="https://twitter.com/progra39834" target="_blank" class="pl-social-btn" style="--sc:#1da1f2"><i class="fab fa-twitter"></i></a>
+</div>
+<div class="pl-footer-hours">
+<h5>Office Hours</h5>
+<p><i class="fa fa-calendar"></i> Monday - Saturday</p>
+<p><i class="fa fa-clock-o"></i> 09:00 AM - 06:00 PM</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="pl-footer-bottom">
+<div class="container">
+<div class="pl-footer-bottom-inner">
+<p>2026 <strong>Programmers Lab</strong>. All rights reserved.</p>
+<p>Designed &amp; Developed by <a href="#" style="color:#f07b14;">Programmers Lab Team</a></p>
+</div>
+</div>
+</div>
 </footer>
-    <!-- footer section end -->
+<!-- footer section end -->
 
 
     <a href="https://wa.me/message/DROOVWVA3B5XK1" target="_blank" class="whatsapp-button">
