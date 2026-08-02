@@ -171,7 +171,6 @@ body { margin: 0; font-family: 'Inter', sans-serif; background: #f0f2f5; color: 
 .pl-badge-blue   { background: rgba(59,130,246,.1);  color: #1d4ed8; }
 .pl-badge-green  { background: rgba(16,185,129,.1);  color: #065f46; }
 .pl-badge-purple { background: rgba(139,92,246,.1);  color: #6d28d9; }
-
 /* ── Action buttons ── */
 .pl-btn-icon {
     width: 32px; height: 32px; border-radius: 8px; border: none;
@@ -229,6 +228,35 @@ body { margin: 0; font-family: 'Inter', sans-serif; background: #f0f2f5; color: 
         </a>
         <a href="enrollments.php" class="<?= $activePage === 'enrollments' ? 'active' : '' ?>">
             <i class="fas fa-user-graduate"></i> Enrollments
+        </a>
+        <a href="courses.php" class="<?= $activePage === 'courses' ? 'active' : '' ?>">
+            <i class="fas fa-graduation-cap"></i> Courses
+        </a>
+        <a href="certificates.php" class="<?= $activePage === 'certificates' ? 'active' : '' ?>">
+            <i class="fas fa-certificate"></i> Certificates
+        </a>
+        <a href="users.php" class="<?= $activePage === 'users' ? 'active' : '' ?>">
+            <i class="fas fa-users"></i> Registered Users
+        </a>
+        <a href="job_applications.php" class="<?= $activePage === 'job_applications' ? 'active' : '' ?>">
+            <i class="fas fa-briefcase"></i> Job Applications
+        </a>
+        <a href="job_openings.php" class="<?= $activePage === 'job_openings' ? 'active' : '' ?>">
+            <i class="fas fa-folder-open"></i> Job Openings
+        </a>
+        <div class="nav-section-label">Site</div>
+        <a href="notices.php" class="<?= $activePage === 'notices' ? 'active' : '' ?>">
+            <i class="fas fa-bell"></i> Notices
+        </a>
+        <div class="nav-section-label">Teachers & Messaging</div>
+        <a href="teachers.php" class="<?= $activePage === 'teachers' ? 'active' : '' ?>">
+            <i class="fas fa-chalkboard-teacher"></i> Teachers
+        </a>
+        <a href="teacher_assignments.php" class="<?= $activePage === 'teacher_assignments' ? 'active' : '' ?>">
+            <i class="fas fa-link"></i> Assignments
+        </a>
+        <a href="broadcast_messages.php" class="<?= $activePage === 'broadcast_messages' ? 'active' : '' ?>">
+            <i class="fas fa-paper-plane"></i> Broadcast
         </a>
     </nav>
     <div class="sidebar-footer">

@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+﻿﻿<!DOCTYPE html>
 <html lang="en">
 <head>
 	<title>React JS Course in Rawalpindi Islamabad | Programmers Lab</title>
@@ -208,7 +208,7 @@ body{padding-top:68px}
 	</style>
 	<link rel="stylesheet" href="css/course-detail.css"/>
 </head>
-<body>
+<body data-course="React Native">
 	<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TLSHTX5P" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 	<div id="preloder"><div class="loader"><span></span><span></span><span></span></div></div>
 
@@ -230,12 +230,14 @@ body{padding-top:68px}
 								<a href="best-programming-courses-institute-in-rawalpidni-islamabad.html" class="pl-dp-item"><span class="pl-dp-icon" style="background:rgba(245,158,11,0.12);color:#f59e0b;"><i class="fa fa-terminal"></i></span><span>Programming</span></a>
 								<a href="best-freelancing-institute-in-rawalpindi-islamabd.html" class="pl-dp-item"><span class="pl-dp-icon" style="background:rgba(236,72,153,0.12);color:#ec4899;"><i class="fa fa-briefcase"></i></span><span>Freelancing</span></a>
 								<a href="best-database-courses-institute-in-rawalpidni-islamabad.html" class="pl-dp-item"><span class="pl-dp-icon" style="background:rgba(6,182,212,0.12);color:#06b6d4;"><i class="fa fa-database"></i></span><span>Database Mgmt</span></a>
-								<a href="best-computer-courses-rawalpidni.html" class="pl-dp-item"><span class="pl-dp-icon" style="background:rgba(99,102,241,0.12);color:#6366f1;"><i class="fa fa-th-large"></i></span><span>All Courses →</span></a>
+								<a href="best-computer-courses-rawalpidni.html" class="pl-dp-item"><span class="pl-dp-icon" style="background:rgba(99,102,241,0.12);color:#6366f1;"><i class="fa fa-th-large"></i></span><span>All Courses ?</span></a>
 							</div></div>
 						</li>
 						<li><a href="services.html" class="pl-nav-link">Services</a></li>
 						<li><a href="career.html" class="pl-nav-link">Career</a></li>
-						<li><a href="prgrammers-lab-contact.html" class="pl-nav-link">Contact</a></li>
+<li><a href="prgrammers-lab-contact.html" class="pl-nav-link">Contact</a></li>
+<li><a href="student-portal.html" class="pl-nav-link">Check Certificate</a></li>
+<li id="pl-auth-nav"><a href="auth.php" class="pl-nav-link" style="color:#f07b14;font-weight:700;"><i class="fas fa-user"></i> Login</a></li>
 					</ul>
 					<a href="enroll-form.html" class="pl-mobile-enroll">Enroll Now</a>
 				</nav>
@@ -253,8 +255,8 @@ body{padding-top:68px}
 			<div class="row align-items-center">
 				<div class="col-lg-7">
 					<nav class="pl-course-breadcrumb">
-						<a href="index.html">Home</a><span>›</span>
-						<a href="best-computer-courses-rawalpidni.html">Courses</a><span>›</span>
+						<a href="index.html">Home</a><span>&mdash;</span>
+						<a href="best-computer-courses-rawalpidni.html">Courses</a><span>&mdash;</span>
 						<span class="pl-bc-current">React JS Course</span>
 					</nav>
 					<span class="pl-course-badge">Web Development</span>
@@ -262,7 +264,7 @@ body{padding-top:68px}
 					<p class="pl-course-hero-desc">Build fast, interactive user interfaces with React JS. Master components, hooks, Redux and API integration.</p>
 					<div class="pl-stat-pills">
 						<span class="pl-stat-pill"><i class="fa fa-clock-o"></i> 3 Months</span>
-						<span class="pl-stat-pill"><i class="fa fa-tag"></i> Rs. 32,000</span>
+						<span class="pl-stat-pill"><i class="fa fa-tag"></i> <span data-price>Rs. 32,000</span></span>
 						<span class="pl-stat-pill"><i class="fa fa-laptop"></i> 10+ Projects</span>
 						<span class="pl-stat-pill"><i class="fa fa-certificate"></i> Certificate</span>
 					</div>
@@ -290,13 +292,51 @@ body{padding-top:68px}
 	<section class="pl-info-strip">
 		<div class="container">
 			<div class="pl-info-strip-grid">
-				<div class="pl-info-card"><div class="pl-info-icon"><i class="fa fa-clock-o"></i></div><div><span class="pl-info-label">Duration</span><span class="pl-info-value">3 Months</span></div></div>
-				<div class="pl-info-card"><div class="pl-info-icon"><i class="fa fa-calendar"></i></div><div><span class="pl-info-label">Schedule</span><span class="pl-info-value">Mon–Thu, 2 hrs/day</span></div></div>
-				<div class="pl-info-card"><div class="pl-info-icon"><i class="fa fa-money"></i></div><div><span class="pl-info-label">Course Fee</span><span class="pl-info-value">Rs. 32,000</span></div></div>
+				<div class="pl-info-card"><div class="pl-info-icon"><i class="fa fa-clock-o"></i></div><div><span class="pl-info-label">Duration</span><span class="pl-info-value" data-duration>3 Months</span></div></div>
+				<div class="pl-info-card"><div class="pl-info-icon"><i class="fa fa-calendar"></i></div><div><span class="pl-info-label">Schedule</span><span class="pl-info-value">Mon&mdash;Thu, 2 hrs/day</span></div></div>
+				<div class="pl-info-card"><div class="pl-info-icon"><i class="fa fa-money"></i></div><div><span class="pl-info-label">Course Fee</span><span class="pl-info-value" data-price>Rs. 32,000</span></div></div><div class="pl-info-card" id="installment-card" style="display:none;"><div class="pl-info-icon"><i class="fa fa-credit-card"></i></div><div><span class="pl-info-label">Installment</span><span class="pl-info-value" data-installment></span></div></div>
 				<div class="pl-info-card"><div class="pl-info-icon"><i class="fa fa-briefcase"></i></div><div><span class="pl-info-label">Internship</span><span class="pl-info-value">Available</span></div></div>
 			</div>
 		</div>
-	</section>
+	<!-- PRICING PLAN -->
+<section class="pl-pricing-section" id="pl-pricing-section" style="display:block;background:#f8fafc;padding:40px 0 36px;">
+<div class="container">
+<div style="text-align:center;margin-bottom:24px;">
+<div class="pl-section-tag" style="display:inline-block;">Fees</div>
+<h2 style="font-size:22px;font-weight:800;color:#0d1b2a;margin:10px 0 6px;">Course Fee &amp; Payment Plans</h2>
+<p style="font-size:14px;color:#6b7280;">Choose the payment option that works best for you.</p>
+</div>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;max-width:600px;margin:0 auto;" class="pl-pricing-grid">
+
+<!-- One-Time Card -->
+<div style="background:#fff;border-radius:16px;padding:28px 24px;border:2px solid #e5e7eb;text-align:center;transition:all .3s;">
+<div style="width:48px;height:48px;background:rgba(240,123,20,.1);border-radius:14px;display:flex;align-items:center;justify-content:center;margin:0 auto 14px;font-size:20px;color:#f07b14;">
+<i class="fa fa-money"></i>
+</div>
+<div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.8px;color:#9ca3af;margin-bottom:8px;">One-Time Payment</div>
+<div style="font-size:28px;font-weight:800;color:#f07b14;line-height:1;" data-price>—</div>
+<div style="font-size:12px;color:#10b981;font-weight:600;margin-top:8px;">✓ Best Value</div>
+<a href="enroll-form.html" style="display:block;margin-top:18px;padding:10px;background:#f07b14;color:#fff;border-radius:10px;font-size:13px;font-weight:700;text-decoration:none;">Enroll Now</a>
+</div>
+
+<!-- Installment Card -->
+<div id="pl-install-card" style="background:#fff;border-radius:16px;padding:28px 24px;border:2px solid #e5e7eb;text-align:center;transition:all .3s;display:none;">
+<div style="width:48px;height:48px;background:rgba(99,102,241,.1);border-radius:14px;display:flex;align-items:center;justify-content:center;margin:0 auto 14px;font-size:20px;color:#6366f1;">
+<i class="fa fa-credit-card"></i>
+</div>
+<div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.8px;color:#9ca3af;margin-bottom:8px;">Installment Plan</div>
+<div style="font-size:28px;font-weight:800;color:#6366f1;line-height:1;" data-installment>—</div>
+<div style="font-size:12px;color:#6b7280;font-weight:600;margin-top:8px;">Pay in easy installments</div>
+<a href="enroll-form.html" style="display:block;margin-top:18px;padding:10px;background:#6366f1;color:#fff;border-radius:10px;font-size:13px;font-weight:700;text-decoration:none;">Enroll Now</a>
+</div>
+
+</div>
+</div>
+</section>
+
+<style>
+@media(max-width:480px){.pl-pricing-grid{grid-template-columns:1fr!important}}
+</style></section>
 
 	<!-- DESCRIPTION -->
 	<section class="pl-course-desc-section">
@@ -348,7 +388,7 @@ body{padding-top:68px}
 		<div class="container">
 			<div class="pl-section-tag">Full Syllabus</div>
 			<h2 class="pl-section-title pl-section-title-white">Course Curriculum</h2>
-			<p class="pl-section-sub pl-section-sub-white">8 comprehensive modules — from basics to deployment and freelancing.</p>
+			<p class="pl-section-sub pl-section-sub-white">8 comprehensive modules &mdash; from basics to deployment and freelancing.</p>
 			<div class="pl-accordion">
 
 				<div class="pl-acc-item open">
@@ -415,7 +455,7 @@ body{padding-top:68px}
 	<section class="pl-enroll-cta">
 		<div class="container" style="position:relative;z-index:1;">
 			<h2>Ready to Build with React JS?</h2>
-			<p>Join 1200+ students — enroll today and master modern frontend development.</p>
+			<p>Join 1200+ students &mdash; enroll today and master modern frontend development.</p>
 			<a href="enroll-form.html" class="pl-enroll-cta-btn"><i class="fa fa-rocket"></i> Enroll Now</a>
 		</div>
 	</section>
@@ -489,8 +529,8 @@ body{padding-top:68px}
 						</div>
 						<div class="pl-footer-hours">
 							<h5>Office Hours</h5>
-							<p><i class="fa fa-calendar"></i> Monday – Saturday</p>
-							<p><i class="fa fa-clock-o"></i> 09:00 AM – 06:00 PM</p>
+							<p><i class="fa fa-calendar"></i> Monday &mdash; Saturday</p>
+							<p><i class="fa fa-clock-o"></i> 09:00 AM &mdash; 06:00 PM</p>
 						</div>
 					</div>
 				</div>
@@ -499,7 +539,7 @@ body{padding-top:68px}
 		<div class="pl-footer-bottom">
 			<div class="container">
 				<div class="pl-footer-bottom-inner">
-					<p>© 2026 <strong>Programmers Lab</strong>. All rights reserved.</p>
+					<p>&mdash; 2026 <strong>Programmers Lab</strong>. All rights reserved.</p>
 					<p>Designed &amp; Developed by <a href="#" style="color:#f07b14;">Programmers Lab Team</a></p>
 				</div>
 			</div>
@@ -545,5 +585,20 @@ body{padding-top:68px}
 		});
 	})();
 	</script>
-</body>
+<script src="js/course-price.js"></script>
+<script src="js/installment-price.js"></script>
+<script>
+// Smart nav: show profile if logged in
+fetch('user-session.php').then(function(r){return r.json();}).then(function(d){
+    var el = document.getElementById('pl-auth-nav');
+    if (!el) return;
+    if (d.logged_in) {
+        var initLetter = (d.name && d.name.length > 0) ? d.name[0].toUpperCase() : '?';
+        el.innerHTML = '<a href="user-profile.php" style="display:inline-flex;align-items:center;gap:7px;padding:5px 14px 5px 5px;background:rgba(240,123,20,.12);color:#f07b14;border-radius:50px;font-size:13.5px;font-weight:700;text-decoration:none;border:1.5px solid rgba(240,123,20,.3);">'
+            + '<span style="width:32px;height:32px;border-radius:50%;background:linear-gradient(135deg,#f07b14,#d96a00);display:inline-flex;align-items:center;justify-content:center;color:#fff;font-size:14px;font-weight:900;flex-shrink:0;">' + initLetter + '</span>'
+            + ' ' + d.name.split(' ')[0]
+            + '</a>';
+    }
+}).catch(function(){});
+</script></body>
 </html>

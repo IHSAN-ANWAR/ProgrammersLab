@@ -145,7 +145,9 @@ body{padding-top:68px}.pl-mobile-enroll{display:none}
 						</li>
 						<li><a href="services.html" class="pl-nav-link">Services</a></li>
 						<li><a href="career.html" class="pl-nav-link">Career</a></li>
-						<li><a href="prgrammers-lab-contact.html" class="pl-nav-link">Contact</a></li>
+<li><a href="prgrammers-lab-contact.html" class="pl-nav-link">Contact</a></li>
+<li><a href="student-portal.html" class="pl-nav-link">Check Certificate</a></li>
+<li id="pl-auth-nav"><a href="auth.php" class="pl-nav-link" style="color:#f07b14;font-weight:700;"><i class="fas fa-user"></i> Login</a></li>
 					</ul>
 					<a href="enroll-form.html" class="pl-mobile-enroll">Enroll Now</a>
 				</nav>
@@ -193,9 +195,9 @@ body{padding-top:68px}.pl-mobile-enroll{display:none}
 	<section class="pl-info-strip">
 		<div class="container">
 			<div class="pl-info-strip-grid">
-				<div class="pl-info-card"><div class="pl-info-icon"><i class="fa fa-clock-o"></i></div><div><span class="pl-info-label">Duration</span><span class="pl-info-value">2–4 Months</span></div></div>
+				<div class="pl-info-card"><div class="pl-info-icon"><i class="fa fa-clock-o"></i></div><div><span class="pl-info-label">Duration</span><span class="pl-info-value" data-duration>2–4 Months</span></div></div>
 				<div class="pl-info-card"><div class="pl-info-icon"><i class="fa fa-calendar"></i></div><div><span class="pl-info-label">Schedule</span><span class="pl-info-value">Flexible Batches</span></div></div>
-				<div class="pl-info-card"><div class="pl-info-icon"><i class="fa fa-money"></i></div><div><span class="pl-info-label">Course Fee</span><span class="pl-info-value">Rs. 15K–20K</span></div></div>
+				<div class="pl-info-card"><div class="pl-info-icon"><i class="fa fa-money"></i></div><div><span class="pl-info-label">Course Fee</span><span class="pl-info-value" data-price>Rs. 15K–20K</span></div></div>
 				<div class="pl-info-card"><div class="pl-info-icon"><i class="fa fa-briefcase"></i></div><div><span class="pl-info-label">Internship</span><span class="pl-info-value">Available</span></div></div>
 			</div>
 		</div>
@@ -213,7 +215,6 @@ body{padding-top:68px}.pl-mobile-enroll{display:none}
 						<h4>C++ Course</h4>
 						<p>Master object-oriented programming with C++ — great for competitive coding.</p>
 						<div style="display:flex;align-items:center;justify-content:space-between;margin-top:auto">
-							<span style="color:#f07b14;font-weight:800;font-size:15px;">Rs. 15,000</span>
 							<span class="pl-tile-link">View Details <i class="fa fa-arrow-right"></i></span>
 						</div>
 					</div>
@@ -224,7 +225,6 @@ body{padding-top:68px}.pl-mobile-enroll{display:none}
 						<h4>Java Course</h4>
 						<p>Build desktop and enterprise applications with Java — widely used worldwide.</p>
 						<div style="display:flex;align-items:center;justify-content:space-between;margin-top:auto">
-							<span style="color:#f07b14;font-weight:800;font-size:15px;">Rs. 15,000</span>
 							<span class="pl-tile-link">View Details <i class="fa fa-arrow-right"></i></span>
 						</div>
 					</div>
@@ -235,7 +235,6 @@ body{padding-top:68px}.pl-mobile-enroll{display:none}
 						<h4>Python Course</h4>
 						<p>From scripting to data science — Python is the most in-demand language today.</p>
 						<div style="display:flex;align-items:center;justify-content:space-between;margin-top:auto">
-							<span style="color:#f07b14;font-weight:800;font-size:15px;">Rs. 20,000</span>
 							<span class="pl-tile-link">View Details <i class="fa fa-arrow-right"></i></span>
 						</div>
 					</div>
@@ -246,7 +245,6 @@ body{padding-top:68px}.pl-mobile-enroll{display:none}
 						<h4>JavaScript Course</h4>
 						<p>The language of the web — build dynamic, interactive websites and apps.</p>
 						<div style="display:flex;align-items:center;justify-content:space-between;margin-top:auto">
-							<span style="color:#f07b14;font-weight:800;font-size:15px;">Rs. 15,000</span>
 							<span class="pl-tile-link">View Details <i class="fa fa-arrow-right"></i></span>
 						</div>
 					</div>
@@ -330,5 +328,19 @@ body{padding-top:68px}.pl-mobile-enroll{display:none}
 	});
 	})();
 	</script>
-</body>
+<script src="js/course-price.js"></script>
+<script>
+// Smart nav: show profile if logged in
+fetch('user-session.php').then(function(r){return r.json();}).then(function(d){
+    var el = document.getElementById('pl-auth-nav');
+    if (!el) return;
+    if (d.logged_in) {
+        var initLetter = (d.name && d.name.length > 0) ? d.name[0].toUpperCase() : '?';
+        el.innerHTML = '<a href="user-profile.php" style="display:inline-flex;align-items:center;gap:7px;padding:5px 14px 5px 5px;background:rgba(240,123,20,.12);color:#f07b14;border-radius:50px;font-size:13.5px;font-weight:700;text-decoration:none;border:1.5px solid rgba(240,123,20,.3);">'
+            + '<span style="width:32px;height:32px;border-radius:50%;background:linear-gradient(135deg,#f07b14,#d96a00);display:inline-flex;align-items:center;justify-content:center;color:#fff;font-size:14px;font-weight:900;flex-shrink:0;">' + initLetter + '</span>'
+            + ' ' + d.name.split(' ')[0]
+            + '</a>';
+    }
+}).catch(function(){});
+</script></body>
 </html>

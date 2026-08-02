@@ -153,7 +153,9 @@ body{padding-top:68px}
 						</li>
 						<li><a href="services.html" class="pl-nav-link">Services</a></li>
 						<li><a href="career.html" class="pl-nav-link">Career</a></li>
-						<li><a href="prgrammers-lab-contact.html" class="pl-nav-link">Contact</a></li>
+<li><a href="prgrammers-lab-contact.html" class="pl-nav-link">Contact</a></li>
+<li><a href="student-portal.html" class="pl-nav-link">Check Certificate</a></li>
+<li id="pl-auth-nav"><a href="auth.php" class="pl-nav-link" style="color:#f07b14;font-weight:700;"><i class="fas fa-user"></i> Login</a></li>
 					</ul>
 					<a href="enroll-form.html" class="pl-mobile-enroll">Enroll Now</a>
 				</nav>
@@ -203,9 +205,9 @@ body{padding-top:68px}
 	<section class="pl-info-strip">
 		<div class="container">
 			<div class="pl-info-strip-grid">
-				<div class="pl-info-card"><div class="pl-info-icon"><i class="fa fa-clock-o"></i></div><div><span class="pl-info-label">Duration</span><span class="pl-info-value">3–6 Months</span></div></div>
+				<div class="pl-info-card"><div class="pl-info-icon"><i class="fa fa-clock-o"></i></div><div><span class="pl-info-label">Duration</span><span class="pl-info-value" data-duration>3–6 Months</span></div></div>
 				<div class="pl-info-card"><div class="pl-info-icon"><i class="fa fa-calendar"></i></div><div><span class="pl-info-label">Schedule</span><span class="pl-info-value">Flexible Batches</span></div></div>
-				<div class="pl-info-card"><div class="pl-info-icon"><i class="fa fa-money"></i></div><div><span class="pl-info-label">Course Fee</span><span class="pl-info-value">Rs. 18K–35K</span></div></div>
+				<div class="pl-info-card"><div class="pl-info-icon"><i class="fa fa-money"></i></div><div><span class="pl-info-label">Course Fee</span><span class="pl-info-value" data-price>Rs. 18K–35K</span></div></div>
 				<div class="pl-info-card"><div class="pl-info-icon"><i class="fa fa-briefcase"></i></div><div><span class="pl-info-label">Internship</span><span class="pl-info-value">Available</span></div></div>
 			</div>
 		</div>
@@ -224,7 +226,6 @@ body{padding-top:68px}
 						<h4>Front End Web Course</h4>
 						<p>HTML, CSS, JavaScript, Bootstrap & jQuery. Build stunning, responsive websites.</p>
 						<div style="display:flex;align-items:center;justify-content:space-between;margin-top:auto">
-							<span style="color:#f07b14;font-weight:800;font-size:15px;">Rs. 23,000</span>
 							<span class="pl-tile-link">View Details <i class="fa fa-arrow-right"></i></span>
 						</div>
 					</div>
@@ -235,7 +236,6 @@ body{padding-top:68px}
 						<h4>Full Stack Web Development</h4>
 						<p>Frontend + Backend with PHP, Laravel &amp; MySQL. Become a complete developer.</p>
 						<div style="display:flex;align-items:center;justify-content:space-between;margin-top:auto">
-							<span style="color:#f07b14;font-weight:800;font-size:15px;">Rs. 35,000</span>
 							<span class="pl-tile-link">View Details <i class="fa fa-arrow-right"></i></span>
 						</div>
 					</div>
@@ -246,7 +246,16 @@ body{padding-top:68px}
 						<h4>React JS Course</h4>
 						<p>Build modern, dynamic web apps with React JS. In-demand front-end framework.</p>
 						<div style="display:flex;align-items:center;justify-content:space-between;margin-top:auto">
-							<span style="color:#f07b14;font-weight:800;font-size:15px;">Rs. 32,000</span>
+							<span class="pl-tile-link">View Details <i class="fa fa-arrow-right"></i></span>
+						</div>
+					</div>
+				</a>
+				<a href="best-mern-stack-course-institute-rawalpindi-islamabad.html" class="pl-course-tile">
+					<img src="courses-images/COURSES/mern.gif" alt="MERN Stack Course Rawalpindi" class="pl-tile-img">
+					<div class="pl-tile-body">
+						<h4>MERN Stack Course</h4>
+						<p>MongoDB, Express.js, React.js &amp; Node.js — build full-stack JavaScript apps in 6 months.</p>
+						<div style="display:flex;align-items:center;justify-content:space-between;margin-top:auto">
 							<span class="pl-tile-link">View Details <i class="fa fa-arrow-right"></i></span>
 						</div>
 					</div>
@@ -257,7 +266,6 @@ body{padding-top:68px}
 						<h4>WordPress Course</h4>
 						<p>Create professional websites and blogs with WordPress — no coding required.</p>
 						<div style="display:flex;align-items:center;justify-content:space-between;margin-top:auto">
-							<span style="color:#f07b14;font-weight:800;font-size:15px;">Rs. 18,000</span>
 							<span class="pl-tile-link">View Details <i class="fa fa-arrow-right"></i></span>
 						</div>
 					</div>
@@ -359,5 +367,19 @@ body{padding-top:68px}
 	});
 	})();
 	</script>
-</body>
+<script src="js/course-price.js"></script>
+<script>
+// Smart nav: show profile if logged in
+fetch('user-session.php').then(function(r){return r.json();}).then(function(d){
+    var el = document.getElementById('pl-auth-nav');
+    if (!el) return;
+    if (d.logged_in) {
+        var initLetter = (d.name && d.name.length > 0) ? d.name[0].toUpperCase() : '?';
+        el.innerHTML = '<a href="user-profile.php" style="display:inline-flex;align-items:center;gap:7px;padding:5px 14px 5px 5px;background:rgba(240,123,20,.12);color:#f07b14;border-radius:50px;font-size:13.5px;font-weight:700;text-decoration:none;border:1.5px solid rgba(240,123,20,.3);">'
+            + '<span style="width:32px;height:32px;border-radius:50%;background:linear-gradient(135deg,#f07b14,#d96a00);display:inline-flex;align-items:center;justify-content:center;color:#fff;font-size:14px;font-weight:900;flex-shrink:0;">' + initLetter + '</span>'
+            + ' ' + d.name.split(' ')[0]
+            + '</a>';
+    }
+}).catch(function(){});
+</script></body>
 </html>

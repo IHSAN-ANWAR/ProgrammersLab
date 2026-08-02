@@ -84,7 +84,7 @@
     <link rel="stylesheet" href="css/course-detail.css"/>
 </head>
 
-<body>
+<body data-course="Flutter">
     <!-- Google Tag Manager (noscript) -->
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TLSHTX5P" height="0" width="0"
             style="display:none;visibility:hidden"></iframe></noscript>
@@ -117,7 +117,9 @@
 					</li>
 					<li><a href="services.html" class="pl-nav-link">Services</a></li>
 					<li><a href="career.html" class="pl-nav-link">Career</a></li>
-					<li><a href="prgrammers-lab-contact.html" class="pl-nav-link">Contact</a></li>
+<li><a href="prgrammers-lab-contact.html" class="pl-nav-link">Contact</a></li>
+<li><a href="student-portal.html" class="pl-nav-link">Check Certificate</a></li>
+<li id="pl-auth-nav"><a href="auth.php" class="pl-nav-link" style="color:#f07b14;font-weight:700;"><i class="fas fa-user"></i> Login</a></li>
 				</ul>
 				<a href="enroll-form.html" class="pl-mobile-enroll">Enroll Now</a>
 			</nav>
@@ -161,8 +163,9 @@ Get everything you need to reach your goals in one convenient bundle
             <li><strong>Lecture Schedule:</strong> Monday to Thursday | 2 Hours Daily</li>
             
             
-            <li  style="margin-top: 6px;"  ><strong>Course Fee:</strong> Rs. 32,000 (onFull Payment)</li>
-            <li ><strong>Installment Plan:</strong> Rs. 35,000</li>
+            <li  style="margin-top: 6px;"  ><strong>Course Fee:</strong> <span data-price>Rs. 32,000</span></li>
+            <li style="margin-top:6px;"><strong>Fees on Installment:</strong> <span data-installment style="display:none;"></span></li>
+            <li id="installment-li" style="display:none;margin-top:6px;"><strong>Fees on Installment:</strong> <span data-installment style="color:#f07b14;font-weight:700;">—</span></li>
             
             <li  ><strong>16+ Real Projects</strong> for hands-on development experience</li>
             <li style="margin-top: 6px;" ><strong>13+ Professional Modules</strong> covering from Scratch.</li>
@@ -746,6 +749,21 @@ if(link){link.addEventListener('click',function(e){if(window.innerWidth<=991){e.
 });
 })();
 </script>
-</body>
+<script src="js/course-price.js"></script>
+<script src="js/installment-price.js"></script>
+<script>
+// Smart nav: show profile if logged in
+fetch('user-session.php').then(function(r){return r.json();}).then(function(d){
+    var el = document.getElementById('pl-auth-nav');
+    if (!el) return;
+    if (d.logged_in) {
+        var initLetter = (d.name && d.name.length > 0) ? d.name[0].toUpperCase() : '?';
+        el.innerHTML = '<a href="user-profile.php" style="display:inline-flex;align-items:center;gap:7px;padding:5px 14px 5px 5px;background:rgba(240,123,20,.12);color:#f07b14;border-radius:50px;font-size:13.5px;font-weight:700;text-decoration:none;border:1.5px solid rgba(240,123,20,.3);">'
+            + '<span style="width:32px;height:32px;border-radius:50%;background:linear-gradient(135deg,#f07b14,#d96a00);display:inline-flex;align-items:center;justify-content:center;color:#fff;font-size:14px;font-weight:900;flex-shrink:0;">' + initLetter + '</span>'
+            + ' ' + d.name.split(' ')[0]
+            + '</a>';
+    }
+}).catch(function(){});
+</script></body>
 
 </html>

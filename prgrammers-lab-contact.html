@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
 	<title>Contact Programmers Lab — Rawalpindi IT Institute</title>
@@ -282,7 +282,42 @@ body { padding-top: 68px; }
 .whatsapp-button { position: fixed; bottom: 28px; right: 24px; z-index: 999; }
 .whatsapp-button img { width: 56px; height: 56px; border-radius: 50%; box-shadow: 0 4px 16px rgba(0,0,0,0.2); transition: transform 0.25s; }
 .whatsapp-button:hover img { transform: scale(1.1); }
-	</style>
+	/* =========================================================
+   FOOTER
+========================================================= */
+.pl-footer { background: #080f18; color: rgba(255,255,255,0.7); }
+.pl-footer-main { padding: 70px 0 50px; border-bottom: 1px solid rgba(255,255,255,0.07); }
+.pl-footer-grid { display: grid; grid-template-columns: 1.6fr 1fr 1fr 1fr; gap: 48px; }
+.pl-footer-logo { font-size: 24px; font-weight: 800; color: #fff; margin-bottom: 16px; }
+.pl-footer-brand p { font-size: 14px; line-height: 1.7; color: rgba(255,255,255,0.5); margin-bottom: 24px; }
+.pl-footer-contact { display: flex; flex-direction: column; gap: 10px; }
+.pl-footer-contact a { display: flex; align-items: flex-start; gap: 10px; color: rgba(255,255,255,0.5); font-size: 13.5px; text-decoration: none; transition: color 0.2s; line-height: 1.5; }
+.pl-footer-contact a i { color: #f07b14; margin-top: 2px; flex-shrink: 0; }
+.pl-footer-contact a:hover { color: #fff; }
+.pl-footer-col h5 { color: #fff; font-size: 15px; font-weight: 700; margin-bottom: 20px; position: relative; padding-bottom: 12px; }
+.pl-footer-col h5::after { content: ''; position: absolute; bottom: 0; left: 0; width: 30px; height: 2px; background: #f07b14; border-radius: 2px; }
+.pl-footer-col ul { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 10px; }
+.pl-footer-col ul li a { color: rgba(255,255,255,0.5); font-size: 13.5px; text-decoration: none; display: flex; align-items: center; gap: 8px; transition: color 0.2s, gap 0.2s; }
+.pl-footer-col ul li a i { font-size: 10px; color: #f07b14; }
+.pl-footer-col ul li a:hover { color: #fff; gap: 12px; }
+.pl-footer-socials { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 4px; }
+.pl-social-btn { width: 38px; height: 38px; border-radius: 10px; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.08); display: flex; align-items: center; justify-content: center; color: rgba(255,255,255,0.6); font-size: 14px; text-decoration: none; transition: background 0.25s, color 0.25s, border-color 0.25s, transform 0.25s; }
+.pl-social-btn:hover { background: var(--sc); border-color: var(--sc); color: #fff; transform: translateY(-3px); }
+.pl-footer-hours { margin-top: 24px; }
+.pl-footer-hours h5 { color: #fff; font-size: 14px; font-weight: 700; margin-bottom: 10px; padding-bottom: 0; }
+.pl-footer-hours h5::after { display: none; }
+.pl-footer-hours p { color: rgba(255,255,255,0.5); font-size: 13.5px; margin-bottom: 6px; display: flex; align-items: center; gap: 8px; }
+.pl-footer-hours p i { color: #f07b14; }
+.pl-footer-bottom { padding: 22px 0; }
+.pl-footer-bottom-inner { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px; }
+.pl-footer-bottom p { color: rgba(255,255,255,0.35); font-size: 13px; margin: 0; }
+.pl-footer-bottom strong { color: rgba(255,255,255,0.6); }
+.whatsapp-button { position: fixed; bottom: 28px; right: 24px; z-index: 999; }
+.whatsapp-button img { width: 56px; height: 56px; border-radius: 50%; box-shadow: 0 4px 16px rgba(0,0,0,0.2); transition: transform 0.25s; }
+.whatsapp-button:hover img { transform: scale(1.1); }
+@media (max-width: 991px) { .pl-footer-grid { grid-template-columns: 1fr 1fr; gap: 36px; } }
+@media (max-width: 575px) { .pl-footer-grid { grid-template-columns: 1fr; gap: 28px; } .pl-footer-bottom-inner { flex-direction: column; text-align: center; } }
+</style>
 </head>
 
 <body>
@@ -316,7 +351,9 @@ body { padding-top: 68px; }
 						</li>
 						<li><a href="services.html" class="pl-nav-link">Services</a></li>
 						<li><a href="career.html" class="pl-nav-link">Career</a></li>
-						<li><a href="prgrammers-lab-contact.html" class="pl-nav-link active">Contact</a></li>
+<li><a href="prgrammers-lab-contact.html" class="pl-nav-link active">Contact</a></li>
+<li><a href="student-portal.html" class="pl-nav-link">Check Certificate</a></li>
+<li id="pl-auth-nav"><a href="auth.php" class="pl-nav-link" style="color:#f07b14;font-weight:700;"><i class="fas fa-user"></i> Login</a></li>
 					</ul>
 					<a href="enroll.php" class="pl-mobile-enroll">Enroll Now</a>
 				</nav>
@@ -382,16 +419,16 @@ body { padding-top: 68px; }
 						<div class="pl-form-row">
 							<div class="pl-form-group">
 								<label>Your Name</label>
-								<input type="text" name="name" placeholder="Muhammad Ali" required>
+								<input type="text" name="name" placeholder="Enter your full name">
 							</div>
 							<div class="pl-form-group">
 								<label>Phone Number</label>
-								<input type="tel" name="phone" placeholder="+92 333 0000000">
+								<input type="tel" name="phone" placeholder="Enter your phone number">
 							</div>
 						</div>
 						<div class="pl-form-group">
 							<label>Email Address</label>
-							<input type="email" name="email" placeholder="you@example.com" required>
+							<input type="email" name="email" placeholder="Enter your email">
 						</div>
 						<div class="pl-form-group">
 							<label>Subject</label>
@@ -406,7 +443,7 @@ body { padding-top: 68px; }
 						</div>
 						<div class="pl-form-group">
 							<label>Message</label>
-							<textarea name="message" placeholder="Tell us how we can help you..." required></textarea>
+							<textarea name="message" placeholder="Tell us how we can help you..."></textarea>
 						</div>
 						<button type="submit" class="pl-form-submit" id="submitBtn">
 							<i class="fa fa-paper-plane"></i> Send Message
@@ -451,7 +488,7 @@ body { padding-top: 68px; }
 					<div class="pl-hours-card">
 						<h3><i class="fa fa-clock-o"></i> Office Hours</h3>
 						<div class="pl-hours-row"><span class="day">Monday – Friday</span><span class="time">09:00 AM – 06:00 PM</span></div>
-						<div class="pl-hours-row"><span class="day">Saturday</span><span class="time">09:00 AM – 04:00 PM</span></div>
+						<div class="pl-hours-row"><span class="day">Saturday</span><span class="time">09:00 AM – 06:00 PM</span></div>
 						<div class="pl-hours-row"><span class="day">Sunday</span><span class="time">Closed</span></div>
 					</div>
 
@@ -484,80 +521,6 @@ body { padding-top: 68px; }
 		</div>
 	</section>
 
-	<!-- ===== FOOTER ===== -->
-	<footer class="pl-footer">
-		<div class="pl-footer-cta">
-			<div class="container">
-				<div class="pl-footer-cta-inner">
-					<div>
-						<h3>Ready to start your IT career?</h3>
-						<p>Join 3000+ students who chose Programmers Lab — enroll today.</p>
-					</div>
-					<a href="enroll.php" class="pl-footer-btn">Enroll Now <i class="fa fa-arrow-right"></i></a>
-				</div>
-			</div>
-		</div>
-		<div class="pl-footer-main">
-			<div class="container">
-				<div class="pl-footer-grid">
-					<div class="pl-footer-brand">
-						<div class="pl-footer-logo"><span style="color:#f07b14;">Programmers</span> Lab</div>
-						<p>A leading IT training institute &amp; software house in Rawalpindi. We offer 30+ professional courses and real-world project experience.</p>
-						<div class="pl-footer-contact">
-							<a href="https://www.google.com/maps/place/Programmers+Lab+Training+Institute/@33.631884,73.0705072,17z" target="_blank"><i class="fa fa-map-marker"></i> Office No. 8, First Floor, Mian Plaza, Chandni Chowk, Rawalpindi</a>
-							<a href="tel:+923331912898"><i class="fa fa-phone"></i> +92 333 1912898</a>
-							<a href="mailto:infoprogrammerslabs@gmail.com"><i class="fa fa-envelope"></i> infoprogrammerslabs@gmail.com</a>
-						</div>
-					</div>
-					<div class="pl-footer-col">
-						<h5>Courses</h5>
-						<ul>
-							<li><a href="best-web-development-courses-in-rawalpindi.html"><i class="fa fa-chevron-right"></i> Web Development</a></li>
-							<li><a href="best-mobile-app-development-courses-in-rawalpindi.html"><i class="fa fa-chevron-right"></i> Mobile App Dev</a></li>
-							<li><a href="best-designing-courses-rawalpidni.html"><i class="fa fa-chevron-right"></i> Graphic Designing</a></li>
-							<li><a href="best-digital-marketing-course-rawalpidni.html"><i class="fa fa-chevron-right"></i> Digital Marketing</a></li>
-							<li><a href="best-programming-courses-institute-in-rawalpidni-islamabad.html"><i class="fa fa-chevron-right"></i> Programming</a></li>
-							<li><a href="best-freelancing-institute-in-rawalpindi-islamabd.html"><i class="fa fa-chevron-right"></i> Freelancing</a></li>
-						</ul>
-					</div>
-					<div class="pl-footer-col">
-						<h5>Quick Links</h5>
-						<ul>
-							<li><a href="index.html"><i class="fa fa-chevron-right"></i> Home</a></li>
-							<li><a href="best-computer-courses-rawalpidni.html"><i class="fa fa-chevron-right"></i> All Courses</a></li>
-							<li><a href="services.html"><i class="fa fa-chevron-right"></i> Services</a></li>
-							<li><a href="career.html"><i class="fa fa-chevron-right"></i> Career</a></li>
-							<li><a href="enroll.php"><i class="fa fa-chevron-right"></i> Enroll Now</a></li>
-						</ul>
-					</div>
-					<div class="pl-footer-col">
-						<h5>Follow Us</h5>
-						<div class="pl-footer-socials">
-							<a href="https://www.facebook.com/programmerslabs" target="_blank" class="pl-social-btn" style="--sc:#1877f2"><i class="fab fa-facebook-f"></i></a>
-							<a href="https://www.instagram.com/programmers_lab_institute/" target="_blank" class="pl-social-btn" style="--sc:#e1306c"><i class="fab fa-instagram"></i></a>
-							<a href="https://www.linkedin.com/company/programmerslabs/" target="_blank" class="pl-social-btn" style="--sc:#0a66c2"><i class="fab fa-linkedin-in"></i></a>
-							<a href="https://youtube.com/@programmerslabs" target="_blank" class="pl-social-btn" style="--sc:#ff0000"><i class="fab fa-youtube"></i></a>
-							<a href="https://wa.me/03331912898" target="_blank" class="pl-social-btn" style="--sc:#25d366"><i class="fab fa-whatsapp"></i></a>
-							<a href="https://twitter.com/progra39834" target="_blank" class="pl-social-btn" style="--sc:#1da1f2"><i class="fab fa-twitter"></i></a>
-						</div>
-						<div class="pl-footer-hours">
-							<h5>Office Hours</h5>
-							<p><i class="fa fa-calendar"></i> Monday – Saturday</p>
-							<p><i class="fa fa-clock-o"></i> 09:00 AM – 06:00 PM</p>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-		<div class="pl-footer-bottom">
-			<div class="container">
-				<div class="pl-footer-bottom-inner">
-					<p>© 2026 <strong>Programmers Lab</strong>. All rights reserved.</p>
-					<p>Designed &amp; Developed by <a href="#" style="color:#f07b14;">Programmers Lab Team</a></p>
-				</div>
-			</div>
-		</div>
-	</footer>
 
 	<!-- WhatsApp -->
 	<a href="https://wa.me/message/DROOVWVA3B5XK1" target="_blank" class="whatsapp-button">
@@ -590,6 +553,20 @@ body { padding-top: 68px; }
 			const success = document.getElementById('formSuccess');
 
 			success.style.display = 'none';
+
+			// Regex Validation
+			const name    = form.querySelector('[name="name"]').value.trim();
+			const email   = form.querySelector('[name="email"]').value.trim();
+			const phone   = form.querySelector('[name="phone"]').value.trim();
+			const subject = form.querySelector('[name="subject"]').value.trim();
+			const message = form.querySelector('[name="message"]').value.trim();
+
+			if (!name || name.length < 2) { alert('Please enter your full name (min 2 characters).'); return; }
+			if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { alert('Please enter a valid email address.'); return; }
+			if (phone && !/^[\d\+\-\s\(\)]{7,20}$/.test(phone)) { alert('Please enter a valid phone number.'); return; }
+			if (!subject) { alert('Please select a subject.'); return; }
+			if (!message || message.length < 10) { alert('Message must be at least 10 characters.'); return; }
+
 			btn.innerHTML = '<i class="fa fa-spinner fa-spin"></i> Sending...';
 			btn.disabled  = true;
 
@@ -619,5 +596,233 @@ body { padding-top: 68px; }
 		});
 	})();
 	</script>
-</body>
+<script src="js/course-price.js"></script>
+<script src="js/notice-popup.js"></script>
+
+<!-- ===== FAQ SECTION ===== -->
+<section style="background:#f8f9fc;padding:72px 0 80px;">
+    <div class="container">
+        <div style="text-align:center;margin-bottom:48px;">
+            <div style="display:inline-block;background:rgba(240,123,20,0.1);color:#f07b14;padding:6px 18px;border-radius:20px;font-size:12px;font-weight:700;letter-spacing:1px;text-transform:uppercase;margin-bottom:14px;">FAQ</div>
+            <h2 style="font-size:32px;font-weight:800;color:#0d1b2a;margin:0 0 10px;">Frequently Asked Questions</h2>
+            <p style="color:#6b7280;font-size:15px;max-width:520px;margin:0 auto;">Everything you need to know about Programmers Lab. Can't find an answer? <a href="#contactForm" style="color:#f07b14;font-weight:600;">Contact us</a>.</p>
+        </div>
+
+        <div style="max-width:780px;margin:0 auto;" id="faqAccordion">
+
+            <div style="background:#fff;border-radius:14px;margin-bottom:10px;border:1px solid #eef0f4;overflow:hidden;">
+                <button onclick="toggleFaq(0)" style="width:100%;display:flex;align-items:center;justify-content:space-between;padding:18px 24px;background:none;border:none;cursor:pointer;text-align:left;gap:12px;">
+                    <span style="font-size:15px;font-weight:700;color:#0d1b2a;line-height:1.4;">Where is Programmers Lab located?</span>
+                    <span id="faq-icon-0" style="width:28px;height:28px;border-radius:8px;background:rgba(240,123,20,0.1);color:#f07b14;display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0;">+</span>
+                </button>
+                <div id="faq-body-0" style="display:none;padding:0 24px 18px;">
+                    <div style="padding:14px 16px;background:#f9fafb;border-radius:10px;color:#374151;font-size:14px;line-height:1.7;">Office No. 8, First Floor, Mian Plaza, Chandni Chowk, Rawalpindi.</div>
+                </div>
+            </div>
+
+            <div style="background:#fff;border-radius:14px;margin-bottom:10px;border:1px solid #eef0f4;overflow:hidden;">
+                <button onclick="toggleFaq(1)" style="width:100%;display:flex;align-items:center;justify-content:space-between;padding:18px 24px;background:none;border:none;cursor:pointer;text-align:left;gap:12px;">
+                    <span style="font-size:15px;font-weight:700;color:#0d1b2a;line-height:1.4;">Does Programmers Lab have any other campus?</span>
+                    <span id="faq-icon-1" style="width:28px;height:28px;border-radius:8px;background:rgba(240,123,20,0.1);color:#f07b14;display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0;">+</span>
+                </button>
+                <div id="faq-body-1" style="display:none;padding:0 24px 18px;">
+                    <div style="padding:14px 16px;background:#f9fafb;border-radius:10px;color:#374151;font-size:14px;line-height:1.7;">No, we currently operate from a single campus in Rawalpindi.</div>
+                </div>
+            </div>
+
+            <div style="background:#fff;border-radius:14px;margin-bottom:10px;border:1px solid #eef0f4;overflow:hidden;">
+                <button onclick="toggleFaq(2)" style="width:100%;display:flex;align-items:center;justify-content:space-between;padding:18px 24px;background:none;border:none;cursor:pointer;text-align:left;gap:12px;">
+                    <span style="font-size:15px;font-weight:700;color:#0d1b2a;line-height:1.4;">What teaching methods do you employ?</span>
+                    <span id="faq-icon-2" style="width:28px;height:28px;border-radius:8px;background:rgba(240,123,20,0.1);color:#f07b14;display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0;">+</span>
+                </button>
+                <div id="faq-body-2" style="display:none;padding:0 24px 18px;">
+                    <div style="padding:14px 16px;background:#f9fafb;border-radius:10px;color:#374151;font-size:14px;line-height:1.7;">We believe in interactive and engaging teaching. Our instructors use a combination of lectures, practical exercises, group discussions, and hands-on projects to ensure a comprehensive learning experience.</div>
+                </div>
+            </div>
+
+            <div style="background:#fff;border-radius:14px;margin-bottom:10px;border:1px solid #eef0f4;overflow:hidden;">
+                <button onclick="toggleFaq(3)" style="width:100%;display:flex;align-items:center;justify-content:space-between;padding:18px 24px;background:none;border:none;cursor:pointer;text-align:left;gap:12px;">
+                    <span style="font-size:15px;font-weight:700;color:#0d1b2a;line-height:1.4;">Is there a refund policy?</span>
+                    <span id="faq-icon-3" style="width:28px;height:28px;border-radius:8px;background:rgba(240,123,20,0.1);color:#f07b14;display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0;">+</span>
+                </button>
+                <div id="faq-body-3" style="display:none;padding:0 24px 18px;">
+                    <div style="padding:14px 16px;background:#f9fafb;border-radius:10px;color:#374151;font-size:14px;line-height:1.7;">No, there is no refund policy. Once paid, fees are non-refundable under any circumstances — including withdrawal, failure to attend, disqualification, or personal reasons. Please ensure you understand and agree to this policy before making any payment.</div>
+                </div>
+            </div>
+
+            <div style="background:#fff;border-radius:14px;margin-bottom:10px;border:1px solid #eef0f4;overflow:hidden;">
+                <button onclick="toggleFaq(4)" style="width:100%;display:flex;align-items:center;justify-content:space-between;padding:18px 24px;background:none;border:none;cursor:pointer;text-align:left;gap:12px;">
+                    <span style="font-size:15px;font-weight:700;color:#0d1b2a;line-height:1.4;">Can I visit the institute or attend a trial class?</span>
+                    <span id="faq-icon-4" style="width:28px;height:28px;border-radius:8px;background:rgba(240,123,20,0.1);color:#f07b14;display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0;">+</span>
+                </button>
+                <div id="faq-body-4" style="display:none;padding:0 24px 18px;">
+                    <div style="padding:14px 16px;background:#f9fafb;border-radius:10px;color:#374151;font-size:14px;line-height:1.7;">Yes! We encourage prospective students to visit our institute and experience the environment firsthand. Trial classes may be available for certain courses. Please contact our team to arrange a visit or inquire about trial classes.</div>
+                </div>
+            </div>
+
+            <div style="background:#fff;border-radius:14px;margin-bottom:10px;border:1px solid #eef0f4;overflow:hidden;">
+                <button onclick="toggleFaq(5)" style="width:100%;display:flex;align-items:center;justify-content:space-between;padding:18px 24px;background:none;border:none;cursor:pointer;text-align:left;gap:12px;">
+                    <span style="font-size:15px;font-weight:700;color:#0d1b2a;line-height:1.4;">What career opportunities can I expect after completing a course?</span>
+                    <span id="faq-icon-5" style="width:28px;height:28px;border-radius:8px;background:rgba(240,123,20,0.1);color:#f07b14;display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0;">+</span>
+                </button>
+                <div id="faq-body-5" style="display:none;padding:0 24px 18px;">
+                    <div style="padding:14px 16px;background:#f9fafb;border-radius:10px;color:#374151;font-size:14px;line-height:1.7;">Our courses are designed to equip students with job-ready skills. Career opportunities vary by course. We also offer career guidance and support to help students transition into the workforce.</div>
+                </div>
+            </div>
+
+            <div style="background:#fff;border-radius:14px;margin-bottom:10px;border:1px solid #eef0f4;overflow:hidden;">
+                <button onclick="toggleFaq(6)" style="width:100%;display:flex;align-items:center;justify-content:space-between;padding:18px 24px;background:none;border:none;cursor:pointer;text-align:left;gap:12px;">
+                    <span style="font-size:15px;font-weight:700;color:#0d1b2a;line-height:1.4;">Are courses available online or in-person?</span>
+                    <span id="faq-icon-6" style="width:28px;height:28px;border-radius:8px;background:rgba(240,123,20,0.1);color:#f07b14;display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0;">+</span>
+                </button>
+                <div id="faq-body-6" style="display:none;padding:0 24px 18px;">
+                    <div style="padding:14px 16px;background:#f9fafb;border-radius:10px;color:#374151;font-size:14px;line-height:1.7;">We offer both online and in-person (onsite) courses to accommodate different learning preferences. You can choose the format that suits you best.</div>
+                </div>
+            </div>
+
+            <div style="background:#fff;border-radius:14px;margin-bottom:10px;border:1px solid #eef0f4;overflow:hidden;">
+                <button onclick="toggleFaq(7)" style="width:100%;display:flex;align-items:center;justify-content:space-between;padding:18px 24px;background:none;border:none;cursor:pointer;text-align:left;gap:12px;">
+                    <span style="font-size:15px;font-weight:700;color:#0d1b2a;line-height:1.4;">Do you provide study materials or textbooks?</span>
+                    <span id="faq-icon-7" style="width:28px;height:28px;border-radius:8px;background:rgba(240,123,20,0.1);color:#f07b14;display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0;">+</span>
+                </button>
+                <div id="faq-body-7" style="display:none;padding:0 24px 18px;">
+                    <div style="padding:14px 16px;background:#f9fafb;border-radius:10px;color:#374151;font-size:14px;line-height:1.7;">Yes, we provide study materials relevant to each course.</div>
+                </div>
+            </div>
+
+            <div style="background:#fff;border-radius:14px;margin-bottom:10px;border:1px solid #eef0f4;overflow:hidden;">
+                <button onclick="toggleFaq(8)" style="width:100%;display:flex;align-items:center;justify-content:space-between;padding:18px 24px;background:none;border:none;cursor:pointer;text-align:left;gap:12px;">
+                    <span style="font-size:15px;font-weight:700;color:#0d1b2a;line-height:1.4;">How can I apply for enrollment?</span>
+                    <span id="faq-icon-8" style="width:28px;height:28px;border-radius:8px;background:rgba(240,123,20,0.1);color:#f07b14;display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0;">+</span>
+                </button>
+                <div id="faq-body-8" style="display:none;padding:0 24px 18px;">
+                    <div style="padding:14px 16px;background:#f9fafb;border-radius:10px;color:#374151;font-size:14px;line-height:1.7;">You can enroll online by filling out our enrollment form on this website, or visit our admissions office in person at Mian Plaza, Chandni Chowk, Rawalpindi.</div>
+                </div>
+            </div>
+
+            <div style="background:#fff;border-radius:14px;margin-bottom:10px;border:1px solid #eef0f4;overflow:hidden;">
+                <button onclick="toggleFaq(9)" style="width:100%;display:flex;align-items:center;justify-content:space-between;padding:18px 24px;background:none;border:none;cursor:pointer;text-align:left;gap:12px;">
+                    <span style="font-size:15px;font-weight:700;color:#0d1b2a;line-height:1.4;">Are there internship or practical experience opportunities?</span>
+                    <span id="faq-icon-9" style="width:28px;height:28px;border-radius:8px;background:rgba(240,123,20,0.1);color:#f07b14;display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0;">+</span>
+                </button>
+                <div id="faq-body-9" style="display:none;padding:0 24px 18px;">
+                    <div style="padding:14px 16px;background:#f9fafb;border-radius:10px;color:#374151;font-size:14px;line-height:1.7;">Yes! Depending on the course, we offer internship programs and collaborations with local businesses to give students real-world experience in their field.</div>
+                </div>
+            </div>
+
+            <div style="background:#fff;border-radius:14px;margin-bottom:10px;border:1px solid #eef0f4;overflow:hidden;">
+                <button onclick="toggleFaq(10)" style="width:100%;display:flex;align-items:center;justify-content:space-between;padding:18px 24px;background:none;border:none;cursor:pointer;text-align:left;gap:12px;">
+                    <span style="font-size:15px;font-weight:700;color:#0d1b2a;line-height:1.4;">What support services do you offer to students?</span>
+                    <span id="faq-icon-10" style="width:28px;height:28px;border-radius:8px;background:rgba(240,123,20,0.1);color:#f07b14;display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0;">+</span>
+                </button>
+                <div id="faq-body-10" style="display:none;padding:0 24px 18px;">
+                    <div style="padding:14px 16px;background:#f9fafb;border-radius:10px;color:#374151;font-size:14px;line-height:1.7;">We offer academic advising, career counseling, and access to learning resources. We prioritize the overall well-being and academic growth of every student.</div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<script>
+function toggleFaq(i) {
+    const body = document.getElementById('faq-body-' + i);
+    const icon = document.getElementById('faq-icon-' + i);
+    const isOpen = body.style.display === 'block';
+    // Close all
+    document.querySelectorAll('[id^="faq-body-"]').forEach(function(el) { el.style.display = 'none'; });
+    document.querySelectorAll('[id^="faq-icon-"]').forEach(function(el) { el.textContent = '+'; el.style.transform = 'rotate(0deg)'; });
+    // Open clicked if it was closed
+    if (!isOpen) {
+        body.style.display = 'block';
+        icon.textContent = '−';
+        icon.style.transform = 'rotate(0deg)';
+    }
+}
+</script>
+
+<!-- WhatsApp -->
+<a href="https://wa.me/message/DROOVWVA3B5XK1" target="_blank" class="whatsapp-button">
+	<img src="img/WHATSAPICON.png" alt="WhatsApp Chat"/>
+</a>
+
+<!-- Footer -->
+<footer class="pl-footer">
+	<div class="pl-footer-main">
+		<div class="container">
+			<div class="pl-footer-grid">
+				<div class="pl-footer-brand">
+					<div class="pl-footer-logo"><span style="color:#f07b14;">Programmers</span> Lab</div>
+					<p>A leading IT training institute &amp; software house in Rawalpindi. We offer 30+ professional courses and real-world project experience.</p>
+					<div class="pl-footer-contact">
+						<a href="https://www.google.com/maps/place/Programmers+Lab+Training+Institute/@33.631884,73.0705072,17z" target="_blank"><i class="fa fa-map-marker"></i> Office No. 8, First Floor, Mian Plaza, Chandni Chowk, Rawalpindi</a>
+						<a href="tel:+923331912898"><i class="fa fa-phone"></i> +92 333 1912898</a>
+						<a href="mailto:infoprogrammerslabs@gmail.com"><i class="fa fa-envelope"></i> infoprogrammerslabs@gmail.com</a>
+					</div>
+				</div>
+				<div class="pl-footer-col">
+					<h5>Courses</h5>
+					<ul>
+						<li><a href="best-web-development-courses-in-rawalpindi.html"><i class="fa fa-chevron-right"></i> Web Development</a></li>
+						<li><a href="best-mobile-app-development-courses-in-rawalpindi.html"><i class="fa fa-chevron-right"></i> Mobile App Dev</a></li>
+						<li><a href="best-designing-courses-rawalpidni.html"><i class="fa fa-chevron-right"></i> Graphic Designing</a></li>
+						<li><a href="best-digital-marketing-course-rawalpidni.html"><i class="fa fa-chevron-right"></i> Digital Marketing</a></li>
+						<li><a href="best-programming-courses-institute-in-rawalpidni-islamabad.html"><i class="fa fa-chevron-right"></i> Programming</a></li>
+						<li><a href="best-freelancing-institute-in-rawalpindi-islamabd.html"><i class="fa fa-chevron-right"></i> Freelancing</a></li>
+					</ul>
+				</div>
+				<div class="pl-footer-col">
+					<h5>Quick Links</h5>
+					<ul>
+						<li><a href="index.html"><i class="fa fa-chevron-right"></i> Home</a></li>
+						<li><a href="best-computer-courses-rawalpidni.html"><i class="fa fa-chevron-right"></i> All Courses</a></li>
+						<li><a href="services.html"><i class="fa fa-chevron-right"></i> Services</a></li>
+						<li><a href="career.html"><i class="fa fa-chevron-right"></i> Career</a></li>
+						<li><a href="enroll-form.html"><i class="fa fa-chevron-right"></i> Enroll Now</a></li>
+						<li><a href="student-portal.html"><i class="fa fa-chevron-right"></i> Check Certificate</a></li>
+					</ul>
+				</div>
+				<div class="pl-footer-col">
+					<h5>Follow Us</h5>
+					<div class="pl-footer-socials">
+						<a href="https://www.facebook.com/programmerslabs" target="_blank" class="pl-social-btn" style="--sc:#1877f2"><i class="fab fa-facebook-f"></i></a>
+						<a href="https://www.instagram.com/programmers_lab_institute/" target="_blank" class="pl-social-btn" style="--sc:#e1306c"><i class="fab fa-instagram"></i></a>
+						<a href="https://www.linkedin.com/company/programmerslabs/" target="_blank" class="pl-social-btn" style="--sc:#0a66c2"><i class="fab fa-linkedin-in"></i></a>
+						<a href="https://youtube.com/@programmerslabs" target="_blank" class="pl-social-btn" style="--sc:#ff0000"><i class="fab fa-youtube"></i></a>
+						<a href="https://wa.me/03331912898" target="_blank" class="pl-social-btn" style="--sc:#25d366"><i class="fab fa-whatsapp"></i></a>
+						<a href="https://twitter.com/progra39834" target="_blank" class="pl-social-btn" style="--sc:#1da1f2"><i class="fab fa-twitter"></i></a>
+					</div>
+					<div class="pl-footer-hours">
+						<h5>Office Hours</h5>
+						<p><i class="fa fa-calendar"></i> Monday – Saturday</p>
+						<p><i class="fa fa-clock-o"></i> 09:00 AM – 06:00 PM</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="pl-footer-bottom">
+		<div class="container">
+			<div class="pl-footer-bottom-inner">
+				<p>© 2026 <strong>Programmers Lab</strong>. All rights reserved.</p>
+				<p>Designed &amp; Developed by <a href="#" style="color:#f07b14;">Programmers Lab Team</a></p>
+			</div>
+		</div>
+	</div>
+</footer>
+
+<script>
+// Smart nav: show profile if logged in
+fetch('user-session.php').then(function(r){return r.json();}).then(function(d){
+    var el = document.getElementById('pl-auth-nav');
+    if (!el) return;
+    if (d.logged_in) {
+        var initLetter = (d.name && d.name.length > 0) ? d.name[0].toUpperCase() : '?';
+        el.innerHTML = '<a href="user-profile.php" style="display:inline-flex;align-items:center;gap:7px;padding:5px 14px 5px 5px;background:rgba(240,123,20,.12);color:#f07b14;border-radius:50px;font-size:13.5px;font-weight:700;text-decoration:none;border:1.5px solid rgba(240,123,20,.3);">'
+            + '<span style="width:32px;height:32px;border-radius:50%;background:linear-gradient(135deg,#f07b14,#d96a00);display:inline-flex;align-items:center;justify-content:center;color:#fff;font-size:14px;font-weight:900;flex-shrink:0;">' + initLetter + '</span>'
+            + ' ' + d.name.split(' ')[0]
+            + '</a>';
+    }
+}).catch(function(){});
+</script></body>
 </html>

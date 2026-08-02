@@ -1,38 +1,57 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <title>404</title>
+    <title>404 — Page Not Found | Programmers Lab</title>
     <meta charset="UTF-8">
-    <meta name="description" content="Internship in rawalpindi">
-    <meta name="keywords"
-        content="HTML,CSS,Javascript,Flutter,React-Native,React JS,Adobe,Illustrator,Photoshop,Ios, .net">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Favicon -->
-    <link href="img//favicon-16x16.png" rel="shortcut icon" />
-
-
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Raleway:400,400i,500,500i,600,600i,700,700i,800,800i"
-        rel="stylesheet">
-
-    <!-- Stylesheets -->
-    <link rel="stylesheet" href="css/bootstrap.min.css" />
-    <link rel="stylesheet" href="css/font-awesome.min.css" />
-    <link rel="stylesheet" href="css/owl.carousel.css" />
-    <link rel="stylesheet" href="css/style.css" />
-    <link rel="stylesheet" href="css/extrastyles.css">
-<link rel="stylesheet" href="css/course-detail.css"/>
-
+    <meta name="robots" content="noindex,nofollow">
+    <link href="img/favicon-16x16.png" rel="shortcut icon"/>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link rel="stylesheet" href="css/course-detail.css"/>
+    <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html,body{height:100%}
+    body{font-family:'Inter',sans-serif;background:#f0f4f8;min-height:100vh;display:flex;flex-direction:column;}
+
+    /* ── 404 HERO ── */
+    .err-main{flex:1;display:flex;align-items:center;justify-content:center;padding:60px 20px;}
+    .err-card{background:#fff;border-radius:24px;box-shadow:0 12px 48px rgba(0,0,0,.1);max-width:580px;width:100%;padding:56px 48px;text-align:center;}
+
+    .err-code{font-size:clamp(80px,18vw,140px);font-weight:900;line-height:1;background:linear-gradient(135deg,#f07b14,#d96a00);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:8px;letter-spacing:-4px;}
+    .err-icon{font-size:52px;margin-bottom:16px;display:block;color:#f07b14;}
+    .err-title{font-size:26px;font-weight:800;color:#0d1b2a;margin-bottom:10px;}
+    .err-desc{font-size:15px;color:#6b7280;line-height:1.7;margin-bottom:32px;max-width:400px;margin-left:auto;margin-right:auto;}
+
+    .err-actions{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-bottom:36px;}
+    .err-btn-primary{display:inline-flex;align-items:center;gap:8px;padding:13px 28px;background:#f07b14;color:#fff;border-radius:50px;font-size:14px;font-weight:700;text-decoration:none;transition:background .2s,transform .2s;}
+    .err-btn-primary:hover{background:#d96a00;transform:translateY(-2px);text-decoration:none;color:#fff;}
+    .err-btn-outline{display:inline-flex;align-items:center;gap:8px;padding:13px 28px;background:#fff;color:#374151;border:1.5px solid #e5e7eb;border-radius:50px;font-size:14px;font-weight:700;text-decoration:none;transition:all .2s;}
+    .err-btn-outline:hover{border-color:#f07b14;color:#f07b14;text-decoration:none;}
+
+    .err-divider{border:none;border-top:1px solid #f0f0f0;margin-bottom:28px;}
+
+    .err-links-title{font-size:13px;font-weight:700;color:#9ca3af;text-transform:uppercase;letter-spacing:.8px;margin-bottom:16px;}
+    .err-links{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;}
+    .err-link{display:inline-flex;align-items:center;gap:6px;padding:8px 16px;background:#f9fafb;border:1px solid #e5e7eb;border-radius:50px;font-size:13px;font-weight:600;color:#374151;text-decoration:none;transition:all .2s;}
+    .err-link:hover{background:rgba(240,123,20,.08);border-color:#f07b14;color:#f07b14;text-decoration:none;}
+    .err-link i{font-size:11px;color:#9ca3af;}
+
+    /* ── FOOTER ── */
+    .err-footer{background:#0d1b2a;color:rgba(255,255,255,.4);text-align:center;padding:18px;font-size:12.5px;flex-shrink:0;}
+    .err-footer strong{color:rgba(255,255,255,.65);}
+    .err-footer a{color:rgba(255,255,255,.4);text-decoration:none;}
+
+    @media(max-width:480px){
+        .err-card{padding:40px 24px;}
+        .err-actions{flex-direction:column;align-items:center;}
+        .err-btn-primary,.err-btn-outline{width:100%;justify-content:center;}
+    }
+    </style>
 </head>
-
 <body>
-    <!-- Page Preloder -->
-    <div id="preloder"><div class="loader"><span></span><span></span><span></span></div></div>
 
-
-    <!-- Header section -->
+<!-- NAVBAR -->
 <header class="pl-navbar" id="plNavbar">
 <div class="container">
 <div class="pl-nav-inner">
@@ -41,7 +60,7 @@
 <ul>
 <li><a href="index.html" class="pl-nav-link">Home</a></li>
 <li class="pl-nav-dropdown">
-<a href="best-computer-courses-rawalpidni.html" class="pl-nav-link active">Courses <i class="fa fa-angle-down"></i></a>
+<a href="best-computer-courses-rawalpidni.html" class="pl-nav-link">Courses <i class="fa fa-angle-down"></i></a>
 <div class="pl-dropdown-panel"><div class="pl-dp-grid">
 <a href="best-web-development-courses-in-rawalpindi.html" class="pl-dp-item"><span class="pl-dp-icon" style="background:rgba(240,123,20,0.12);color:#f07b14;"><i class="fa fa-code"></i></span><span>Web Development</span></a>
 <a href="best-mobile-app-development-courses-in-rawalpindi.html" class="pl-dp-item"><span class="pl-dp-icon" style="background:rgba(0,148,217,0.12);color:#0094d9;"><i class="fa fa-mobile"></i></span><span>Mobile App Dev</span></a>
@@ -50,12 +69,14 @@
 <a href="best-programming-courses-institute-in-rawalpidni-islamabad.html" class="pl-dp-item"><span class="pl-dp-icon" style="background:rgba(245,158,11,0.12);color:#f59e0b;"><i class="fa fa-terminal"></i></span><span>Programming</span></a>
 <a href="best-freelancing-institute-in-rawalpindi-islamabd.html" class="pl-dp-item"><span class="pl-dp-icon" style="background:rgba(236,72,153,0.12);color:#ec4899;"><i class="fa fa-briefcase"></i></span><span>Freelancing</span></a>
 <a href="best-database-courses-institute-in-rawalpidni-islamabad.html" class="pl-dp-item"><span class="pl-dp-icon" style="background:rgba(6,182,212,0.12);color:#06b6d4;"><i class="fa fa-database"></i></span><span>Database Mgmt</span></a>
-<a href="best-computer-courses-rawalpidni.html" class="pl-dp-item"><span class="pl-dp-icon" style="background:rgba(99,102,241,0.12);color:#6366f1;"><i class="fa fa-th-large"></i></span><span>All Courses</span></a>
+<a href="best-computer-courses-rawalpidni.html" class="pl-dp-item"><span class="pl-dp-icon" style="background:rgba(99,102,241,0.12);color:#6366f1;"><i class="fa fa-th-large"></i></span><span>All Courses →</span></a>
 </div></div>
 </li>
 <li><a href="services.html" class="pl-nav-link">Services</a></li>
 <li><a href="career.html" class="pl-nav-link">Career</a></li>
 <li><a href="prgrammers-lab-contact.html" class="pl-nav-link">Contact</a></li>
+<li><a href="student-portal.html" class="pl-nav-link">Check Certificate</a></li>
+<li id="pl-auth-nav"><a href="auth.php" class="pl-nav-link" style="color:#f07b14;font-weight:700;"><i class="fas fa-user"></i> Login</a></li>
 </ul>
 <a href="enroll-form.html" class="pl-mobile-enroll">Enroll Now</a>
 </nav>
@@ -66,104 +87,73 @@
 </div>
 </div>
 </header>
-<!-- Header section end -->
 
+<!-- 404 CONTENT -->
+<div class="err-main">
+    <div class="err-card">
 
+        <span class="err-icon"><i class="fas fa-search" style="color:#f07b14;"></i></span>
+        <div class="err-code">404</div>
+        <h1 class="err-title">Page Not Found</h1>
+        <p class="err-desc">Oops! The page you're looking for doesn't exist or has been moved. Let's get you back on track.</p>
 
-
-
-
-
-    <!-- banner section -->
-    <section class="banner-section spad">
-        <div class="container">
-            <div class="section-title mb-0 pb-2">
-                <h1>404 </h1>
-                <h3>Page Not Found</h3>
-            </div>
+        <div class="err-actions">
+            <a href="index.html" class="err-btn-primary">
+                <i class="fas fa-home"></i> Back to Home
+            </a>
+            <a href="best-computer-courses-rawalpidni.html" class="err-btn-outline">
+                <i class="fas fa-graduation-cap"></i> Browse Courses
+            </a>
         </div>
-    </section>
-    <!-- banner section end -->
 
+        <hr class="err-divider">
 
-    <!-- footer section -->
-<footer class="pl-footer">
-<div class="pl-footer-main">
-<div class="container">
-<div class="pl-footer-grid">
-<div class="pl-footer-brand">
-<div class="pl-footer-logo"><span style="color:#f07b14;">Programmers</span> Lab</div>
-<p>A leading IT training institute &amp; software house in Rawalpindi. 30+ professional courses and real-world project experience.</p>
-<div class="pl-footer-contact">
-<a href="https://www.google.com/maps/place/Programmers+Lab+Training+Institute/@33.631884,73.0705072,17z" target="_blank"><i class="fa fa-map-marker"></i> Office No. 8, First Floor, Mian Plaza, Chandni Chowk, Rawalpindi</a>
-<a href="tel:+923331912898"><i class="fa fa-phone"></i> +92 333 1912898</a>
-<a href="mailto:infoprogrammerslabs@gmail.com"><i class="fa fa-envelope"></i> infoprogrammerslabs@gmail.com</a>
+        <p class="err-links-title">Popular Pages</p>
+        <div class="err-links">
+            <a href="best-web-development-courses-in-rawalpindi.html" class="err-link"><i class="fas fa-code"></i> Web Development</a>
+            <a href="best-mobile-app-development-courses-in-rawalpindi.html" class="err-link"><i class="fas fa-mobile-alt"></i> Mobile Apps</a>
+            <a href="best-designing-courses-rawalpidni.html" class="err-link"><i class="fas fa-paint-brush"></i> Designing</a>
+            <a href="best-digital-marketing-course-rawalpidni.html" class="err-link"><i class="fas fa-bullhorn"></i> Digital Marketing</a>
+            <a href="enroll-form.php" class="err-link"><i class="fas fa-user-plus"></i> Enroll Now</a>
+            <a href="prgrammers-lab-contact.html" class="err-link"><i class="fas fa-envelope"></i> Contact Us</a>
+        </div>
+
+    </div>
 </div>
-</div>
-<div class="pl-footer-col">
-<h5>Courses</h5>
-<ul>
-<li><a href="best-web-development-courses-in-rawalpindi.html"><i class="fa fa-chevron-right"></i> Web Development</a></li>
-<li><a href="best-mobile-app-development-courses-in-rawalpindi.html"><i class="fa fa-chevron-right"></i> Mobile App Dev</a></li>
-<li><a href="best-designing-courses-rawalpidni.html"><i class="fa fa-chevron-right"></i> Graphic Designing</a></li>
-<li><a href="best-digital-marketing-course-rawalpidni.html"><i class="fa fa-chevron-right"></i> Digital Marketing</a></li>
-<li><a href="best-programming-courses-institute-in-rawalpidni-islamabad.html"><i class="fa fa-chevron-right"></i> Programming</a></li>
-<li><a href="best-freelancing-institute-in-rawalpindi-islamabd.html"><i class="fa fa-chevron-right"></i> Freelancing</a></li>
-</ul>
-</div>
-<div class="pl-footer-col">
-<h5>Quick Links</h5>
-<ul>
-<li><a href="index.html"><i class="fa fa-chevron-right"></i> Home</a></li>
-<li><a href="best-computer-courses-rawalpidni.html"><i class="fa fa-chevron-right"></i> All Courses</a></li>
-<li><a href="services.html"><i class="fa fa-chevron-right"></i> Services</a></li>
-<li><a href="enroll-form.html"><i class="fa fa-chevron-right"></i> Enroll Now</a></li>
-<li><a href="prgrammers-lab-contact.html"><i class="fa fa-chevron-right"></i> Contact Us</a></li>
-</ul>
-</div>
-<div class="pl-footer-col">
-<h5>Follow Us</h5>
-<div class="pl-footer-socials">
-<a href="https://www.facebook.com/programmerslabs" target="_blank" class="pl-social-btn" style="--sc:#1877f2"><i class="fab fa-facebook-f"></i></a>
-<a href="https://www.instagram.com/programmers_lab_institute/" target="_blank" class="pl-social-btn" style="--sc:#e1306c"><i class="fab fa-instagram"></i></a>
-<a href="https://www.linkedin.com/company/programmerslabs/" target="_blank" class="pl-social-btn" style="--sc:#0a66c2"><i class="fab fa-linkedin-in"></i></a>
-<a href="https://youtube.com/@programmerslabs" target="_blank" class="pl-social-btn" style="--sc:#ff0000"><i class="fab fa-youtube"></i></a>
-<a href="https://wa.me/03331912898" target="_blank" class="pl-social-btn" style="--sc:#25d366"><i class="fab fa-whatsapp"></i></a>
-<a href="https://twitter.com/progra39834" target="_blank" class="pl-social-btn" style="--sc:#1da1f2"><i class="fab fa-twitter"></i></a>
-</div>
-<div class="pl-footer-hours">
-<h5>Office Hours</h5>
-<p><i class="fa fa-calendar"></i> Monday - Saturday</p>
-<p><i class="fa fa-clock-o"></i> 09:00 AM - 06:00 PM</p>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="pl-footer-bottom">
-<div class="container">
-<div class="pl-footer-bottom-inner">
-<p>2026 <strong>Programmers Lab</strong>. All rights reserved.</p>
-<p>Designed &amp; Developed by <a href="#" style="color:#f07b14;">Programmers Lab Team</a></p>
-</div>
-</div>
-</div>
+
+<!-- FOOTER -->
+<footer class="err-footer">
+    © 2026 <strong>Programmers Lab</strong> — Rawalpindi's #1 IT Institute &nbsp;|&nbsp;
+    <a href="prgrammers-lab-contact.html">Contact Us</a>
 </footer>
-<!-- footer section end -->
 
+<a href="https://wa.me/message/DROOVWVA3B5XK1" target="_blank" class="whatsapp-button">
+    <img src="img/WHATSAPICON.png" alt="WhatsApp Chat"/>
+</a>
 
-    <a href="https://wa.me/message/DROOVWVA3B5XK1" target="_blank" class="whatsapp-button">
-        <img src="img/WHATSAPICON.png" alt="WhatsApp Chat" />
-    </a>
-
-
-    <!--====== Javascripts & Jquery ======-->
-    <script src="js/jquery-3.2.1.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/mixitup.min.js"></script>
-    <script src="js/circle-progress.min.js"></script>
-    <script src="js/owl.carousel.min.js"></script>
-    <script src="js/main.js"></script>
+<script src="js/jquery-3.2.1.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/main.js"></script>
+<script>
+var nav=document.getElementById('plNavbar');
+window.addEventListener('scroll',function(){nav.classList.toggle('scrolled',window.scrollY>40);});
+var ham=document.getElementById('plHamburger'),menu=document.getElementById('plNavMenu');
+ham.addEventListener('click',function(){ham.classList.toggle('open');menu.classList.toggle('open');});
+document.querySelectorAll('.pl-nav-dropdown').forEach(function(dd){
+    dd.querySelector('.pl-nav-link').addEventListener('click',function(e){
+        if(window.innerWidth<=991){e.preventDefault();dd.classList.toggle('open');}
+    });
+});
+// Smart nav login state
+fetch('user-session.php').then(function(r){return r.json();}).then(function(d){
+    var el=document.getElementById('pl-auth-nav');
+    if(!el)return;
+    if(d.logged_in){
+        el.innerHTML='<a href="user-profile.php" style="display:inline-flex;align-items:center;gap:6px;padding:7px 14px;background:rgba(240,123,20,.1);color:#f07b14;border-radius:50px;font-size:13px;font-weight:700;text-decoration:none;"><i class=\"fas fa-user-circle\"></i> '+d.name.split(' ')[0]+'</a>';
+    }
+}).catch(function(){});
+</script>
+<script src="js/notice-popup.js"></script>
 </body>
-
 </html>
+    

@@ -1,0 +1,354 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Check Certificate — Programmers Lab</title>
+<meta name="description" content="Check your enrollment certificate status at Programmers Lab Rawalpindi.">
+<meta name="robots" content="noindex,nofollow">
+<link href="img/favicon-16x16.png" rel="shortcut icon"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%}
+body{font-family:'Inter',sans-serif;background:#f0f4f8;display:flex;flex-direction:column;min-height:100vh;}
+
+/* NAV */
+.sp-nav{background:#0d1b2a;padding:14px 24px;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-shrink:0;}
+.sp-nav-logo{color:#fff;font-size:18px;font-weight:800;text-decoration:none;flex-shrink:0}
+.sp-nav-logo span{color:#f07b14}
+.sp-nav .sp-nav-links{list-style:none;display:flex;align-items:center;gap:2px;margin:0;padding:0;}
+.sp-nav .sp-nav-links li a{color:rgba(255,255,255,.6);font-size:13px;font-weight:500;padding:7px 11px;border-radius:8px;text-decoration:none;transition:all .2s;}
+.sp-nav .sp-nav-links li a:hover{color:#fff;background:rgba(255,255,255,.07);}
+@media(max-width:768px){.sp-nav .sp-nav-links{display:none;}}
+
+/* HERO */
+.sp-hero{background:linear-gradient(135deg,#0d1b2a 0%,#1a3a5c 100%);padding:48px 24px 72px;text-align:center;color:#fff;flex-shrink:0;}
+.sp-hero-badge{display:inline-flex;align-items:center;gap:7px;background:rgba(240,123,20,.15);border:1px solid rgba(240,123,20,.3);color:#f07b14;padding:6px 18px;border-radius:50px;font-size:12px;font-weight:700;letter-spacing:.8px;text-transform:uppercase;margin-bottom:18px}
+.sp-hero h1{font-size:clamp(22px,4vw,36px);font-weight:800;margin-bottom:10px;line-height:1.2}
+.sp-hero p{color:rgba(255,255,255,.65);font-size:15px;max-width:480px;margin:0 auto}
+
+/* MAIN */
+.sp-main{flex:1;padding:0 16px 56px;margin-top:-40px;display:flex;flex-direction:column;}
+.sp-card{background:#fff;border-radius:20px;box-shadow:0 8px 48px rgba(0,0,0,.12);max-width:520px;width:100%;margin:0 auto;overflow:hidden;}
+
+/* FORM SECTION */
+.sp-form-wrap{padding:36px 32px}
+.sp-form-wrap h2{font-size:18px;font-weight:800;color:#0d1b2a;margin-bottom:6px}
+.sp-form-wrap > p{font-size:13.5px;color:#6b7280;margin-bottom:22px}
+
+.sp-info-note{display:flex;align-items:flex-start;gap:10px;background:#f0f9ff;border:1px solid #bae6fd;border-radius:10px;padding:12px 14px;margin-bottom:22px;font-size:13px;color:#0369a1;}
+.sp-info-note i{margin-top:2px;flex-shrink:0;font-size:13px;}
+
+.sp-field{margin-bottom:20px}
+.sp-field label{display:block;font-size:12px;font-weight:700;color:#374151;text-transform:uppercase;letter-spacing:.5px;margin-bottom:7px}
+.sp-field input{width:100%;padding:13px 16px;border:1.5px solid #e5e7eb;border-radius:12px;font-size:14px;font-weight:500;color:#0d1b2a;outline:none;transition:border-color .2s,box-shadow .2s;font-family:inherit}
+.sp-field input:focus{border-color:#f07b14;box-shadow:0 0 0 3px rgba(240,123,20,.12)}
+.sp-field input.error{border-color:#ef4444}
+.sp-field .sp-hint{font-size:11.5px;color:#9ca3af;margin-top:6px;display:flex;align-items:center;gap:4px;}
+
+.sp-btn{width:100%;padding:14px;background:#f07b14;color:#fff;border:none;border-radius:12px;font-size:15px;font-weight:700;cursor:pointer;transition:background .2s,transform .2s;display:flex;align-items:center;justify-content:center;gap:10px;margin-top:4px;font-family:inherit}
+.sp-btn:hover{background:#d96a00;transform:translateY(-1px)}
+.sp-btn:disabled{background:#9ca3af;cursor:not-allowed;transform:none}
+
+.sp-error-box{background:#fef2f2;border:1px solid #fecaca;border-radius:10px;padding:13px 16px;margin-bottom:18px;font-size:13.5px;color:#dc2626;display:none;align-items:center;gap:8px}
+.sp-rate-box{background:#fff7ed;border:1px solid #fed7aa;border-radius:10px;padding:13px 16px;margin-bottom:18px;font-size:13.5px;color:#c2410c;display:none;align-items:center;gap:8px}
+
+/* RESULT SECTION */
+.sp-result{display:none}
+.sp-result-header{background:linear-gradient(135deg,#0d1b2a,#1a3a5c);padding:28px 32px;color:#fff}
+.sp-result-header .sp-enrolled-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(16,185,129,.2);border:1px solid rgba(16,185,129,.4);color:#6ee7b7;padding:5px 14px;border-radius:50px;font-size:12px;font-weight:700;margin-bottom:14px}
+.sp-result-header h3{font-size:20px;font-weight:800;margin-bottom:4px}
+.sp-result-header p{font-size:13px;color:rgba(255,255,255,.6)}
+.sp-result-body{padding:28px 32px}
+.sp-info-row{display:flex;padding:13px 0;border-bottom:1px solid #f3f4f6;align-items:flex-start;gap:12px}
+.sp-info-row:last-child{border-bottom:none}
+.sp-info-icon{width:34px;height:34px;border-radius:9px;background:rgba(240,123,20,.1);display:flex;align-items:center;justify-content:center;color:#f07b14;font-size:13px;flex-shrink:0;margin-top:1px}
+.sp-info-label{font-size:11px;font-weight:700;color:#9ca3af;text-transform:uppercase;letter-spacing:.5px;display:block;margin-bottom:3px}
+.sp-info-value{font-size:14.5px;font-weight:600;color:#0d1b2a}
+.sp-status-badge{display:inline-flex;align-items:center;gap:6px;padding:5px 14px;border-radius:50px;font-size:12.5px;font-weight:700}
+.sp-status-active{background:rgba(16,185,129,.1);color:#059669}
+.sp-status-pending{background:rgba(245,158,11,.1);color:#d97706}
+.sp-status-inactive{background:rgba(239,68,68,.1);color:#dc2626}
+.sp-back-btn{display:flex;align-items:center;gap:8px;margin:20px 32px 32px;padding:11px 20px;background:#f9fafb;border:1.5px solid #e5e7eb;border-radius:10px;font-size:13.5px;font-weight:600;color:#374151;cursor:pointer;width:fit-content;transition:all .2s;font-family:inherit}
+.sp-back-btn:hover{background:#f3f4f6;border-color:#d1d5db}
+
+/* NOT FOUND */
+.sp-notfound{padding:44px 32px;text-align:center}
+.sp-notfound .sp-nf-icon{font-size:52px;margin-bottom:16px;display:block}
+.sp-notfound h3{font-size:18px;font-weight:800;color:#0d1b2a;margin-bottom:8px}
+.sp-notfound p{font-size:13.5px;color:#6b7280;margin-bottom:22px;line-height:1.6}
+.sp-notfound .sp-try-btn{display:inline-flex;align-items:center;gap:8px;padding:11px 22px;background:#f07b14;color:#fff;border:none;border-radius:10px;font-size:14px;font-weight:700;cursor:pointer;font-family:inherit}
+
+/* FOOTER — always at page bottom */
+.sp-footer{background:#0d1b2a;color:rgba(255,255,255,.4);text-align:center;padding:22px 16px;font-size:12.5px;flex-shrink:0;margin-top:auto;}
+.sp-footer strong{color:rgba(255,255,255,.7)}
+.sp-footer a{color:rgba(255,255,255,.45);text-decoration:none;}
+.sp-footer a:hover{color:rgba(255,255,255,.75);}
+
+@media(max-width:480px){
+    .sp-form-wrap,.sp-result-body,.sp-result-header{padding:24px 20px}
+    .sp-back-btn{margin:16px 20px 24px}
+    .sp-main{padding:0 12px 40px;}
+}
+</style>
+</head>
+<body>
+
+<nav class="sp-nav">
+    <a href="index.html" class="sp-nav-logo"><span>Programmers</span> Lab</a>
+    <ul class="sp-nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="best-computer-courses-rawalpidni.html">Courses</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="career.html">Career</a></li>
+        <li><a href="prgrammers-lab-contact.html">Contact</a></li>
+        <li><a href="student-portal.html" style="color:#f07b14;font-weight:700;background:rgba(240,123,20,.12);">Check Certificate</a></li>
+    </ul>
+    <a href="enroll-form.html" style="display:inline-flex;align-items:center;padding:8px 18px;background:#f07b14;color:#fff;border-radius:50px;font-size:13px;font-weight:700;text-decoration:none;white-space:nowrap;">Enroll Now</a>
+</nav>
+
+<div class="sp-hero">
+    <div class="sp-hero-badge"><i class="fas fa-certificate"></i> Certificate Verification</div>
+    <h1>Check Your Enrollment Certificate</h1>
+    <p>Enter your CNIC number to verify your enrollment and course details at Programmers Lab.</p>
+</div>
+
+<div class="sp-main">
+    <div class="sp-card">
+
+        <!-- SEARCH FORM -->
+        <div class="sp-form-wrap" id="searchSection">
+            <h2>Verify Your Enrollment</h2>
+            <p>Enter your CNIC to check your enrollment and certificate status.</p>
+
+            <div class="sp-info-note">
+                <i class="fas fa-shield-alt"></i>
+                <span>Your CNIC is used only to look up your enrollment record. We do not store or share this information.</span>
+            </div>
+
+            <div class="sp-error-box" id="errorBox">
+                <i class="fas fa-exclamation-circle"></i>
+                <span id="errorMsg">Something went wrong.</span>
+            </div>
+            <div class="sp-rate-box" id="rateBox">
+                <i class="fas fa-clock"></i>
+                <span>Too many attempts. Please wait before trying again.</span>
+            </div>
+
+            <div class="sp-field">
+                <label>CNIC Number *</label>
+                <input type="text" id="inputCnic" placeholder="12345-6789012-3" maxlength="15" autocomplete="off">
+                <div class="sp-hint"><i class="fas fa-info-circle" style="font-size:10px;"></i> Format: XXXXX-XXXXXXX-X (with dashes)</div>
+            </div>
+
+            <button class="sp-btn" id="searchBtn" onclick="searchStudent()">
+                <i class="fas fa-search"></i> Check Certificate
+            </button>
+        </div>
+
+        <!-- RESULT -->
+        <div class="sp-result" id="resultSection"></div>
+
+    </div>
+</div>
+
+<footer class="sp-footer">
+    © 2026 <strong>Programmers Lab</strong> — Rawalpindi's #1 IT Institute &nbsp;|&nbsp;
+    <a href="prgrammers-lab-contact.html">Contact Us</a>
+</footer>
+
+<script>
+(function () {
+    'use strict';
+
+    const RL_KEY    = 'sp_attempts';
+    const RL_MAX    = 5;
+    const RL_WINDOW = 10 * 60 * 1000;
+
+    function getRateData() {
+        try { return JSON.parse(sessionStorage.getItem(RL_KEY) || '{"count":0,"since":0}'); }
+        catch (e) { return { count: 0, since: 0 }; }
+    }
+    function setRateData(d) {
+        try { sessionStorage.setItem(RL_KEY, JSON.stringify(d)); } catch (e) {}
+    }
+    function isRateLimited() {
+        const d = getRateData(), now = Date.now();
+        if (now - d.since > RL_WINDOW) { setRateData({ count: 0, since: now }); return false; }
+        return d.count >= RL_MAX;
+    }
+    function incrementRate() {
+        const d = getRateData(), now = Date.now();
+        if (now - d.since > RL_WINDOW) { setRateData({ count: 1, since: now }); return; }
+        setRateData({ count: d.count + 1, since: d.since });
+    }
+
+    function esc(str) {
+        const d = document.createElement('div');
+        d.appendChild(document.createTextNode(str || ''));
+        return d.innerHTML;
+    }
+
+    function validCnic(c) {
+        return /^\d{5}-\d{7}-\d$/.test(c.trim());
+    }
+
+    document.getElementById('inputCnic').addEventListener('input', function () {
+        let v = this.value.replace(/[^0-9]/g, '');
+        if (v.length > 5)  v = v.slice(0,5)  + '-' + v.slice(5);
+        if (v.length > 13) v = v.slice(0,13) + '-' + v.slice(13);
+        if (v.length > 15) v = v.slice(0,15);
+        this.value = v;
+    });
+
+    document.getElementById('inputCnic').addEventListener('keydown', function(e) {
+        if (e.key === 'Enter') searchStudent();
+    });
+
+    function showError(msg) {
+        const box = document.getElementById('errorBox');
+        document.getElementById('errorMsg').textContent = msg;
+        box.style.display = 'flex';
+        document.getElementById('rateBox').style.display = 'none';
+    }
+    function showRateLimit() {
+        document.getElementById('rateBox').style.display = 'flex';
+        document.getElementById('errorBox').style.display = 'none';
+    }
+    function hideErrors() {
+        document.getElementById('errorBox').style.display = 'none';
+        document.getElementById('rateBox').style.display = 'none';
+    }
+
+    window.searchStudent = function () {
+        hideErrors();
+        const cnic = document.getElementById('inputCnic').value.trim();
+        const btn  = document.getElementById('searchBtn');
+
+        if (!validCnic(cnic)) {
+            showError('Please enter a valid CNIC: XXXXX-XXXXXXX-X');
+            document.getElementById('inputCnic').focus();
+            return;
+        }
+        if (isRateLimited()) { showRateLimit(); return; }
+
+        btn.disabled = true;
+        btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Checking...';
+        incrementRate();
+
+        fetch('get_csrf.php')
+            .then(function(r) { return r.json(); })
+            .then(function(csrf) {
+                const fd = new FormData();
+                fd.append('cnic',       cnic);
+                fd.append('csrf_token', csrf.token);
+                return fetch('student-lookup.php', { method: 'POST', body: fd });
+            })
+            .then(function(r) { return r.json(); })
+            .then(function(data) {
+                btn.disabled = false;
+                btn.innerHTML = '<i class="fas fa-search"></i> Check Certificate';
+                if (data.rate_limited) { showRateLimit(); return; }
+                if (!data.success)     { showError(data.message || 'An error occurred.'); return; }
+                if (data.found)        { showResult(data.student); }
+                else                   { showNotFound(); }
+            })
+            .catch(function() {
+                btn.disabled = false;
+                btn.innerHTML = '<i class="fas fa-search"></i> Check Certificate';
+                showError('Network error. Please try again.');
+            });
+    };
+
+    function showResult(s) {
+        document.getElementById('searchSection').style.display = 'none';
+
+        const stMap = {
+            pending:     { label: '⏳ Application Received',  color: '#f59e0b', bg: 'rgba(245,158,11,.1)',  desc: 'Your application has been received. Admin will review it shortly.' },
+            approved:    { label: '✓ Approved',               color: '#10b981', bg: 'rgba(16,185,129,.1)',  desc: 'Your enrollment has been approved. Please visit the institute to confirm your seat.' },
+            rejected:    { label: '✗ Rejected',               color: '#ef4444', bg: 'rgba(239,68,68,.1)',   desc: 'Your application was not approved. Please contact us for more information.' },
+            in_progress: { label: '▶ Course In Progress',     color: '#0094d9', bg: 'rgba(0,148,217,.1)',   desc: 'You are currently enrolled and your course is in progress. Keep it up!' },
+            completed:   { label: 'Course Completed',          color: '#8b5cf6', bg: 'rgba(139,92,246,.1)',  desc: 'Congratulations! You have successfully completed your course. Your certificate is ready.' },
+        };
+        const st   = stMap[s.status] || stMap['pending'];
+
+        const enrollDate = s.created_at ? new Date(s.created_at).toLocaleDateString('en-PK', {
+            day: 'numeric', month: 'long', year: 'numeric'
+        }) : '—';
+
+        // Certificate badge only for completed
+        const certBadge = s.status === 'completed'
+            ? `<div style="background:linear-gradient(135deg,#8b5cf6,#6d28d9);border-radius:14px;padding:20px 24px;margin-bottom:20px;text-align:center;">
+                <div style="margin-bottom:10px;"><i class="fas fa-award" style="font-size:34px;color:rgba(255,255,255,.9);"></i></div>
+                <div style="color:#fff;font-weight:800;font-size:16px;">Certificate of Completion</div>
+                <div style="color:rgba(255,255,255,.75);font-size:13px;margin-top:4px;">${esc(s.course_interest)}</div>
+               </div>`
+            : '';
+
+        document.getElementById('resultSection').innerHTML =
+            '<div class="sp-result-header">' +
+                '<div class="sp-enrolled-badge"><i class="fas fa-check-circle"></i> Record Found</div>' +
+                '<h3>' + esc(s.full_name) + '</h3>' +
+                '<p>Enrollment ID: #' + esc(String(s.id)) + ' &nbsp;|&nbsp; Applied: ' + enrollDate + '</p>' +
+            '</div>' +
+            '<div class="sp-result-body">' +
+                // Status banner
+                `<div style="background:${st.bg};border-radius:12px;padding:16px 20px;margin-bottom:16px;display:flex;align-items:flex-start;gap:12px;">
+                    <div style="width:38px;height:38px;border-radius:10px;background:${st.color}22;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+                        <i class="fas ${s.status==='completed'?'fa-graduation-cap':s.status==='in_progress'?'fa-play-circle':s.status==='approved'?'fa-check-circle':s.status==='rejected'?'fa-times-circle':'fa-clock'}" style="font-size:16px;color:${st.color};"></i>
+                    </div>
+                    <div>
+                        <div style="font-weight:800;color:${st.color};font-size:15px;">${st.label}</div>
+                        <div style="font-size:13px;color:#6b7280;margin-top:3px;">${st.desc}</div>
+                    </div>
+                </div>` +
+                certBadge +
+                row('fa-graduation-cap', 'Course',      esc(s.course_interest)) +
+                row('fa-laptop',         'Study Mode',  esc(s.study_mode || '—')) +
+                row('fa-envelope',       'Email',       esc(s.email)) +
+                row('fa-phone',          'Phone',       esc(s.phone)) +
+                row('fa-calendar',       'Applied On',  enrollDate) +
+            '</div>' +
+            '<button class="sp-back-btn" onclick="resetPortal()">' +
+                '<i class="fas fa-arrow-left"></i> Search Again' +
+            '</button>';
+
+        document.getElementById('resultSection').style.display = 'block';
+    }
+
+    function row(icon, label, value) {
+        return '<div class="sp-info-row">' +
+            '<div class="sp-info-icon"><i class="fas ' + icon + '"></i></div>' +
+            '<div><span class="sp-info-label">' + label + '</span>' +
+            '<span class="sp-info-value">' + value + '</span></div>' +
+            '</div>';
+    }
+
+    function showNotFound() {
+        document.getElementById('searchSection').style.display = 'none';
+        document.getElementById('resultSection').innerHTML =
+            '<div class="sp-notfound">' +
+                '<span class="sp-nf-icon">🔍</span>' +
+                '<h3>No Record Found</h3>' +
+                '<p>No enrollment found for the provided CNIC.<br>' +
+                'Please check your CNIC or <a href="prgrammers-lab-contact.html" style="color:#f07b14;">contact us</a> if you believe this is an error.</p>' +
+                '<button class="sp-try-btn" onclick="resetPortal()">' +
+                    '<i class="fas fa-redo"></i> Try Again' +
+                '</button>' +
+            '</div>';
+        document.getElementById('resultSection').style.display = 'block';
+    }
+
+    window.resetPortal = function () {
+        document.getElementById('searchSection').style.display = 'block';
+        document.getElementById('resultSection').style.display = 'none';
+        document.getElementById('resultSection').innerHTML = '';
+        document.getElementById('inputCnic').value = '';
+        hideErrors();
+    };
+})();
+</script>
+</body>
+</html>

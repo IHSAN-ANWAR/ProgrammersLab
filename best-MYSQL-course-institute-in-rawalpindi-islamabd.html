@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿﻿<!DOCTYPE html>
 <html lang="en">
 <head>
 	<title>MySQL Database Development Course in Rawalpindi | Programmers Lab</title>
@@ -208,7 +208,7 @@ body{padding-top:68px}
 	</style>
     <link rel="stylesheet" href="css/course-detail.css"/>
 </head>
-<body>
+<body data-course="Database Management">
 	<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TLSHTX5P" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 	<div id="preloder"><div class="loader"><span></span><span></span><span></span></div></div>
 
@@ -235,7 +235,9 @@ body{padding-top:68px}
 						</li>
 						<li><a href="services.html" class="pl-nav-link">Services</a></li>
 						<li><a href="career.html" class="pl-nav-link">Career</a></li>
-						<li><a href="prgrammers-lab-contact.html" class="pl-nav-link">Contact</a></li>
+<li><a href="prgrammers-lab-contact.html" class="pl-nav-link">Contact</a></li>
+<li><a href="student-portal.html" class="pl-nav-link">Check Certificate</a></li>
+<li id="pl-auth-nav"><a href="auth.php" class="pl-nav-link" style="color:#f07b14;font-weight:700;"><i class="fas fa-user"></i> Login</a></li>
 					</ul>
 					<a href="enroll-form.html" class="pl-mobile-enroll">Enroll Now</a>
 				</nav>
@@ -290,13 +292,51 @@ body{padding-top:68px}
 	<section class="pl-info-strip">
 		<div class="container">
 			<div class="pl-info-strip-grid">
-				<div class="pl-info-card"><div class="pl-info-icon"><i class="fa fa-clock-o"></i></div><div><span class="pl-info-label">Duration</span><span class="pl-info-value">2 Months</span></div></div>
-				<div class="pl-info-card"><div class="pl-info-icon"><i class="fa fa-calendar"></i></div><div><span class="pl-info-label">Schedule</span><span class="pl-info-value">Mon–Thu, 2 hrs/day</span></div></div>
-				<div class="pl-info-card"><div class="pl-info-icon"><i class="fa fa-money"></i></div><div><span class="pl-info-label">Course Fee</span><span class="pl-info-value">Rs. 15,000 (Installment: 16k)</span></div></div>
+				<div class="pl-info-card"><div class="pl-info-icon"><i class="fa fa-clock-o"></i></div><div><span class="pl-info-label">Duration</span><span class="pl-info-value" data-duration>2 Months</span></div></div>
+				<div class="pl-info-card"><div class="pl-info-icon"><i class="fa fa-calendar"></i></div><div><span class="pl-info-label">Schedule</span><span class="pl-info-value">Mon&ndash;Thu, 2 hrs/day</span></div></div>
+				<div class="pl-info-card"><div class="pl-info-icon"><i class="fa fa-money"></i></div><div><span class="pl-info-label">Course Fee</span><span class="pl-info-value" data-price>Rs. 15,000 (Installment: 16k)</span></div></div><div class="pl-info-card" id="installment-card" style="display:none;"><div class="pl-info-icon"><i class="fa fa-credit-card"></i></div><div><span class="pl-info-label">Installment</span><span class="pl-info-value" data-installment></span></div></div>
 				<div class="pl-info-card"><div class="pl-info-icon"><i class="fa fa-laptop"></i></div><div><span class="pl-info-label">Projects</span><span class="pl-info-value">15+ Real-world</span></div></div>
 			</div>
 		</div>
-	</section>
+	<!-- PRICING PLAN -->
+<section class="pl-pricing-section" id="pl-pricing-section" style="display:block;background:#f8fafc;padding:40px 0 36px;">
+<div class="container">
+<div style="text-align:center;margin-bottom:24px;">
+<div class="pl-section-tag" style="display:inline-block;">Fees</div>
+<h2 style="font-size:22px;font-weight:800;color:#0d1b2a;margin:10px 0 6px;">Course Fee &amp; Payment Plans</h2>
+<p style="font-size:14px;color:#6b7280;">Choose the payment option that works best for you.</p>
+</div>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;max-width:600px;margin:0 auto;" class="pl-pricing-grid">
+
+<!-- One-Time Card -->
+<div style="background:#fff;border-radius:16px;padding:28px 24px;border:2px solid #e5e7eb;text-align:center;transition:all .3s;">
+<div style="width:48px;height:48px;background:rgba(240,123,20,.1);border-radius:14px;display:flex;align-items:center;justify-content:center;margin:0 auto 14px;font-size:20px;color:#f07b14;">
+<i class="fa fa-money"></i>
+</div>
+<div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.8px;color:#9ca3af;margin-bottom:8px;">One-Time Payment</div>
+<div style="font-size:28px;font-weight:800;color:#f07b14;line-height:1;" data-price>—</div>
+<div style="font-size:12px;color:#10b981;font-weight:600;margin-top:8px;">✓ Best Value</div>
+<a href="enroll-form.html" style="display:block;margin-top:18px;padding:10px;background:#f07b14;color:#fff;border-radius:10px;font-size:13px;font-weight:700;text-decoration:none;">Enroll Now</a>
+</div>
+
+<!-- Installment Card -->
+<div id="pl-install-card" style="background:#fff;border-radius:16px;padding:28px 24px;border:2px solid #e5e7eb;text-align:center;transition:all .3s;display:none;">
+<div style="width:48px;height:48px;background:rgba(99,102,241,.1);border-radius:14px;display:flex;align-items:center;justify-content:center;margin:0 auto 14px;font-size:20px;color:#6366f1;">
+<i class="fa fa-credit-card"></i>
+</div>
+<div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.8px;color:#9ca3af;margin-bottom:8px;">Installment Plan</div>
+<div style="font-size:28px;font-weight:800;color:#6366f1;line-height:1;" data-installment>—</div>
+<div style="font-size:12px;color:#6b7280;font-weight:600;margin-top:8px;">Pay in easy installments</div>
+<a href="enroll-form.html" style="display:block;margin-top:18px;padding:10px;background:#6366f1;color:#fff;border-radius:10px;font-size:13px;font-weight:700;text-decoration:none;">Enroll Now</a>
+</div>
+
+</div>
+</div>
+</section>
+
+<style>
+@media(max-width:480px){.pl-pricing-grid{grid-template-columns:1fr!important}}
+</style></section>
 
 	<!-- DESCRIPTION -->
 	<section class="pl-course-desc-section">
@@ -578,5 +618,20 @@ body{padding-top:68px}
 		});
 	})();
 	</script>
-</body>
+<script src="js/course-price.js"></script>
+<script src="js/installment-price.js"></script>
+<script>
+// Smart nav: show profile if logged in
+fetch('user-session.php').then(function(r){return r.json();}).then(function(d){
+    var el = document.getElementById('pl-auth-nav');
+    if (!el) return;
+    if (d.logged_in) {
+        var initLetter = (d.name && d.name.length > 0) ? d.name[0].toUpperCase() : '?';
+        el.innerHTML = '<a href="user-profile.php" style="display:inline-flex;align-items:center;gap:7px;padding:5px 14px 5px 5px;background:rgba(240,123,20,.12);color:#f07b14;border-radius:50px;font-size:13.5px;font-weight:700;text-decoration:none;border:1.5px solid rgba(240,123,20,.3);">'
+            + '<span style="width:32px;height:32px;border-radius:50%;background:linear-gradient(135deg,#f07b14,#d96a00);display:inline-flex;align-items:center;justify-content:center;color:#fff;font-size:14px;font-weight:900;flex-shrink:0;">' + initLetter + '</span>'
+            + ' ' + d.name.split(' ')[0]
+            + '</a>';
+    }
+}).catch(function(){});
+</script></body>
 </html>

@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
 	<title>Careers at Programmers Lab — Jobs & Internships in Rawalpindi</title>
@@ -247,6 +247,47 @@ body { padding-top: 68px; }
 .whatsapp-button { position: fixed; bottom: 28px; right: 24px; z-index: 999; }
 .whatsapp-button img { width: 56px; height: 56px; border-radius: 50%; box-shadow: 0 4px 16px rgba(0,0,0,0.2); transition: transform 0.25s; }
 .whatsapp-button:hover img { transform: scale(1.1); }
+
+/* =========================================================
+   JOB APPLICATION FORM
+========================================================= */
+.pl-job-form-section { padding: 80px 0 90px; background: #f8f9fc; }
+.pl-job-form-layout { display: grid; grid-template-columns: 380px 1fr; gap: 48px; align-items: start; }
+
+.pl-job-form-info h2 { color: #0d1b2a; font-size: 30px; font-weight: 800; margin: 12px 0 10px; }
+.pl-job-form-info > p { color: #6b7280; font-size: 14px; line-height: 1.7; margin-bottom: 32px; }
+.pl-job-info-items { display: flex; flex-direction: column; gap: 18px; }
+.pl-job-info-item { display: flex; align-items: flex-start; gap: 14px; }
+.pl-job-info-icon { width: 42px; height: 42px; border-radius: 12px; background: rgba(240,123,20,0.1); color: #f07b14; display: flex; align-items: center; justify-content: center; font-size: 15px; flex-shrink: 0; }
+.pl-job-info-item strong { display: block; color: #0d1b2a; font-size: 14px; font-weight: 700; margin-bottom: 2px; }
+.pl-job-info-item a, .pl-job-info-item span { color: #6b7280; font-size: 13.5px; text-decoration: none; display: block; line-height: 1.5; transition: color 0.2s; }
+.pl-job-info-item a:hover { color: #f07b14; }
+
+.pl-job-form-box { background: #fff; border-radius: 20px; padding: 40px; border: 1px solid #eee; box-shadow: 0 4px 24px rgba(0,0,0,0.05); }
+.pl-job-section-title { display: flex; align-items: center; gap: 12px; margin-bottom: 20px; }
+.pl-job-section-icon { width: 36px; height: 36px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 14px; flex-shrink: 0; }
+.pl-job-section-title h3 { color: #0d1b2a; font-size: 16px; font-weight: 700; margin: 0; }
+.pl-job-divider { border: none; border-top: 1px solid #f0f0f0; margin: 28px 0; }
+.pl-job-form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 0; }
+.pl-job-form-group { margin-bottom: 16px; }
+.pl-job-form-group label { display: block; color: #374151; font-size: 13px; font-weight: 600; margin-bottom: 6px; }
+.req { color: #f07b14; }
+.pl-job-form-group input,
+.pl-job-form-group select,
+.pl-job-form-group textarea { width: 100%; padding: 11px 14px; border: 1.5px solid #e5e7eb; border-radius: 10px; font-size: 14px; color: #0d1b2a; background: #fafafa; font-family: inherit; outline: none; transition: border-color 0.2s, box-shadow 0.2s; }
+.pl-job-form-group input:focus,
+.pl-job-form-group select:focus,
+.pl-job-form-group textarea:focus { border-color: #f07b14; box-shadow: 0 0 0 3px rgba(240,123,20,0.1); background: #fff; }
+.pl-job-form-group textarea { resize: vertical; min-height: 110px; }
+.pl-job-submit { width: 100%; padding: 14px; background: #f07b14; color: #fff; border: none; border-radius: 50px; font-size: 15px; font-weight: 700; cursor: pointer; font-family: inherit; display: flex; align-items: center; justify-content: center; gap: 8px; transition: background 0.25s, transform 0.2s; margin-top: 8px; }
+.pl-job-submit:hover { background: #d96a00; transform: translateY(-1px); }
+.pl-job-submit:disabled { opacity: 0.7; cursor: not-allowed; transform: none; }
+.pl-job-alert { display: none; margin-top: 16px; padding: 14px 18px; border-radius: 12px; font-size: 13.5px; font-weight: 600; }
+.pl-job-alert.success { background: rgba(16,185,129,0.08); border: 1px solid rgba(16,185,129,0.2); color: #065f46; }
+.pl-job-alert.error { background: rgba(239,68,68,0.07); border: 1px solid rgba(239,68,68,0.2); color: #b91c1c; }
+
+@media (max-width: 991px) { .pl-job-form-layout { grid-template-columns: 1fr; } }
+@media (max-width: 575px) { .pl-job-form-row { grid-template-columns: 1fr; } .pl-job-form-box { padding: 24px 18px; } }
 	</style>
 </head>
 
@@ -281,7 +322,9 @@ body { padding-top: 68px; }
 						</li>
 						<li><a href="services.html" class="pl-nav-link">Services</a></li>
 						<li><a href="career.html" class="pl-nav-link active">Career</a></li>
-						<li><a href="prgrammers-lab-contact.html" class="pl-nav-link">Contact</a></li>
+<li><a href="prgrammers-lab-contact.html" class="pl-nav-link">Contact</a></li>
+<li><a href="student-portal.html" class="pl-nav-link">Check Certificate</a></li>
+<li id="pl-auth-nav"><a href="auth.php" class="pl-nav-link" style="color:#f07b14;font-weight:700;"><i class="fas fa-user"></i> Login</a></li>
 					</ul>
 					<a href="enroll.php" class="pl-mobile-enroll">Enroll Now</a>
 				</nav>
@@ -351,111 +394,11 @@ body { padding-top: 68px; }
 			<div class="pl-section-tag">Open Positions</div>
 			<h2 class="pl-section-title">Current Openings</h2>
 			<p class="pl-section-sub">All positions are based in Rawalpindi. Apply by visiting our office or emailing your CV.</p>
-			<div class="pl-jobs-grid">
-
-				<!-- Job 1 -->
-				<div class="pl-job-card">
-					<span class="pl-job-badge internship"><i class="fa fa-star"></i> Internship</span>
-					<h3>Web Development Intern</h3>
-					<div class="pl-job-meta">
-						<div class="pl-job-meta-item"><i class="fa fa-clock-o"></i> 3 Months</div>
-						<div class="pl-job-meta-item"><i class="fa fa-map-marker"></i> Onsite — Rawalpindi</div>
-						<div class="pl-job-meta-item"><i class="fa fa-money"></i> Paid Internship</div>
-					</div>
-					<div class="pl-job-tags">
-						<span class="pl-job-tag">HTML / CSS</span>
-						<span class="pl-job-tag">JavaScript</span>
-						<span class="pl-job-tag">PHP</span>
-					</div>
-					<a href="prgrammers-lab-contact.html" class="pl-job-apply">Apply Now <i class="fa fa-arrow-right"></i></a>
+			<div class="pl-jobs-grid" id="jobsGrid">
+				<!-- dynamically loaded -->
+				<div style="grid-column:1/-1;text-align:center;padding:48px 0;color:rgba(255,255,255,0.35);">
+					<i class="fa fa-spinner fa-spin" style="font-size:28px;"></i>
 				</div>
-
-				<!-- Job 2 -->
-				<div class="pl-job-card">
-					<span class="pl-job-badge internship"><i class="fa fa-star"></i> Internship</span>
-					<h3>Mobile App Development Intern</h3>
-					<div class="pl-job-meta">
-						<div class="pl-job-meta-item"><i class="fa fa-clock-o"></i> 3 Months</div>
-						<div class="pl-job-meta-item"><i class="fa fa-map-marker"></i> Onsite — Rawalpindi</div>
-						<div class="pl-job-meta-item"><i class="fa fa-money"></i> Paid Internship</div>
-					</div>
-					<div class="pl-job-tags">
-						<span class="pl-job-tag">React Native</span>
-						<span class="pl-job-tag">Flutter</span>
-						<span class="pl-job-tag">Android</span>
-					</div>
-					<a href="prgrammers-lab-contact.html" class="pl-job-apply">Apply Now <i class="fa fa-arrow-right"></i></a>
-				</div>
-
-				<!-- Job 3 — Featured -->
-				<div class="pl-job-card featured">
-					<span class="pl-job-badge fulltime"><i class="fa fa-briefcase"></i> Full Time</span>
-					<h3>Senior Mobile App Developer</h3>
-					<div class="pl-job-meta">
-						<div class="pl-job-meta-item"><i class="fa fa-bar-chart"></i> 2+ Years Experience</div>
-						<div class="pl-job-meta-item"><i class="fa fa-map-marker"></i> Onsite — Rawalpindi</div>
-						<div class="pl-job-meta-item"><i class="fa fa-money"></i> Market Competitive</div>
-					</div>
-					<div class="pl-job-tags">
-						<span class="pl-job-tag">React Native</span>
-						<span class="pl-job-tag">Flutter</span>
-						<span class="pl-job-tag">Firebase</span>
-						<span class="pl-job-tag">REST APIs</span>
-					</div>
-					<a href="prgrammers-lab-contact.html" class="pl-job-apply">Apply Now <i class="fa fa-arrow-right"></i></a>
-				</div>
-
-				<!-- Job 4 -->
-				<div class="pl-job-card">
-					<span class="pl-job-badge internship"><i class="fa fa-star"></i> Internship</span>
-					<h3>Graphic Design Intern</h3>
-					<div class="pl-job-meta">
-						<div class="pl-job-meta-item"><i class="fa fa-clock-o"></i> 3 Months</div>
-						<div class="pl-job-meta-item"><i class="fa fa-map-marker"></i> Onsite — Rawalpindi</div>
-						<div class="pl-job-meta-item"><i class="fa fa-money"></i> Paid Internship</div>
-					</div>
-					<div class="pl-job-tags">
-						<span class="pl-job-tag">Photoshop</span>
-						<span class="pl-job-tag">Illustrator</span>
-						<span class="pl-job-tag">Canva</span>
-					</div>
-					<a href="prgrammers-lab-contact.html" class="pl-job-apply">Apply Now <i class="fa fa-arrow-right"></i></a>
-				</div>
-
-				<!-- Job 5 -->
-				<div class="pl-job-card">
-					<span class="pl-job-badge internship"><i class="fa fa-star"></i> Internship</span>
-					<h3>Digital Marketing Intern</h3>
-					<div class="pl-job-meta">
-						<div class="pl-job-meta-item"><i class="fa fa-clock-o"></i> 3 Months</div>
-						<div class="pl-job-meta-item"><i class="fa fa-map-marker"></i> Onsite — Rawalpindi</div>
-						<div class="pl-job-meta-item"><i class="fa fa-money"></i> Paid Internship</div>
-					</div>
-					<div class="pl-job-tags">
-						<span class="pl-job-tag">SEO</span>
-						<span class="pl-job-tag">Social Media</span>
-						<span class="pl-job-tag">Google Ads</span>
-					</div>
-					<a href="prgrammers-lab-contact.html" class="pl-job-apply">Apply Now <i class="fa fa-arrow-right"></i></a>
-				</div>
-
-				<!-- Job 6 -->
-				<div class="pl-job-card">
-					<span class="pl-job-badge fulltime"><i class="fa fa-briefcase"></i> Full Time</span>
-					<h3>IT Instructor</h3>
-					<div class="pl-job-meta">
-						<div class="pl-job-meta-item"><i class="fa fa-bar-chart"></i> 1+ Year Experience</div>
-						<div class="pl-job-meta-item"><i class="fa fa-map-marker"></i> Onsite — Rawalpindi</div>
-						<div class="pl-job-meta-item"><i class="fa fa-money"></i> Market Competitive</div>
-					</div>
-					<div class="pl-job-tags">
-						<span class="pl-job-tag">Teaching</span>
-						<span class="pl-job-tag">Web Dev</span>
-						<span class="pl-job-tag">Any IT Skill</span>
-					</div>
-					<a href="prgrammers-lab-contact.html" class="pl-job-apply">Apply Now <i class="fa fa-arrow-right"></i></a>
-				</div>
-
 			</div>
 		</div>
 	</section>
@@ -479,8 +422,8 @@ body { padding-top: 68px; }
 				</div>
 				<div class="pl-apply-step">
 					<div class="pl-apply-num">03</div>
-					<h4>Visit or Email Us</h4>
-					<p>Drop by our office with your CV or email it to <strong>infoprogrammerslabs@gmail.com</strong>.</p>
+					<h4>Fill the Form</h4>
+					<p>Complete the job application form below with your details, experience and position interest.</p>
 				</div>
 				<div class="pl-apply-step">
 					<div class="pl-apply-num">04</div>
@@ -490,6 +433,182 @@ body { padding-top: 68px; }
 			</div>
 		</div>
 	</section>
+
+	<!-- ===== JOB APPLICATION MODAL ===== -->
+	<div id="jobAppModal" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.6);z-index:9999;align-items:center;justify-content:center;padding:16px;overflow-y:auto;">
+		<div style="background:#fff;border-radius:20px;width:100%;max-width:780px;margin:auto;max-height:90vh;overflow-y:auto;position:relative;">
+
+			<!-- Modal Header -->
+			<div style="padding:24px 32px 20px;border-bottom:1px solid #f0f0f0;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;background:#fff;z-index:10;border-radius:20px 20px 0 0;">
+				<div>
+					<h3 id="modalJobTitle" style="margin:0 0 4px;font-size:18px;font-weight:800;color:#0d1b2a;">Apply for Position</h3>
+					<span id="modalJobBadge" style="font-size:12px;font-weight:700;padding:3px 12px;border-radius:20px;background:rgba(240,123,20,0.1);color:#f07b14;"></span>
+				</div>
+				<button onclick="closeJobModal()" style="width:36px;height:36px;border:none;background:#f5f5f5;border-radius:10px;cursor:pointer;font-size:18px;color:#374151;display:flex;align-items:center;justify-content:center;">✕</button>
+			</div>
+
+			<!-- Modal Body -->
+			<div style="padding:28px 32px;">
+				<form id="jobApplicationForm">
+
+					<!-- Personal Info -->
+					<div class="pl-job-section-title">
+						<div class="pl-job-section-icon" style="background:rgba(240,123,20,0.1);color:#f07b14;"><i class="fa fa-user"></i></div>
+						<h3>Personal Information</h3>
+					</div>
+					<div class="pl-job-form-row">
+						<div class="pl-job-form-group">
+							<label>Full Name <span class="req">*</span></label>
+							<input type="text" name="fullName" placeholder="Enter your full name">
+						</div>
+						<div class="pl-job-form-group">
+							<label>Father's Name</label>
+							<input type="text" name="fatherName" placeholder="Enter father's name">
+						</div>
+					</div>
+					<div class="pl-job-form-row">
+						<div class="pl-job-form-group">
+							<label>Email Address <span class="req">*</span></label>
+							<input type="email" name="email" placeholder="Enter your email">
+						</div>
+						<div class="pl-job-form-group">
+							<label>Phone Number <span class="req">*</span></label>
+							<input type="tel" name="phone" placeholder="Enter your phone number">
+						</div>
+					</div>
+					<div class="pl-job-form-row">
+						<div class="pl-job-form-group">
+							<label>City</label>
+							<input type="text" name="city" placeholder="Rawalpindi">
+						</div>
+						<div class="pl-job-form-group">
+							<label>Gender</label>
+							<select name="gender">
+								<option value="">— Select —</option>
+								<option value="Male">Male</option>
+								<option value="Female">Female</option>
+								<option value="Prefer not to say">Prefer not to say</option>
+							</select>
+						</div>
+					</div>
+
+					<!-- Hidden fields — set by setPosition() when Apply Now is clicked -->
+					<input type="hidden" name="position" id="positionSelect">
+					<input type="hidden" name="jobType" id="jobTypeSelect">
+
+					<hr class="pl-job-divider">
+
+					<!-- Education -->
+					<div class="pl-job-section-title">
+						<div class="pl-job-section-icon" style="background:rgba(16,185,129,0.1);color:#10b981;"><i class="fa fa-graduation-cap"></i></div>
+						<h3>Education</h3>
+					</div>
+					<div class="pl-job-form-row">
+						<div class="pl-job-form-group">
+							<label>Highest Degree <span class="req">*</span></label>
+							<select name="degree">
+								<option value="">— Select —</option>
+								<option value="Matric">Matric</option>
+								<option value="Intermediate / FSc / FA">Intermediate / FSc / FA</option>
+								<option value="Bachelor's (BS/BCS/BBA)">Bachelor's (BS/BCS/BBA)</option>
+								<option value="Master's (MS/MCS/MBA)">Master's (MS/MCS/MBA)</option>
+								<option value="PhD">PhD</option>
+								<option value="Diploma / Certificate">Diploma / Certificate</option>
+								<option value="Other">Other</option>
+							</select>
+						</div>
+						<div class="pl-job-form-group">
+							<label>Field of Study</label>
+							<input type="text" name="fieldOfStudy" placeholder="Your field of study">
+						</div>
+					</div>
+					<div class="pl-job-form-row">
+						<div class="pl-job-form-group">
+							<label>Institute / University</label>
+							<input type="text" name="institute" placeholder="Your university / college">
+						</div>
+						<div class="pl-job-form-group">
+							<label>Graduation Year</label>
+							<input type="text" name="graduationYear" placeholder="Graduation year">
+						</div>
+					</div>
+
+					<hr class="pl-job-divider">
+
+					<!-- Resume Upload -->
+					<div class="pl-job-section-title">
+						<div class="pl-job-section-icon" style="background:rgba(6,182,212,0.1);color:#06b6d4;"><i class="fa fa-file-text"></i></div>
+						<h3>Resume / CV</h3>
+					</div>
+					<div class="pl-job-form-group">
+						<label>Upload Resume <span class="req">*</span></label>
+						<input type="file" name="resume" id="resumeInput" accept=".pdf,.doc,.docx" style="padding:9px 14px;">
+						<small style="color:#9ca3af;font-size:12px;margin-top:4px;display:block;">Accepted formats: PDF, DOC, DOCX — Max size: 5MB</small>
+					</div>
+
+					<hr class="pl-job-divider">
+
+					<!-- Experience -->
+					<div class="pl-job-section-title">
+						<div class="pl-job-section-icon" style="background:rgba(139,92,246,0.1);color:#8b5cf6;"><i class="fa fa-history"></i></div>
+						<h3>Experience & Skills <small style="color:#9ca3af;font-size:13px;font-weight:400;">(optional)</small></h3>
+					</div>
+					<div class="pl-job-form-row">
+						<div class="pl-job-form-group">
+							<label>Years of Experience <small style="color:#9ca3af;">(optional)</small></label>
+							<select name="experience">
+								<option value="">— Select —</option>
+								<option value="Fresh / No Experience">Fresh / No Experience</option>
+								<option value="Less than 1 year">Less than 1 year</option>
+								<option value="1–2 years">1–2 years</option>
+								<option value="2–5 years">2–5 years</option>
+								<option value="5+ years">5+ years</option>
+							</select>
+						</div>
+						<div class="pl-job-form-group">
+							<label>Current / Last Job Title <small style="color:#9ca3af;">(optional)</small></label>
+							<input type="text" name="lastJobTitle" placeholder="Your last job title">
+						</div>
+					</div>
+					<div class="pl-job-form-group">
+						<label>Key Skills <small style="color:#9ca3af;">(optional)</small></label>
+						<input type="text" name="skills" placeholder="Your skills e.g. PHP, React, Figma">
+					</div>
+					<div class="pl-job-form-group">
+						<label>Previous Work Experience <small style="color:#9ca3af;">(optional)</small></label>
+						<textarea name="previousExperience" placeholder="Describe your work history, projects, or relevant experience..."></textarea>
+					</div>
+
+					<hr class="pl-job-divider">
+
+					<!-- Cover Letter -->
+					<div class="pl-job-section-title">
+						<div class="pl-job-section-icon" style="background:rgba(245,158,11,0.1);color:#f59e0b;"><i class="fa fa-pencil"></i></div>
+						<h3>Cover Letter <small style="color:#9ca3af;font-size:13px;font-weight:400;">(optional)</small></h3>
+					</div>
+					<div class="pl-job-form-group">
+						<label>Why do you want to join Programmers Lab? <small style="color:#9ca3af;">(optional)</small></label>
+						<textarea name="coverLetter" placeholder="Tell us why you're a great fit..."></textarea>
+					</div>
+					<div class="pl-job-form-group">
+						<label>Portfolio / LinkedIn / GitHub <small style="color:#9ca3af;">(optional)</small></label>
+						<input type="text" name="portfolioUrl" placeholder="e.g. github.com/username or linkedin.com/in/name">
+					</div>
+
+					<!-- Submit -->
+					<button type="submit" class="pl-job-submit" id="jobSubmitBtn">
+						<i class="fa fa-paper-plane"></i> Submit Application
+					</button>
+
+					<div class="pl-job-alert success" id="jobSuccess">
+						<i class="fa fa-check-circle"></i> Application submitted! We'll review and contact you within 2–3 business days.
+					</div>
+					<div class="pl-job-alert error" id="jobError"></div>
+
+				</form>
+			</div>
+		</div>
+	</div>
 
 	<!-- ===== FOOTER ===== -->
 	<footer class="pl-footer">
@@ -566,6 +685,70 @@ body { padding-top: 68px; }
 	<script src="js/bootstrap.min.js"></script>
 	<script src="js/main.js"></script>
 	<script>
+	// ── Load Job Openings dynamically ─────────────────────────
+	(function loadJobs() {
+		const grid = document.getElementById('jobsGrid');
+		if (!grid) return;
+
+		fetch('api/job_openings.php')
+			.then(r => r.json())
+			.then(data => {
+				if (!data.success || !data.jobs.length) {
+					grid.innerHTML = '<div style="grid-column:1/-1;text-align:center;padding:48px 0;color:rgba(255,255,255,0.4);">No openings at the moment. Check back soon.</div>';
+					return;
+				}
+
+				const badgeIcons = { internship: 'fa-star', fulltime: 'fa-briefcase', parttime: 'fa-clock-o' };
+				const badgeLabels = { internship: 'Internship', fulltime: 'Full Time', parttime: 'Part Time' };
+
+				grid.innerHTML = data.jobs.map(j => {
+					const badgeClass = j.badge_type || 'internship';
+					const badgeIcon  = badgeIcons[badgeClass]  || 'fa-briefcase';
+					const badgeLabel = badgeLabels[badgeClass] || j.job_type;
+					const featured   = j.is_featured ? 'featured' : '';
+
+					const durationIcon = badgeClass === 'internship' ? 'fa-clock-o' : 'fa-bar-chart';
+
+					const metaDuration = j.duration
+						? `<div class="pl-job-meta-item"><i class="fa ${durationIcon}"></i> ${esc(j.duration)}</div>` : '';
+					const metaLocation = j.location
+						? `<div class="pl-job-meta-item"><i class="fa fa-map-marker"></i> ${esc(j.location)}</div>` : '';
+					const metaSalary   = j.salary_label
+						? `<div class="pl-job-meta-item"><i class="fa fa-money"></i> ${esc(j.salary_label)}</div>` : '';
+					const desc = j.description
+						? `<p style="color:rgba(255,255,255,0.55);font-size:13px;line-height:1.65;margin:0 0 18px;flex:1;">${esc(j.description)}</p>` : '';
+
+					return `
+					<div class="pl-job-card ${featured}" style="display:flex;flex-direction:column;">
+						<span class="pl-job-badge ${badgeClass}"><i class="fa ${badgeIcon}"></i> ${badgeLabel}</span>
+						<h3>${esc(j.title)}</h3>
+						${desc}
+						<div class="pl-job-meta">
+							${metaDuration}
+							${metaLocation}
+							${metaSalary}
+						</div>
+						<a href="javascript:void(0)" class="pl-job-apply" onclick="setPosition('${escQ(j.title)}','${escQ(j.job_type)}')">
+							Apply Now <i class="fa fa-arrow-right"></i>
+						</a>
+					</div>`;
+				}).join('');
+			})
+			.catch(() => {
+				grid.innerHTML = '<div style="grid-column:1/-1;text-align:center;padding:48px 0;color:rgba(255,255,255,0.4);">Could not load openings. Please refresh.</div>';
+			});
+
+		function esc(str) {
+			const d = document.createElement('div');
+			d.textContent = str || '';
+			return d.innerHTML;
+		}
+		function escQ(str) {
+			return (str || '').replace(/'/g, "\\'");
+		}
+	})();
+	</script>
+	<script>
 	(function(){
 		const nav = document.getElementById('plNavbar');
 		window.addEventListener('scroll', ()=>{ nav.classList.toggle('scrolled', window.scrollY > 40); });
@@ -577,7 +760,120 @@ body { padding-top: 68px; }
 				if(window.innerWidth <= 991){ e.preventDefault(); dd.classList.toggle('open'); }
 			});
 		});
+
+		// Modal open/close — window pe assign taake onclick se kaam kare
+		window.setPosition = function(position, jobType) {
+			const modal = document.getElementById('jobAppModal');
+			modal.style.display = 'flex';
+			document.body.style.overflow = 'hidden';
+
+			document.getElementById('modalJobTitle').textContent = 'Apply for: ' + position;
+			document.getElementById('modalJobBadge').textContent = jobType;
+
+			const posSelect  = document.getElementById('positionSelect');
+			const typeSelect = document.getElementById('jobTypeSelect');
+			if (posSelect)  posSelect.value  = position;
+			if (typeSelect) typeSelect.value = jobType;
+
+			document.getElementById('jobSuccess').style.display = 'none';
+			document.getElementById('jobError').style.display   = 'none';
+		};
+
+		window.closeJobModal = function() {
+			document.getElementById('jobAppModal').style.display = 'none';
+			document.body.style.overflow = '';
+		};
+
+		// Close on backdrop click
+		document.getElementById('jobAppModal').addEventListener('click', function(e) {
+			if (e.target === this) closeJobModal();
+		});
+
+		// Close on Escape key
+		document.addEventListener('keydown', function(e) {
+			if (e.key === 'Escape') closeJobModal();
+		});
+
+		// Job Application Form
+		document.getElementById('jobApplicationForm').addEventListener('submit', function(e){
+			e.preventDefault();
+			const form = this;
+			const btn  = document.getElementById('jobSubmitBtn');
+			const succ = document.getElementById('jobSuccess');
+			const err  = document.getElementById('jobError');
+
+			succ.style.display = 'none';
+			err.style.display  = 'none';
+
+			// Regex Validation
+			const fullName = form.querySelector('[name="fullName"]').value.trim();
+			const email    = form.querySelector('[name="email"]').value.trim();
+			const phone    = form.querySelector('[name="phone"]').value.trim();
+			const position = form.querySelector('[name="position"]').value.trim();
+			const degree   = form.querySelector('[name="degree"]').value.trim();
+
+			const resumeInput = form.querySelector('[name="resume"]');
+			const resumeFile  = resumeInput && resumeInput.files[0];
+
+			const showErr = (msg) => { err.textContent = msg; err.style.display = 'block'; };
+
+			if (!fullName || fullName.length < 2)           { showErr('Please enter your full name.'); return; }
+			if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { showErr('Please enter a valid email address.'); return; }
+			if (!/^[\d\+\-\s\(\)]{7,20}$/.test(phone))     { showErr('Please enter a valid phone number.'); return; }
+			if (!position)                                   { showErr('Please select a position.'); return; }
+			if (!degree)                                     { showErr('Please select your highest degree.'); return; }
+			if (!resumeFile)                                 { showErr('Please upload your Resume / CV.'); return; }
+			const allowedTypes = ['application/pdf','application/msword','application/vnd.openxmlformats-officedocument.wordprocessingml.document'];
+			if (!allowedTypes.includes(resumeFile.type) && !/\.(pdf|doc|docx)$/i.test(resumeFile.name)) {
+				showErr('Resume must be a PDF, DOC, or DOCX file.'); return;
+			}
+			if (resumeFile.size > 5 * 1024 * 1024) { showErr('Resume file size must be 5MB or less.'); return; }
+
+			btn.innerHTML = '<i class="fa fa-spinner fa-spin"></i> Submitting...';
+			btn.disabled  = true;
+
+			fetch('get_csrf.php')
+				.then(r => r.json())
+				.then(csrf => {
+					const fd = new FormData(form);
+					fd.append('csrf_token', csrf.token);
+					return fetch('job-apply.php', { method: 'POST', body: fd });
+				})
+				.then(r => r.json())
+				.then(data => {
+					if (data.success) {
+						succ.style.display = 'block';
+						form.reset();
+						succ.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+					} else {
+						err.textContent    = data.message || 'Please fill all required fields.';
+						err.style.display  = 'block';
+					}
+				})
+				.catch(() => {
+					err.textContent   = 'Network error. Please try again.';
+					err.style.display = 'block';
+				})
+				.finally(() => {
+					btn.innerHTML = '<i class="fa fa-paper-plane"></i> Submit Application';
+					btn.disabled  = false;
+				});
+		});
 	})();
 	</script>
-</body>
+<script src="js/course-price.js"></script>
+<script>
+// Smart nav: show profile if logged in
+fetch('user-session.php').then(function(r){return r.json();}).then(function(d){
+    var el = document.getElementById('pl-auth-nav');
+    if (!el) return;
+    if (d.logged_in) {
+        var initLetter = (d.name && d.name.length > 0) ? d.name[0].toUpperCase() : '?';
+        el.innerHTML = '<a href="user-profile.php" style="display:inline-flex;align-items:center;gap:7px;padding:5px 14px 5px 5px;background:rgba(240,123,20,.12);color:#f07b14;border-radius:50px;font-size:13.5px;font-weight:700;text-decoration:none;border:1.5px solid rgba(240,123,20,.3);">'
+            + '<span style="width:32px;height:32px;border-radius:50%;background:linear-gradient(135deg,#f07b14,#d96a00);display:inline-flex;align-items:center;justify-content:center;color:#fff;font-size:14px;font-weight:900;flex-shrink:0;">' + initLetter + '</span>'
+            + ' ' + d.name.split(' ')[0]
+            + '</a>';
+    }
+}).catch(function(){});
+</script></body>
 </html>

@@ -1,569 +1,562 @@
 # Programmers Lab — Complete Project Documentation
 
 > IT Training Institute & Software House — Rawalpindi, Pakistan  
-> Website + Admin Panel complete guide
+> Website + Admin Panel + Student & Teacher Portal — Full Developer Guide
 
 ---
 
-## 📌 Table of Contents
+## Table of Contents
 
-1. [Project Overview](#project-overview)
-2. [Tech Stack](#tech-stack)
-3. [Full Folder Structure](#full-folder-structure)
-4. [File Connections Map](#file-connections-map)
-5. [How Each Flow Works](#how-each-flow-works)
-6. [Database Schema](#database-schema)
-7. [Admin Panel Guide](#admin-panel-guide)
-8. [CSS Files — Kaunsi File Kahan Use Hoti Hai](#css-files)
-9. [Images & Assets](#images--assets)
-10. [Security Summary](#security-summary)
-11. [Live Deployment Checklist](#live-deployment-checklist)
-12. [Quick Reference — All Links](#quick-reference--all-links)
+1. [Project Overview](#1-project-overview)
+2. [Tech Stack](#2-tech-stack)
+3. [Full Folder Structure](#3-full-folder-structure)
+4. [File Connections Map](#4-file-connections-map)
+5. [How Each Flow Works](#5-how-each-flow-works)
+6. [Database Schema](#6-database-schema)
+7. [Admin Panel Guide](#7-admin-panel-guide)
+8. [Student Portal Guide](#8-student-portal-guide)
+9. [Teacher Portal Guide](#9-teacher-portal-guide)
+10. [CSS Files Reference](#10-css-files-reference)
+11. [Security Summary](#11-security-summary)
+12. [Local Development Setup](#12-local-development-setup)
+13. [Live Deployment Checklist](#13-live-deployment-checklist)
+14. [Quick Reference — All Links](#14-quick-reference--all-links)
 
 ---
 
-## Project Overview
+## 1. Project Overview
 
-Programmers Lab ka yeh website ek **static HTML + PHP hybrid** project hai:
+Programmers Lab website ek **static HTML + PHP hybrid** project hai:
 
-- **Frontend:** Pure HTML pages (no framework)
-- **Backend:** PHP + MySQL (forms, admin panel)
-- **Hosting Target:** Hostinger shared hosting
+- **Frontend:** Pure HTML5 pages (no JS framework)
+- **Backend:** PHP 8+ with MySQL — forms, admin panel, portals
 - **Local Dev:** XAMPP (Apache + MySQL + PHP)
+- **Hosting:** Hostinger shared hosting
 
-Website 2 main kaam karti hai:
-1. **Students ko courses show karna** aur enrollment lena
-2. **Contact messages receive karna** — admin panel se manage karna
-
+**Website ke 4 main systems:**
+1. Public website — students ko courses dikhana + enrollment lena
+2. Admin Panel — sab kuch manage karna (enrollments, teachers, messages)
+3. Student Portal — student apni courses, admin messages, teacher chat dekhe
+4. Teacher Portal — teacher apne assigned students ko messages/links bheje
 
 ---
 
-## Tech Stack
+## 2. Tech Stack
 
 | Layer | Technology |
 |-------|-----------|
 | Frontend | HTML5, CSS3, Bootstrap 4/5 |
 | Backend | PHP 8+ |
-| Database | MySQL (via MySQLi) |
-| CSS Framework | Bootstrap + Custom CSS |
-| Icons | Font Awesome 4 + Font Awesome 6 |
-| Fonts | Raleway (Google), Inter (Google) |
-| JS Libraries | jQuery 3.2.1, Owl Carousel, MixItUp |
+| Database | MySQL (MySQLi, prepared statements) |
+| Icons | Font Awesome 6 |
+| Fonts | Inter, Raleway (Google Fonts) + Futura (local) |
+| JS Libraries | jQuery, Owl Carousel, MixItUp |
 | Local Server | XAMPP |
 | Live Hosting | Hostinger |
-| Version Control | Git |
+| Version Control | Git + GitHub |
 
 ---
 
-## Full Folder Structure
+## 3. Full Folder Structure
 
 ```
-pl/                                  ← Root (public_html on Hostinger)
+pl/                                         ← Root (= public_html on Hostinger)
 │
-├── 📄 index.html                    ← Homepage (main landing page)
-├── 📄 config.php                    ← DB config + all helper functions
-├── 📄 connect.php                   ← Contact form POST handler
-├── 📄 enroll.php                    ← Enrollment form POST handler
-├── 📄 get_csrf.php                  ← AJAX CSRF token endpoint
-├── 📄 .htaccess                     ← Apache security rules
-├── 📄 robots.txt                    ← SEO crawler rules
-├── 📄 sitemap.xml                   ← SEO sitemap
+├── ── Core PHP ──
+├── config.php                              ← DB config + all security helpers
+├── connect.php                             ← Contact form POST handler
+├── enroll.php                              ← Enrollment form POST handler
+├── enroll-form.php                         ← Enrollment form with file uploads
+├── get_csrf.php                            ← AJAX CSRF token endpoint
+├── auth.php                                ← Student login/register page (combined)
+├── auth_status.php                         ← AJAX: check if student logged in
+├── user-login.php                          ← Student login POST handler
+├── user-register.php                       ← Student register POST handler
+├── user-logout.php                         ← Student session destroy
+├── user-profile.php                        ← Student portal dashboard
+├── user-session.php                        ← Session helper for student
+├── student-portal.html                     ← Certificate verification page
+├── student-lookup.php                      ← AJAX: CNIC lookup for certificate
+├── teacher-login.php                       ← Teacher login page
+├── teacher-portal.php                      ← Teacher portal dashboard + chat
+├── teacher-logout.php                      ← Teacher session destroy
+├── job-apply.php                           ← Job application POST handler
+├── .htaccess                               ← Apache security + URL rules
+├── robots.txt                              ← SEO crawler rules
+├── sitemap.xml                             ← SEO sitemap
 │
-├── 📄 prgrammers-lab-contact.html   ← Contact page (with form)
-├── 📄 enroll-form.html              ← Enrollment form page
-├── 📄 services.html                 ← Services page
-├── 📄 career.html                   ← Career/jobs page
-├── 📄 blog.html                     ← Blog listing
-├── 📄 faqs.html                     ← FAQs page
-├── 📄 internships-rawalpindi.html   ← Internships page
-├── 📄 page-404.html                 ← 404 error page
+├── ── Static Pages ──
+├── index.html                              ← Homepage
+├── prgrammers-lab-contact.html             ← Contact page
+├── enroll-form.html                        ← Enrollment form page
+├── services.html                           ← Services page
+├── career.html / programmerslab-jobs.html  ← Jobs / Career page
+├── blog.html                               ← Blog listing
+├── faqs.html                               ← FAQs
+├── internships-rawalpindi.html             ← Internships page
+├── page-404.html                           ← 404 error page
 │
-├── 📁 Course Category Pages
-│   ├── best-computer-courses-rawalpidni.html        ← All courses listing
-│   ├── best-web-development-courses-in-rawalpindi.html
-│   ├── best-mobile-app-development-courses-in-rawalpindi.html
-│   ├── best-designing-courses-rawalpidni.html
-│   ├── best-digital-marketing-course-rawalpidni.html
-│   ├── best-programming-courses-institute-in-rawalpidni-islamabad.html
-│   ├── best-freelancing-institute-in-rawalpindi-islamabd.html
-│   └── best-database-courses-institute-in-rawalpidni-islamabad.html
+├── ── Course Pages (30+) ──
+├── best-computer-courses-rawalpidni.html
+├── best-web-development-courses-in-rawalpindi.html
+├── [... all individual course pages ...]
 │
-├── 📁 Individual Course Pages (30+)
-│   ├── best-institute-full-stack-web-development-course-rawalpindi-islamabad.html
-│   ├── best-institute-for-front-end-web-development-course-rawalpidni.html
-│   ├── best-institute-react-js-course-rawalpidni.html
-│   ├── best-institute-php-mysql-course-rawalpidni.html
-│   ├── best-institute-for-asp.net-course-rawalpidni.html
-│   ├── best-Java-course-institute-in-rawalpindi-islamabd.html
-│   ├── best-institute-Cplus-plus-course-rawalpidni.html
-│   ├── best-institute-python-course-rawalpidni .html
-│   ├── best-Javascript-course-institute-in-rawalpindi-islamabd.html
-│   ├── best-flutter-course-institute-in-rawalpindi-islamabd.html
-│   ├── best-react-native-course-institute-rawalpindi.html
-│   ├── best-institute-for-android-app-develiomnet-course-rawalpinidi-islamabad.html
-│   ├── best-institute-graphics-designing-course-rawalpidni.html
-│   ├── best-institute-canva-course-rawalpidni-islamabad.html
-│   ├── best-institute-ui-ux-course-rawalpidni.html
-│   ├── best-institute-digital-marketing-course-rawalpidni.html
-│   ├── best-institute-seo-course-rawalpidni.html
-│   ├── best-institute-social-media-marketing-course-rawalpidni.html
-│   ├── best-institute-full-digital-marketing-course-rawalpidni.html
-│   ├── best-institute-for-MS-office-course-rawalpidni.html
-│   ├── best-institute-for-basic-it-course-in-rawalpidni-islamabad.html
-│   ├── best-csharp-course-institute-in-rawalpindi-islamabd.html
-│   ├── best-database-courses-institute-in-rawalpidni-islamabad.html
-│   ├── best-MYSQL-course-institute-in-rawalpindi-islamabd.html
-│   ├── best-sql-course-institute-rawalpidni-islamabad.html
-│   ├── quality-assurance-course-rawalpidni.html
-│   ├── video-editing-course-rawalpidni.html
-│   └── wordpress.html
+├── admin/                                  ← Admin panel (session-protected)
+│   ├── login.php                           ← Admin login (rate-limited, CSRF)
+│   ├── logout.php                          ← Session destroy + redirect
+│   ├── index.php                           ← Dashboard
+│   ├── admin_layout.php                    ← Shared sidebar + topbar
+│   ├── messages.php                        ← Contact messages
+│   ├── enrollments.php                     ← Student enrollments
+│   ├── courses.php                         ← Course management
+│   ├── certificates.php                    ← Certificate status management
+│   ├── users.php                           ← Registered site users
+│   ├── notices.php                         ← Site-wide popup notices
+│   ├── job_openings.php                    ← Job openings management
+│   ├── job_applications.php                ← Job applications list
+│   ├── teachers.php                        ← Teacher accounts management
+│   ├── teacher_assignments.php             ← Assign teachers to students
+│   ├── broadcast_messages.php              ← Send messages to students
+│   ├── get_enrollment.php                  ← AJAX: fetch enrollment detail
+│   ├── get_message.php                     ← AJAX: fetch message detail
+│   ├── delete_enrollment.php               ← AJAX: delete enrollment
+│   ├── delete_message.php                  ← AJAX: delete message
+│   └── database_setup.sql                  ← Full DB schema (local)
 │
-├── 📁 admin/                        ← Admin panel (password protected)
-│   ├── login.php                    ← Login page
-│   ├── logout.php                   ← Session destroy
-│   ├── index.php                    ← Dashboard
-│   ├── messages.php                 ← Contact messages list
-│   ├── enrollments.php              ← Enrollments list
-│   ├── get_message.php              ← AJAX: single message fetch
-│   ├── get_enrollment.php           ← AJAX: single enrollment fetch
-│   ├── delete_message.php           ← AJAX: delete message
-│   ├── delete_enrollment.php        ← AJAX: delete enrollment
-│   ├── admin_layout.php             ← Shared sidebar + topbar layout
-│   └── database_setup.sql           ← Full DB schema (run once)
+├── api/
+│   ├── courses.php                         ← Public API: course list
+│   ├── job_openings.php                    ← Public API: job listings
+│   └── notice.php                          ← Public API: active notice
 │
-├── 📁 css/
-│   ├── style.css                    ← Main global styles
-│   ├── course-detail.css            ← Shared styles for all course pages
-│   ├── extrastyles.css              ← Extra/override styles
-│   ├── coursesstyles.css            ← Course listing page styles
-│   ├── content-styles.css           ← Blog/content page styles
-│   ├── caree.css                    ← Career page styles
-│   ├── Faqss.css                    ← FAQ page styles
-│   ├── bootstrap.min.css            ← Bootstrap 4 framework
-│   ├── font-awesome.min.css         ← Font Awesome 4 icons
-│   └── owl.carousel.css             ← Owl Carousel slider
-│
-├── 📁 js/
-│   ├── main.js                      ← Custom JS (navbar, scroll, animations)
-│   ├── jquery-3.2.1.min.js          ← jQuery library
-│   ├── bootstrap.min.js             ← Bootstrap JS
-│   ├── owl.carousel.min.js          ← Carousel/slider
-│   ├── mixitup.min.js               ← Course filter animations
-│   ├── Faqs.js                      ← FAQ accordion JS
-│   ├── circle-progress.min.js       ← Progress circle animations
-│   └── map.js                       ← Google Maps helper
-│
-├── 📁 img/                          ← General images
-├── 📁 courses-images/               ← Course category images
-├── 📁 Best-Computer-Institute-.../  ← SEO-named course images
-├── 📁 uploads/                      ← Student uploaded files (form submissions)
-├── 📁 logs/                         ← PHP error logs
-├── 📁 fonts/                        ← Custom fonts (Futura)
-└── 📁 icon-fonts/                   ← Font Awesome font files
-```
-
-
----
-
-## File Connections Map
-
-Yeh diagram dikhata hai kaunsi file kis file se connected hai:
-
-```
-┌─────────────────────────────────────────────────────────────┐
-│                    FRONTEND (HTML Pages)                    │
-├─────────────────────────────────────────────────────────────┤
-│                                                             │
-│  index.html ──────────────────────────────────────────────► enroll-form.html
-│      │                                                      │
-│      └──► best-computer-courses-rawalpidni.html             │
-│                    │                                        │
-│                    └──► [30+ individual course pages]       │
-│                              │                              │
-│                              └──► enroll-form.html ─────────┘
-│                                        │
-│  prgrammers-lab-contact.html           │
-│      │                                 │
-│      ▼                                 ▼
-├──────────────────────────────────────────────────────────────┤
-│                    PHP BACKEND                               │
-├──────────────────────────────────────────────────────────────┤
-│                                                             │
-│  Contact Form                Enrollment Form                │
-│  ─────────────               ─────────────────              │
-│  HTML Form                   HTML Form                      │
-│      │                           │                          │
-│      ▼                           ▼                          │
-│  get_csrf.php ◄──────────── get_csrf.php                    │
-│      │                           │                          │
-│      ▼                           ▼                          │
-│  connect.php                 enroll.php                     │
-│      │                           │                          │
-│      └──────────┐   ┌────────────┘                          │
-│                 ▼   ▼                                       │
-│              config.php                                     │
-│            (DB + helpers)                                   │
-│                 │                                           │
-│                 ▼                                           │
-│           MySQL Database                                    │
-│         programmerslab_db                                   │
-│           │           │                                     │
-│       contact        enroll                                 │
-│       table          table                                  │
-│                                                             │
-├──────────────────────────────────────────────────────────────┤
-│                    ADMIN PANEL                               │
-├──────────────────────────────────────────────────────────────┤
-│                                                             │
-│  login.php                                                  │
-│      │ (session set)                                        │
-│      ▼                                                      │
-│  admin_layout.php ◄─── index.php (dashboard)                │
-│         │              messages.php                         │
-│         │              enrollments.php                      │
-│         │                   │                               │
-│         └───────────────────┘                               │
-│                             │                               │
-│                    AJAX calls ──► get_message.php           │
-│                             │    get_enrollment.php         │
-│                             │    delete_message.php         │
-│                             └──► delete_enrollment.php      │
-│                                        │                    │
-│                                   config.php                │
-│                                        │                    │
-│                                  MySQL Database             │
-│                                                             │
-└─────────────────────────────────────────────────────────────┘
+├── css/ js/ img/ fonts/ icon-fonts/        ← Static assets
+├── courses-images/                         ← Course cover images
+├── uploads/                                ← Student files (runtime, gitignored)
+└── logs/                                   ← PHP error logs (gitignored)
 ```
 
 ---
 
-## How Each Flow Works
-
-### 1. Contact Form Flow
+## 4. File Connections Map
 
 ```
-User fills form on:
-  prgrammers-lab-contact.html
+PUBLIC WEBSITE
+──────────────────────────────────────────────────────────
+HTML Pages → enroll-form.html
+  └──► get_csrf.php → enroll-form.php / enroll.php
 
-JavaScript steps:
-  Step 1 → fetch('get_csrf.php')         ← CSRF token manga
-  Step 2 → POST to connect.php           ← Form data + CSRF token bheja
-  
-connect.php kya karta hai:
-  ✔ Method check (POST only)
-  ✔ CSRF token verify
-  ✔ Fields validate (name, email, phone, subject, message)
-  ✔ Email format validate
-  ✔ Phone format validate
-  ✔ INSERT INTO contact table
-  ✔ JSON response return karta hai {success: true/false}
+contact page → get_csrf.php → connect.php → MySQL: contact
 
-User ko dikhai deta hai:
-  ✅ Green success message
-  ❌ Red error message (agar validation fail ya DB error)
+STUDENT PORTAL
+──────────────────────────────────────────────────────────
+auth.php (login/register UI)
+  ├── user-login.php     → session set → user-profile.php
+  └── user-register.php  → session set → user-profile.php
+
+user-profile.php
+  ├── Shows: enrolled courses, status, stats
+  ├── Shows: broadcast messages from admin (read/unread)
+  ├── Shows: teacher chat (per course assignment)
+  ├── AJAX POST → get_chat     → chat_messages table
+  └── AJAX POST → send_chat    → chat_messages table
+
+student-portal.html (certificate check — no login needed)
+  └──► student-lookup.php → enroll table (by CNIC)
+
+TEACHER PORTAL
+──────────────────────────────────────────────────────────
+teacher-login.php → session set → teacher-portal.php
+
+teacher-portal.php
+  ├── Shows: assigned students list
+  ├── Chat window per student
+  ├── AJAX POST → send_msg  → chat_messages table
+  └── AJAX POST → get_msgs  → chat_messages table
+
+ADMIN PANEL
+──────────────────────────────────────────────────────────
+admin/login.php (CSRF + rate limit + bcrypt)
+  └──► Session → admin/index.php (dashboard)
+
+admin_layout.php (included by all admin pages)
+  ├── enrollments.php       → enroll table
+  ├── messages.php          → contact table
+  ├── courses.php           → courses table
+  ├── certificates.php      → enroll table (status update)
+  ├── notices.php           → notices table
+  ├── users.php             → site_users table
+  ├── job_openings.php      → job_openings table
+  ├── job_applications.php  → job_applications table
+  ├── teachers.php          → teacher_users table
+  ├── teacher_assignments.php → teacher_assignments table
+  └── broadcast_messages.php → broadcast_messages table
+
+ALL PHP → config.php
+  ├── get_db()              DB connection (MySQLi)
+  ├── h()                   XSS-safe output
+  ├── csrf_token()          CSRF generate
+  ├── csrf_verify()         CSRF validate
+  ├── session_init()        Secure session
+  ├── require_admin()       Admin auth guard
+  ├── log_activity()        Audit log
+  ├── validate_email()
+  └── validate_phone()
 ```
-
-### 2. Enrollment Form Flow
-
-```
-User fills form on:
-  enroll-form.html
-
-JavaScript steps:
-  Step 1 → fetch('get_csrf.php')         ← CSRF token manga
-  Step 2 → POST to enroll.php            ← FormData + files + CSRF token
-
-enroll.php kya karta hai:
-  ✔ Method check (POST only)
-  ✔ CSRF token verify
-  ✔ Required fields check (fullName, email, phone, courseInterest)
-  ✔ Email + phone validate
-  ✔ File upload handle karta hai (optional):
-      - MIME type check (not extension)
-      - Max 5MB per file
-      - Saves to uploads/ with random filename
-  ✔ INSERT INTO enroll table
-  ✔ JSON response return karta hai
-
-Files save hoti hain:
-  uploads/[random_hex]_qual.jpg   ← qualification
-  uploads/[random_hex]_photo.jpg  ← passport photo
-  uploads/[random_hex]_cnic.pdf   ← CNIC
-```
-
-### 3. Admin Login Flow
-
-```
-Admin opens:
-  admin/login.php
-
-login.php kya karta hai:
-  ✔ CSRF token verify
-  ✔ IP se login attempts count karta hai (last 15 min)
-  ✔ Agar 5+ attempts → lockout (15 min)
-  ✔ Database se username fetch karta hai
-  ✔ password_verify() se bcrypt check
-  ✔ Session set karta hai:
-      $_SESSION['admin_logged_in'] = true
-      $_SESSION['admin_username']
-      $_SESSION['fingerprint']     ← Browser + IP hash
-      $_SESSION['last_activity']
-  ✔ Redirect → index.php
-```
-
-### 4. Admin Panel Flow
-
-```
-Har admin page pe:
-  require_admin() call hoti hai → config.php mein defined
-
-require_admin() check karta hai:
-  ✔ Session exist karta hai?
-  ✔ 30 min se zyada idle? → logout
-  ✔ Browser fingerprint match? → logout (hijack protection)
-
-Dashboard (index.php):
-  → Messages count
-  → Enrollments count
-  → Recent 5 entries of each
-
-Messages (messages.php):
-  → All contact table rows
-  → Eye button → AJAX → get_message.php → modal
-  → Trash button → AJAX → delete_message.php
-
-Enrollments (enrollments.php):
-  → All enroll table rows
-  → Eye button → AJAX → get_enrollment.php → modal
-  → Trash button → AJAX → delete_enrollment.php
-```
-
 
 ---
 
-## Database Schema
+## 5. How Each Flow Works
 
-**Database Name:** `programmerslab_db`
+### Contact Form Flow
+```
+1. prgrammers-lab-contact.html
+2. GET  get_csrf.php   → token receive
+3. POST connect.php    → validate → INSERT contact → JSON response
+```
 
-### Table: `contact`
-| Column | Type | Description |
-|--------|------|-------------|
-| id | INT AUTO_INCREMENT PK | Unique ID |
-| name | VARCHAR(255) | Sender ka naam |
-| email | VARCHAR(255) | Email address |
-| phone | VARCHAR(20) | Phone number |
-| subject | VARCHAR(500) | Subject (dropdown se) |
-| message | TEXT | Message content |
-| created_at | TIMESTAMP | Auto set on insert |
+### Enrollment Form Flow
+```
+1. enroll-form.html
+2. GET  get_csrf.php      → token receive
+3. POST enroll-form.php   → validate → file upload check → INSERT enroll → JSON
+```
 
-### Table: `enroll`
-| Column | Type | Description |
-|--------|------|-------------|
-| id | INT AUTO_INCREMENT PK | Unique ID |
-| full_name | VARCHAR(255) | Student ka naam |
-| father_name | VARCHAR(255) | Optional |
-| email | VARCHAR(255) | Email |
-| phone | VARCHAR(20) | Phone |
-| gender | VARCHAR(20) | Male/Female/Other |
-| course_interest | VARCHAR(255) | Selected course |
-| study_mode | VARCHAR(50) | Online / Onsite |
-| qualification_file | VARCHAR(255) | uploads/ mein filename |
-| passport_photo | VARCHAR(255) | uploads/ mein filename |
-| cnic_file | VARCHAR(255) | uploads/ mein filename |
-| previous_experience | TEXT | Optional |
-| reason_for_joining | TEXT | Optional |
-| created_at | TIMESTAMP | Auto set on insert |
+### Student Registration & Login
+```
+1. auth.php (login/register tabs)
+2. POST user-register.php → validate → bcrypt password → INSERT site_users
+   POST user-login.php    → verify hash → session set
+3. Redirect → user-profile.php
+```
 
-### Table: `admin_users`
-| Column | Type | Description |
-|--------|------|-------------|
-| id | INT AUTO_INCREMENT PK | Unique ID |
-| username | VARCHAR(100) UNIQUE | Login username |
-| password_hash | VARCHAR(255) | Bcrypt hash (cost 12) |
-| created_at | TIMESTAMP | Account creation |
+### Student Portal — Broadcast Messages
+```
+Admin sends message (all / specific course / specific student)
+  → broadcast_messages table
 
-### Table: `login_attempts`
-| Column | Type | Description |
-|--------|------|-------------|
-| id | INT AUTO_INCREMENT PK | Unique ID |
-| ip_address | VARCHAR(45) | Attacker IP |
-| attempted_at | TIMESTAMP | Attempt time |
+Student logs in → user-profile.php
+  → Queries broadcast_messages WHERE target matches student's enrollments
+  → Shows messages with read/unread status (colored badge)
+  → FA icons used — info (blue), success (green), warning (yellow), urgent (red)
+```
 
-### Table: `admin_logs`
-| Column | Type | Description |
-|--------|------|-------------|
-| id | INT AUTO_INCREMENT PK | Unique ID |
-| admin_username | VARCHAR(100) | Who did the action |
-| action | VARCHAR(255) | e.g. LOGIN, DELETE_MESSAGE |
-| details | TEXT | Extra info |
-| ip_address | VARCHAR(45) | Admin IP |
-| user_agent | VARCHAR(500) | Browser info |
-| created_at | TIMESTAMP | When it happened |
+### Student Portal — Teacher Chat
+```
+Admin assigns teacher to student (teacher_assignments table)
+
+Student sees "My Teachers" section on user-profile.php
+  → Each assigned teacher has a chat tab
+  → Student sends text message → chat_messages (sender_type='student')
+  → Teacher reply appears in same window
+  → Polling every 5 seconds (AbortController, pauses when tab hidden)
+```
+
+### Teacher Portal Flow
+```
+1. teacher-login.php (rate-limited, fingerprinted)
+2. teacher-portal.php:
+   - Left panel: list of assigned students
+   - Right panel: chat window
+   - Message types: Text / Link / Video / Question / File
+   - Unread count badge per student
+   - Auto-poll every 5s (AbortController used)
+```
+
+### Admin Broadcast Flow
+```
+1. admin/broadcast_messages.php → "Send Message" button
+2. Select: Type (Info/Success/Warning/Urgent)
+           Target (All / Specific Course / Specific Student)
+3. Preview shown live
+4. INSERT broadcast_messages
+5. Student sees it on next portal load
+```
+
+### Teacher Assignment Flow
+```
+1. admin/teachers.php → Add Teacher (set username + password)
+2. admin/teacher_assignments.php → New Assignment
+   → Select teacher + select student → INSERT teacher_assignments
+3. Teacher logs in → sees assigned students → chat opens
+4. Student logs in → sees teacher under "My Teachers" → can reply
+```
+
+### Admin Login Flow
+```
+1. admin/login.php
+2. IP-based rate limit check (login_attempts table, 5/15min)
+3. bcrypt password_verify()
+4. Session set with fingerprint hash(User-Agent + IP)
+5. Redirect → index.php
+```
 
 ---
 
-## CSS Files
+## 6. Database Schema
 
-Kaunsi CSS file kahan use hoti hai:
+**Local DB:** `programmerslab_db`  
+**Live DB:** `u896451268_programmerslab`
 
-| CSS File | Pages |
-|----------|-------|
-| `css/style.css` | index.html + most pages (global base) |
-| `css/course-detail.css` | Saare individual course pages (navbar, footer, tiles, hero) |
-| `css/extrastyles.css` | Contact page + some others |
-| `css/coursesstyles.css` | Course category listing pages |
-| `css/content-styles.css` | Blog, content-heavy pages |
+### Original Tables
+
+| Table | Purpose |
+|-------|---------|
+| `contact` | Contact form messages |
+| `enroll` | Student enrollment applications |
+| `admin_users` | Admin accounts |
+| `login_attempts` | Rate limiting for admin + teacher login |
+| `admin_logs` | Admin activity audit trail |
+| `courses` | Course list (admin managed) |
+| `notices` | Site-wide popup notices |
+| `job_openings` | Job/career listings |
+| `job_applications` | Job applications |
+| `site_users` | Registered student accounts |
+
+### New Tables (Messaging & Teacher System)
+
+### `teacher_users`
+| Column | Type | Notes |
+|--------|------|-------|
+| id | INT PK | |
+| full_name | VARCHAR(255) | |
+| username | VARCHAR(100) UNIQUE | Login ID |
+| password_hash | VARCHAR(255) | bcrypt |
+| email | VARCHAR(255) | |
+| phone | VARCHAR(20) | |
+| subject | VARCHAR(255) | e.g. Web Development |
+| bio | TEXT | Optional |
+| is_active | TINYINT(1) | 1=can login, 0=blocked |
+| created_by | VARCHAR(100) | Admin username |
+| created_at | TIMESTAMP | |
+
+### `teacher_assignments`
+| Column | Type | Notes |
+|--------|------|-------|
+| id | INT PK | |
+| teacher_id | INT FK | → teacher_users.id |
+| enrollment_id | INT FK | → enroll.id |
+| assigned_by | VARCHAR(100) | Admin username |
+| assigned_at | TIMESTAMP | |
+
+### `broadcast_messages`
+| Column | Type | Notes |
+|--------|------|-------|
+| id | INT PK | |
+| title | VARCHAR(255) | |
+| body | TEXT | |
+| msg_type | ENUM | info / warning / success / urgent |
+| target_type | ENUM | all / course / student |
+| target_id | INT | enrollment_id (if student-specific) |
+| target_course | VARCHAR(255) | course name (if course-specific) |
+| sent_by | VARCHAR(100) | Admin username |
+| is_active | TINYINT(1) | 1=visible, 0=hidden |
+| created_at | TIMESTAMP | |
+
+### `broadcast_reads`
+| Column | Type | Notes |
+|--------|------|-------|
+| id | INT PK | |
+| message_id | INT FK | → broadcast_messages.id |
+| user_id | INT | site_users.id |
+| read_at | TIMESTAMP | |
+
+### `chat_messages`
+| Column | Type | Notes |
+|--------|------|-------|
+| id | INT PK | |
+| assignment_id | INT FK | → teacher_assignments.id |
+| sender_type | ENUM | teacher / student |
+| sender_id | INT | teacher_users.id OR site_users.id |
+| msg_type | ENUM | text / link / video / file / question |
+| body | TEXT | Max 5000 chars |
+| attachment_url | VARCHAR(500) | Must be http/https |
+| is_read | TINYINT(1) | 0=unread, 1=read |
+| created_at | TIMESTAMP | |
+
+---
+
+## 7. Admin Panel Guide
+
+| Page | URL | Kya Karta Hai |
+|------|-----|---------------|
+| Login | `/admin/login.php` | Admin login |
+| Dashboard | `/admin/index.php` | Stats + recent entries |
+| Messages | `/admin/messages.php` | Contact form messages |
+| Enrollments | `/admin/enrollments.php` | Student enrollments + status |
+| Courses | `/admin/courses.php` | Course list manage |
+| Certificates | `/admin/certificates.php` | Mark courses completed |
+| Notices | `/admin/notices.php` | Site-wide popup notices |
+| Users | `/admin/users.php` | Registered student accounts |
+| Job Openings | `/admin/job_openings.php` | Manage job listings |
+| Job Applications | `/admin/job_applications.php` | View applications |
+| **Teachers** | `/admin/teachers.php` | Add/edit teacher accounts |
+| **Assignments** | `/admin/teacher_assignments.php` | Link teachers to students |
+| **Broadcast** | `/admin/broadcast_messages.php` | Send messages to students |
+
+---
+
+## 8. Student Portal Guide
+
+**URL:** `/user-profile.php`  
+**Access:** Login required via `/auth.php`
+
+**Features:**
+- Dashboard with stats (total courses, active, completed, pending)
+- My Courses — all enrolled courses with status
+- **Messages from Admin** — broadcast messages (unread badge, color-coded by type)
+- **My Teachers** — chat with assigned teacher per course
+- Account info section
+
+**Certificate Check** (no login needed):  
+`/student-portal.html` — enter CNIC to see enrollment status + certificate
+
+---
+
+## 9. Teacher Portal Guide
+
+**URL:** `/teacher-portal.php`  
+**Access:** Login via `/teacher-login.php` (credentials from admin)
+
+**Features:**
+- Student list (left panel) — all assigned students with unread count
+- Chat window (right panel) — full message history
+- Message types: Text, Link, Video, Question, File/Doc
+- Auto-refresh every 5 seconds (pauses when tab hidden)
+- Session fingerprinting + rate-limited login
+
+**Setup flow:**
+1. Admin → Teachers → Add Teacher → set username + password
+2. Admin → Assignments → New Assignment → link teacher to student
+3. Teacher logs in → chats with students
+
+---
+
+## 10. CSS Files Reference
+
+| CSS File | Used On |
+|----------|---------|
+| `css/style.css` | index.html + general pages |
+| `css/course-detail.css` | All individual course pages |
+| `css/coursesstyles.css` | Course category pages |
+| `css/extrastyles.css` | Contact page + overrides |
+| `css/content-styles.css` | Blog, content pages |
 | `css/caree.css` | career.html |
 | `css/Faqss.css` | faqs.html |
-| `css/bootstrap.min.css` | Har page (grid system) |
-| `css/font-awesome.min.css` | Har page (icons) |
-| `css/owl.carousel.css` | Slider/carousel wale pages |
+| `css/bootstrap.min.css` | All pages |
+| `css/font-awesome.min.css` | All pages |
+| `css/owl.carousel.css` | Slider pages |
 
 ---
 
-## Images & Assets
-
-| Folder | Contents |
-|--------|---------|
-| `img/` | Logo, favicon, team photos, background images |
-| `img/courses/` | Course-specific images |
-| `img/blog/` | Blog post images |
-| `courses-images/` | Course category cover images |
-| `Best-Computer-Institute-.../` | SEO-named individual course images |
-| `uploads/` | Student uploaded files (runtime, gitignored) |
-| `update images/` | Updated logo file |
-| `fonts/` | Futura custom font |
-
----
-
-## Security Summary
+## 11. Security Summary
 
 | Feature | File | Status |
 |---------|------|--------|
-| CSRF Token | config.php + get_csrf.php | ✅ All forms |
-| Bcrypt Password | config.php | ✅ Cost 12 |
-| Prepared Statements | All PHP files | ✅ SQL injection safe |
-| Session Timeout | config.php | ✅ 30 minutes |
-| Session Fingerprint | config.php | ✅ Hijack protection |
-| Login Rate Limit | login.php | ✅ 5 attempts, 15 min lockout |
-| File MIME Validation | enroll.php | ✅ Real type check |
-| PHP blocked in uploads | .htaccess + uploads/.htaccess | ✅ |
-| Directory listing off | .htaccess | ✅ |
-| config.php blocked | .htaccess | ✅ Direct access denied |
-| Security Headers | config.php | ✅ X-Frame, XSS, nosniff |
-| Activity Logging | config.php | ✅ All admin actions logged |
+| CSRF Token (all forms) | config.php + get_csrf.php | ✅ |
+| Bcrypt passwords (cost 12) | config.php | ✅ |
+| Prepared statements everywhere | All PHP files | ✅ |
+| Session timeout (30 min) | config.php | ✅ |
+| Session fingerprinting | config.php, teacher-portal.php | ✅ |
+| Admin login rate limiting | admin/login.php | ✅ 5/15min |
+| Teacher login rate limiting | teacher-login.php | ✅ same table |
+| Teacher session fingerprint | teacher-portal.php | ✅ |
+| Chat ownership verification | user-profile.php, teacher-portal.php | ✅ |
+| Message length limit | Both portals | ✅ 5000 chars |
+| URL validation (attachments) | Both portals | ✅ http/https only |
+| LIMIT on chat queries | Both portals | ✅ LIMIT 100 |
+| AbortController on polling | JS — both portals | ✅ No stacked requests |
+| File MIME validation | enroll.php | ✅ |
+| PHP blocked in uploads/ | .htaccess | ✅ |
+| Security headers (CSP, X-Frame etc.) | config.php | ✅ |
+| Admin activity audit log | config.php | ✅ |
+| XSS safe output h() | All PHP views | ✅ |
 
 ---
 
-## Live Deployment Checklist
+## 12. Local Development Setup
 
-### Step 1 — Hostinger Database
-- [ ] hPanel → Databases → MySQL → New Database banao
-- [ ] Username + Password note karo
-- [ ] phpMyAdmin mein `admin/database_setup.sql` import karo
-
-### Step 2 — config.php Update Karo
-```php
-define('DB_USER', 'u123456_username');   // Hostinger DB user
-define('DB_PASS', 'StrongPassword123');  // Hostinger DB pass
-define('DB_NAME', 'u123456_dbname');     // Hostinger DB name
-define('APP_ENV', 'production');         // production karo
 ```
-
-### Step 3 — Admin User Banao
-phpMyAdmin mein SQL tab mein run karo:
-```sql
--- Password hash PHP se generate karo: password_hash('yourpass', PASSWORD_BCRYPT, ['cost'=>12])
-INSERT INTO admin_users (username, password_hash)
-VALUES ('admin', '$2y$12$...');
+1. XAMPP → Apache + MySQL start karo
+2. Project folder: C:\xampp\htdocs\pl\
+3. phpMyAdmin → http://localhost/phpmyadmin
+4. Database banao: programmerslab_db
+5. Import: admin/database_setup.sql
+6. Import: admin/add_messaging_teachers.sql   ← NEW
+7. config.php auto-detects localhost → no change needed
+8. Admin user banao:
+   INSERT INTO admin_users (username, password_hash)
+   VALUES ('admin', 'BCRYPT_HASH');
+9. Website:        http://localhost/pl/
+10. Admin:         http://localhost/pl/admin/login.php
+11. Student portal: http://localhost/pl/user-profile.php
+12. Teacher portal: http://localhost/pl/teacher-portal.php
 ```
-
-### Step 4 — Files Upload
-- File Manager ya FTP se `pl/` ka sara content → `public_html/` mein upload karo
-- `uploads/` folder banao manually
-
-### Step 5 — SSL + HTTPS
-- hPanel → SSL → Force HTTPS enable karo
-- `.htaccess` mein HTTPS redirect uncomment karo
-
-### Step 6 — Verify
-- Website open karo → form fill karo → admin mein check karo
 
 ---
 
-## Quick Reference — All Links
+## 13. Live Deployment Checklist
 
-### Local (XAMPP)
+### Step 1 — Database (phpMyAdmin on Hostinger)
+- [ ] `database_setup_hostinger.sql` already imported (existing tables)
+- [ ] Run `admin/add_messaging_teachers.sql` to add new tables
+
+### Step 2 — Upload Files (File Manager / FTP)
+Upload these — everything except:
+- `.git/` folder
+- `logs/` folder content
+- `uploads/` folder content (live files hain)
+- `config.php` only if credentials changed
+
+| New Files | Path |
+|-----------|------|
+| teacher-login.php | root |
+| teacher-portal.php | root |
+| teacher-logout.php | root |
+| admin/teachers.php | admin/ |
+| admin/teacher_assignments.php | admin/ |
+| admin/broadcast_messages.php | admin/ |
+
+| Updated Files | Change |
+|---------------|--------|
+| user-profile.php | Messaging + teacher chat + security fixes |
+| admin/admin_layout.php | New sidebar links |
+
+### Step 3 — Verify Live
+- [ ] Admin panel → Teachers, Assignments, Broadcast links in sidebar
+- [ ] `teacher-login.php` loads
+- [ ] Student portal → Messages section visible
+- [ ] Send a test broadcast → student sees it
+
+---
+
+## 14. Quick Reference — All Links
+
+### Local
+
 | Page | URL |
 |------|-----|
 | Homepage | http://localhost/pl/ |
-| All Courses | http://localhost/pl/best-computer-courses-rawalpidni.html |
+| Enroll | http://localhost/pl/enroll-form.html |
 | Contact | http://localhost/pl/prgrammers-lab-contact.html |
-| Enroll Form | http://localhost/pl/enroll-form.html |
+| Certificate Check | http://localhost/pl/student-portal.html |
+| Student Login | http://localhost/pl/auth.php |
+| Student Portal | http://localhost/pl/user-profile.php |
+| Teacher Login | http://localhost/pl/teacher-login.php |
+| Teacher Portal | http://localhost/pl/teacher-portal.php |
 | Admin Login | http://localhost/pl/admin/login.php |
 | Admin Dashboard | http://localhost/pl/admin/index.php |
-| Messages | http://localhost/pl/admin/messages.php |
-| Enrollments | http://localhost/pl/admin/enrollments.php |
+| Teachers | http://localhost/pl/admin/teachers.php |
+| Assignments | http://localhost/pl/admin/teacher_assignments.php |
+| Broadcast | http://localhost/pl/admin/broadcast_messages.php |
 
 ### Live (Hostinger)
+
 | Page | URL |
 |------|-----|
 | Homepage | https://www.programmerslabs.com/ |
+| Student Portal | https://www.programmerslabs.com/user-profile.php |
+| Teacher Login | https://www.programmerslabs.com/teacher-login.php |
 | Admin Login | https://www.programmerslabs.com/admin/login.php |
 
 ---
 
-## Solid Detail Summary
-
-```
-┌─────────────────────────────────────────────────────────────────┐
-│              PROGRAMMERS LAB — SYSTEM AT A GLANCE               │
-├─────────────────────────────────────────────────────────────────┤
-│                                                                 │
-│  VISITOR                                                        │
-│     │                                                           │
-│     ├──► Views courses (30+ HTML pages)                         │
-│     │         └── Uses: css/course-detail.css                   │
-│     │                   js/main.js                              │
-│     │                   img/ + courses-images/                  │
-│     │                                                           │
-│     ├──► Fills Contact Form                                     │
-│     │         └── HTML → get_csrf.php → connect.php             │
-│     │                         └── MySQL: contact table          │
-│     │                                                           │
-│     └──► Fills Enrollment Form                                  │
-│               └── HTML → get_csrf.php → enroll.php              │
-│                               └── MySQL: enroll table           │
-│                               └── File → uploads/ folder        │
-│                                                                 │
-│  ADMIN                                                          │
-│     │                                                           │
-│     ├──► login.php → Session → Dashboard                        │
-│     │                                                           │
-│     ├──► messages.php → contact table → View/Delete             │
-│     │         └── get_message.php (AJAX view)                   │
-│     │         └── delete_message.php (AJAX delete)              │
-│     │                                                           │
-│     └──► enrollments.php → enroll table → View/Delete           │
-│               └── get_enrollment.php (AJAX view)                │
-│               └── delete_enrollment.php (AJAX delete)           │
-│                                                                 │
-│  EVERY PHP FILE uses:                                           │
-│     └── config.php                                              │
-│               ├── get_db()         DB connection                │
-│               ├── csrf_token()     CSRF generate                │
-│               ├── csrf_verify()    CSRF check                   │
-│               ├── session_init()   Session start                │
-│               ├── require_admin()  Auth check                   │
-│               ├── validate_email() Email check                  │
-│               ├── validate_phone() Phone check                  │
-│               ├── log_activity()   Audit log                    │
-│               └── h()              XSS safe output              │
-│                                                                 │
-└─────────────────────────────────────────────────────────────────┘
-```
-
----
-
-*Last Updated: June 2026 | Programmers Lab — Rawalpindi*
+*Last Updated: August 2026 | Programmers Lab — Rawalpindi, Pakistan*

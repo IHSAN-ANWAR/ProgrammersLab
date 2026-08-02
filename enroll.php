@@ -11,8 +11,14 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
 session_init();
 csrf_verify();
 
+// Require logged-in user to submit enrollment
+if (empty($_SESSION['user_id'])) {
+    echo json_encode(['success' => false, 'message' => 'You must be logged in to enroll. Please login or register.']);
+    exit;
+}
+
 // --- Required field validation ---
-$required = ['fullName', 'email', 'phone', 'courseInterest'];
+$required = ['fullName', 'email', 'phone', 'courseInterest', 'cnicNumber'];
 foreach ($required as $field) {
     if (empty(trim($_POST[$field] ?? ''))) {
         echo json_encode(['success' => false, 'message' => 'Please fill all required fields.']);
@@ -23,8 +29,9 @@ foreach ($required as $field) {
 $fullName   = trim($_POST['fullName']);
 $fatherName = trim($_POST['fatherName'] ?? '');
 $email      = trim($_POST['email']);
-$phone      = trim($_POST['phone']);
+$phone      = trim($_POST['phone']);    
 $gender     = trim($_POST['gender'] ?? '');
+$cnicNumber = trim($_POST['cnicNumber'] ?? '');
 $course     = trim($_POST['courseInterest']);
 $studyMode  = trim($_POST['studyMode'] ?? '');
 $experience = trim($_POST['previousExperience'] ?? '');
@@ -37,6 +44,12 @@ if (!validate_email($email)) {
 
 if (!validate_phone($phone)) {
     echo json_encode(['success' => false, 'message' => 'Invalid phone number.']);
+    exit;
+}
+
+// Validate CNIC format
+if (!preg_match('/^\d{5}-\d{7}-\d$/', $cnicNumber)) {
+    echo json_encode(['success' => false, 'message' => 'Invalid CNIC format. Use: XXXXX-XXXXXXX-X']);
     exit;
 }
 
@@ -87,9 +100,8 @@ function handle_upload(string $field, string $prefix): string {
 }
 
 try {
-    $qualFile  = handle_upload('qualificationFile', 'qual');
-    $photoFile = handle_upload('passportPhoto',     'photo');
-    $cnicFile  = handle_upload('cnic',              'cnic');
+    $photoFile = handle_upload('passportPhoto', 'photo');
+    $cnicFile  = handle_upload('cnic',          'cnic');
 } catch (RuntimeException $e) {
     echo json_encode(['success' => false, 'message' => $e->getMessage()]);
     exit;
@@ -97,17 +109,38 @@ try {
 
 $conn = get_db();
 
-$stmt = $conn->prepare(
-    "INSERT INTO enroll
-        (full_name, father_name, email, phone, gender, course_interest, study_mode,
-         qualification_file, passport_photo, cnic_file, previous_experience, reason_for_joining)
-     VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"
-);
-$stmt->bind_param(
-    'ssssssssssss',
-    $fullName, $fatherName, $email, $phone, $gender, $course,
-    $studyMode, $qualFile, $photoFile, $cnicFile, $experience, $reason
-);
+$userId = $_SESSION['user_id'] ?? null;
+
+// Check if user_id column exists in enroll table (for live server compatibility)
+$col_check  = $conn->query("SHOW COLUMNS FROM enroll LIKE 'user_id'");
+$has_uid    = $col_check && $col_check->num_rows > 0;
+
+if ($has_uid) {
+    $stmt = $conn->prepare(
+        "INSERT INTO enroll
+            (user_id, full_name, father_name, email, phone, gender, cnic_number, course_interest, study_mode,
+             passport_photo, cnic_file, previous_experience, reason_for_joining, enrollment_status, added_by)
+         VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 'pending', 'online')"
+    );
+    $stmt->bind_param(
+        'issssssssssss',
+        $userId, $fullName, $fatherName, $email, $phone, $gender, $cnicNumber, $course,
+        $studyMode, $photoFile, $cnicFile, $experience, $reason
+    );
+} else {
+    // Fallback: enroll without user_id column
+    $stmt = $conn->prepare(
+        "INSERT INTO enroll
+            (full_name, father_name, email, phone, gender, cnic_number, course_interest, study_mode,
+             passport_photo, cnic_file, previous_experience, reason_for_joining, enrollment_status, added_by)
+         VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 'pending', 'online')"
+    );
+    $stmt->bind_param(
+        'ssssssssssss',
+        $fullName, $fatherName, $email, $phone, $gender, $cnicNumber, $course,
+        $studyMode, $photoFile, $cnicFile, $experience, $reason
+    );
+}
 
 if ($stmt->execute()) {
     echo json_encode(['success' => true, 'message' => 'Enrollment submitted successfully! We will contact you soon.']);

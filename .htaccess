@@ -2,11 +2,26 @@
 # Programmers Lab — Apache Security Rules
 # ============================================================
 
+# Custom 404 error page
+ErrorDocument 404 /pl/page-404.html
+
 # Prevent directory listing
 Options -Indexes
 
 # Block direct access to sensitive PHP config files
 <FilesMatch "(config\.php|\.env|\.gitkeep|test_forms\.php|create_admin\.php)$">
+    Order allow,deny
+    Deny from all
+</FilesMatch>
+
+# Block SQL files from direct browser access
+<FilesMatch "\.sql$">
+    Order allow,deny
+    Deny from all
+</FilesMatch>
+
+# Block readme/documentation files
+<FilesMatch "(README\.md|BACKEND_README\.md)$">
     Order allow,deny
     Deny from all
 </FilesMatch>
@@ -28,15 +43,16 @@ Options -Indexes
 </IfModule>
 
 # Force HTTPS (uncomment on live server with SSL)
-# <IfModule mod_rewrite.c>
-#     RewriteCond %{HTTPS} off
-#     RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
-# </IfModule>
+<IfModule mod_rewrite.c>
+    RewriteCond %{HTTPS} off
+    RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+</IfModule>
 
 # Prevent hotlinking of images
 <IfModule mod_rewrite.c>
     RewriteCond %{HTTP_REFERER} !^$
     RewriteCond %{HTTP_REFERER} !^https?://(www\.)?programmerslabs\.com [NC]
+    RewriteCond %{HTTP_REFERER} !^https?://lavender-giraffe-648250\.hostingersite\.com [NC]
     RewriteCond %{HTTP_REFERER} !^https?://localhost [NC]
     RewriteRule \.(jpg|jpeg|png|gif|webp)$ - [F,NC,L]
 </IfModule>
