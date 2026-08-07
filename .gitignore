@@ -4,6 +4,7 @@
 
 # Sensitive config — NEVER commit (contains DB credentials)
 config.php
+.env
 
 # Uploaded user files — runtime data, not source code
 uploads/*

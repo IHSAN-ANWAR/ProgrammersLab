@@ -271,7 +271,18 @@ else: ?>
                 <i class="fas fa-key me-1"></i>Login Credentials — Share with Teacher
             </div>
             <div style="font-family:monospace;font-size:13px;color:#166534;line-height:2.2;">
-                <div>Portal URL: <strong><?= isset($_SERVER['HTTP_HOST']) ? htmlspecialchars('http://'.$_SERVER['HTTP_HOST'].'/pl/teacher-login.php') : 'teacher-login.php' ?></strong></div>
+                <div>Portal URL: <strong><?php
+    if (isset($_SERVER['HTTP_HOST'])) {
+        $scheme   = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') ? 'https' : 'http';
+        $host     = $_SERVER['HTTP_HOST'];
+        // Detect subfolder: strip /admin from script path to get base
+        $base     = rtrim(dirname(dirname($_SERVER['SCRIPT_NAME'])), '/\\');
+        $base     = ($base === '/' || $base === '\\' || $base === '.') ? '' : $base;
+        echo htmlspecialchars($scheme.'://'.$host.$base.'/teacher-login.php');
+    } else {
+        echo 'teacher-login.php';
+    }
+?></strong></div>
                 <div style="display:flex;align-items:center;gap:8px;">
                     Username: <strong id="credUser">—</strong>
                     <button type="button" onclick="copyCredText('credUser')" style="padding:2px 8px;border:1px solid #bbf7d0;border-radius:6px;background:#dcfce7;color:#15803d;font-size:11px;cursor:pointer;">Copy</button>

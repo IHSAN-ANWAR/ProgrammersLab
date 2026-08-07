@@ -1,6 +1,11 @@
 <?php
 header('Content-Type: application/json');
-header('Access-Control-Allow-Origin: *');
+// Restrict CORS to own domain only
+$origin = $_SERVER['HTTP_ORIGIN'] ?? '';
+$allowed = ['https://www.programmerslabs.com', 'https://programmerslabs.com', 'http://localhost'];
+if (in_array($origin, $allowed, true)) {
+    header("Access-Control-Allow-Origin: {$origin}");
+}
 require_once __DIR__ . '/../config.php';
 
 if ($_SERVER['REQUEST_METHOD'] !== 'GET') {

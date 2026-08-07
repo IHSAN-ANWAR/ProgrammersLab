@@ -542,8 +542,8 @@ body { padding-top: 68px; }
 					</div>
 					<div class="pl-job-form-group">
 						<label>Upload Resume <span class="req">*</span></label>
-						<input type="file" name="resume" id="resumeInput" accept=".pdf,.doc,.docx" style="padding:9px 14px;">
-						<small style="color:#9ca3af;font-size:12px;margin-top:4px;display:block;">Accepted formats: PDF, DOC, DOCX — Max size: 5MB</small>
+						<input type="file" name="resume" id="resumeInput" accept=".pdf" style="padding:9px 14px;">
+						<small style="color:#9ca3af;font-size:12px;margin-top:4px;display:block;">Accepted format: PDF only — Max size: 5MB</small>
 					</div>
 
 					<hr class="pl-job-divider">
@@ -823,9 +823,9 @@ body { padding-top: 68px; }
 			if (!position)                                   { showErr('Please select a position.'); return; }
 			if (!degree)                                     { showErr('Please select your highest degree.'); return; }
 			if (!resumeFile)                                 { showErr('Please upload your Resume / CV.'); return; }
-			const allowedTypes = ['application/pdf','application/msword','application/vnd.openxmlformats-officedocument.wordprocessingml.document'];
-			if (!allowedTypes.includes(resumeFile.type) && !/\.(pdf|doc|docx)$/i.test(resumeFile.name)) {
-				showErr('Resume must be a PDF, DOC, or DOCX file.'); return;
+			const allowedTypes = ['application/pdf'];
+			if (!allowedTypes.includes(resumeFile.type) && !/\.pdf$/i.test(resumeFile.name)) {
+				showErr('Resume must be a PDF file only.'); return;
 			}
 			if (resumeFile.size > 5 * 1024 * 1024) { showErr('Resume file size must be 5MB or less.'); return; }
 

@@ -11,6 +11,9 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
 session_init();
 csrf_verify();
 
+// Get logged-in user ID if available
+$logged_user_id = isset($_SESSION['user_id']) ? (int)$_SESSION['user_id'] : null;
+
 // Required fields
 $fullName = trim($_POST['fullName'] ?? '');
 $email    = trim($_POST['email']    ?? '');
@@ -40,14 +43,13 @@ if (empty($_FILES['resume']['tmp_name'])) {
 }
 
 $resumeFile    = $_FILES['resume'];
-$allowedMimes  = ['application/pdf', 'application/msword',
-                  'application/vnd.openxmlformats-officedocument.wordprocessingml.document'];
-$allowedExt    = ['pdf', 'doc', 'docx'];
+$allowedMimes  = ['application/pdf'];
+$allowedExt    = ['pdf'];
 $fileExt       = strtolower(pathinfo($resumeFile['name'], PATHINFO_EXTENSION));
 $fileMime      = mime_content_type($resumeFile['tmp_name']);
 
 if (!in_array($fileMime, $allowedMimes) && !in_array($fileExt, $allowedExt)) {
-    echo json_encode(['success' => false, 'message' => 'Resume must be a PDF, DOC, or DOCX file.']);
+    echo json_encode(['success' => false, 'message' => 'Resume must be a PDF file only.']);
     exit;
 }
 
@@ -90,19 +92,22 @@ $portfolioUrl     = trim($_POST['portfolioUrl']     ?? '');
 
 $conn = get_db();
 
+// Auto-add user_id column if missing (runs silently)
+$conn->query("ALTER TABLE job_applications ADD COLUMN IF NOT EXISTS user_id INT NULL DEFAULT NULL AFTER id");
+
 $stmt = $conn->prepare(
     "INSERT INTO job_applications
-        (full_name, father_name, email, phone, city, gender,
+        (user_id, full_name, father_name, email, phone, city, gender,
          position, job_type, expected_salary,
          degree, field_of_study, institute, graduation_year,
          experience, last_job_title, skills, previous_experience,
          cover_letter, portfolio_url, resume_path)
-     VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"
+     VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"
 );
 
 $stmt->bind_param(
-    'ssssssssssssssssssss',
-    $fullName, $fatherName, $email, $phone, $city, $gender,
+    'issssssssssssssssssss',
+    $logged_user_id, $fullName, $fatherName, $email, $phone, $city, $gender,
     $position, $jobType, $expectedSalary,
     $degree, $fieldOfStudy, $institute, $graduationYear,
     $experience, $lastJobTitle, $skills, $previousExp,
@@ -110,6 +115,10 @@ $stmt->bind_param(
 );
 
 if ($stmt->execute()) {
+    // Send confirmation email to applicant + admin notification
+    require_once __DIR__ . '/mailer.php';
+    send_job_application_confirmation($email, $fullName, $position);
+    send_admin_job_notification($fullName, $email, $phone, $position);
     echo json_encode(['success' => true, 'message' => 'Application submitted successfully!']);
 } else {
     // Remove uploaded file if DB insert failed

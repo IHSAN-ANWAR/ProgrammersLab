@@ -1,6 +1,13 @@
-# Prevent PHP execution in uploads directory
-<FilesMatch "\.php$">
+# Prevent execution of ALL script types in uploads directory
+<FilesMatch "\.(php|php5|php7|phtml|phar|shtml|cgi|pl|py|sh|bash|exe|jsp|asp|aspx)$">
     Order allow,deny
     Deny from all
 </FilesMatch>
+
+# Prevent direct access to resumes (PDFs) — serve only through PHP
+<FilesMatch "\.pdf$">
+    Order allow,deny
+    Deny from all
+</FilesMatch>
+
 Options -Indexes

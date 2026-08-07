@@ -1,6 +1,7 @@
 <?php
 header('Content-Type: application/json');
 require_once __DIR__ . '/config.php';
+send_security_headers();
 session_init();
 
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
@@ -70,11 +71,13 @@ if (!$ok) {
 $user_id = $conn->insert_id;
 $conn->close();
 
-// Auto login after register
-$_SESSION['user_id']   = $user_id;
-$_SESSION['full_name'] = $full_name;
-$_SESSION['email']     = $email;
-$_SESSION['phone']     = $phone;
+// Auto login after register — regenerate BEFORE writing session data
 session_regenerate_id(true);
+
+$_SESSION['user_id']        = $user_id;
+$_SESSION['full_name']      = $full_name;
+$_SESSION['email']          = $email;
+$_SESSION['phone']          = $phone;
+$_SESSION['last_activity']  = time();
 
 echo json_encode(['success' => true, 'message' => 'Account created successfully!']);

@@ -1,7 +1,7 @@
 <?php
 header('Content-Type: application/json');
 require_once __DIR__ . '/config.php';
-
+send_security_headers();
 session_init();
 
 $logged = isset($_SESSION['user_id']);

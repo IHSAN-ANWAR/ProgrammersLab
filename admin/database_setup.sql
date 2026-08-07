@@ -47,40 +47,42 @@ CREATE TABLE IF NOT EXISTS enroll (
 -- Courses (admin managed)
 -- ------------------------------------------------------------
 CREATE TABLE IF NOT EXISTS courses (
-    id             INT AUTO_INCREMENT PRIMARY KEY,
-    name           VARCHAR(255)  NOT NULL,
-    category       VARCHAR(100)  NOT NULL,
-    is_active      TINYINT(1)    DEFAULT 1,
-    sort_order     INT           DEFAULT 0,
-    price          INT           DEFAULT 0,
-    original_price INT           DEFAULT 0,
-    duration       VARCHAR(50)   DEFAULT '',
-    created_at     TIMESTAMP     DEFAULT CURRENT_TIMESTAMP
+    id                 INT AUTO_INCREMENT PRIMARY KEY,
+    name               VARCHAR(255)  NOT NULL,
+    category           VARCHAR(100)  NOT NULL,
+    is_active          TINYINT(1)    DEFAULT 1,
+    sort_order         INT           DEFAULT 0,
+    price              INT           DEFAULT 0,
+    original_price     INT           DEFAULT 0,
+    installment_price  INT           DEFAULT 0,
+    duration           VARCHAR(50)   DEFAULT '',
+    created_at         TIMESTAMP     DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Default courses
-INSERT INTO courses (name, category, is_active, sort_order, price, original_price, duration) VALUES
-('Full Stack Web Development',  'Web Development',       1, 1,  22000, 28000, '3-4 Months'),
-('Front-End Web Development',   'Web Development',       1, 2,  15000, 20000, '2-3 Months'),
-('PHP & MySQL',                 'Web Development',       1, 3,  18000, 22000, '2-3 Months'),
-('WordPress',                   'Web Development',       1, 4,  10000, 15000, '1-2 Months'),
-('React Native',                'Mobile App Development',1, 5,  30000, 35000, '4-5 Months'),
-('Flutter',                     'Mobile App Development',1, 6,  32000, 38000, '4-5 Months'),
-('Android Development',         'Mobile App Development',1, 7,  25000, 30000, '3-4 Months'),
-('iOS Development',             'Mobile App Development',1, 8,  28000, 35000, '3-4 Months'),
-('Graphic Designing',           'Graphic Designing',     1, 9,  20000, 25000, '2-3 Months'),
-('UI/UX Design',                'Graphic Designing',     1, 10, 22000, 28000, '2-3 Months'),
-('Canva Course',                'Graphic Designing',     1, 11, 5000,  8000,  '1 Month'),
-('Digital Marketing',           'Digital Marketing',     1, 12, 25000, 30000, '3-4 Months'),
-('SEO Course',                  'Digital Marketing',     1, 13, 15000, 20000, '2-3 Months'),
-('Social Media Marketing',      'Digital Marketing',     1, 14, 18000, 22000, '2-3 Months'),
-('Python',                      'Programming',           1, 15, 15000, 20000, '2-3 Months'),
-('C++ Course',                  'Programming',           1, 16, 12000, 15000, '2-3 Months'),
-('Java Course',                 'Programming',           1, 17, 15000, 18000, '2-3 Months'),
-('Database Management',         'Other',                 1, 18, 12000, 15000, '2 Months'),
-('Freelancing',                 'Other',                 1, 19, 15000, 20000, '3-4 Months'),
-('Video Editing',               'Other',                 1, 20, 8000,  12000, '1-2 Months'),
-('MS Office / CIT',             'Other',                 1, 21, 8000,  12000, '1-2 Months');
+INSERT INTO courses (name, category, is_active, sort_order, price, original_price, installment_price, duration) VALUES
+('Full Stack Web Development',  'Web Development',       1, 1,  22000, 28000, 8000,  '3-4 Months'),
+('Front-End Web Development',   'Web Development',       1, 2,  15000, 20000, 6000,  '2-3 Months'),
+('PHP & MySQL',                 'Web Development',       1, 3,  18000, 22000, 7000,  '2-3 Months'),
+('WordPress',                   'Web Development',       1, 4,  10000, 15000, 4000,  '1-2 Months'),
+('MERN Stack',                  'Web Development',       1, 5,  35000, 40000, 12000, '6 Months'),
+('React Native',                'Mobile App Development',1, 6,  30000, 35000, 11000, '4-5 Months'),
+('Flutter',                     'Mobile App Development',1, 7,  32000, 38000, 12000, '4-5 Months'),
+('Android Development',         'Mobile App Development',1, 8,  25000, 30000, 9000,  '3-4 Months'),
+('iOS Development',             'Mobile App Development',1, 9,  28000, 35000, 10000, '3-4 Months'),
+('Graphic Designing',           'Graphic Designing',     1, 10, 20000, 25000, 7500,  '2-3 Months'),
+('UI/UX Design',                'Graphic Designing',     1, 11, 22000, 28000, 8000,  '2-3 Months'),
+('Canva Course',                'Graphic Designing',     1, 12, 5000,  8000,  2000,  '1 Month'),
+('Digital Marketing',           'Digital Marketing',     1, 13, 25000, 30000, 9000,  '3-4 Months'),
+('SEO Course',                  'Digital Marketing',     1, 14, 15000, 20000, 6000,  '2-3 Months'),
+('Social Media Marketing',      'Digital Marketing',     1, 15, 18000, 22000, 7000,  '2-3 Months'),
+('Python',                      'Programming',           1, 16, 15000, 20000, 6000,  '2-3 Months'),
+('C++ Course',                  'Programming',           1, 17, 12000, 15000, 5000,  '2-3 Months'),
+('Java Course',                 'Programming',           1, 18, 15000, 18000, 6000,  '2-3 Months'),
+('Database Management',         'Other',                 1, 19, 12000, 15000, 5000,  '2 Months'),
+('Freelancing',                 'Other',                 1, 20, 15000, 20000, 6000,  '3-4 Months'),
+('Video Editing',               'Other',                 1, 21, 8000,  12000, 3500,  '1-2 Months'),
+('MS Office / CIT',             'Other',                 1, 22, 8000,  12000, 3500,  '1-2 Months');
 
 -- ------------------------------------------------------------
 -- Notices

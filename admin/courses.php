@@ -93,6 +93,15 @@ $conn->query("INSERT IGNORE INTO courses (name, category, is_active, price, orig
               SELECT 'MERN Stack','Web Development',1,0,0,0,'6 Months',10
               FROM DUAL WHERE NOT EXISTS (SELECT 1 FROM courses WHERE name='MERN Stack')");
 
+// Ensure React Native exists with price
+$conn->query("INSERT INTO courses (name, category, is_active, price, original_price, installment_price, duration, sort_order)
+              SELECT 'React Native','Mobile App Development',1,30000,35000,11000,'4-5 Months',5
+              WHERE NOT EXISTS (SELECT 1 FROM courses WHERE name='React Native')");
+
+// If React Native exists but price is 0, update it
+$conn->query("UPDATE courses SET price=30000, original_price=35000, installment_price=11000, duration='4-5 Months'
+              WHERE name='React Native' AND price=0");
+
 // Get all courses
 $result = $conn->query("SELECT id, name, category, sort_order, is_active,
     IFNULL(price, 0) AS price,

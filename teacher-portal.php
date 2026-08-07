@@ -132,7 +132,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action'])) {
 }
 
 // ── Load teacher's students (assignments) ─────────────────────
-$students = $conn->query(
+$stmt_s = $conn->prepare(
     "SELECT ta.id as assignment_id, ta.enrollment_id,
             e.full_name as student_name, e.phone, e.email,
             e.course_interest, e.study_mode,
@@ -140,12 +140,20 @@ $students = $conn->query(
             (SELECT COUNT(*) FROM chat_messages cm WHERE cm.assignment_id=ta.id AND cm.sender_type='student' AND cm.is_read=0) as unread_count
      FROM teacher_assignments ta
      JOIN enroll e ON e.id = ta.enrollment_id
-     WHERE ta.teacher_id = $teacher_id
+     WHERE ta.teacher_id = ?
      ORDER BY e.full_name"
 );
+$stmt_s->bind_param('i', $teacher_id);
+$stmt_s->execute();
+$students = $stmt_s->get_result();
+$stmt_s->close();
 
 // Teacher info
-$tinfo = $conn->query("SELECT * FROM teacher_users WHERE id=$teacher_id")->fetch_assoc();
+$stmt_t = $conn->prepare("SELECT * FROM teacher_users WHERE id=?");
+$stmt_t->bind_param('i', $teacher_id);
+$stmt_t->execute();
+$tinfo = $stmt_t->get_result()->fetch_assoc();
+$stmt_t->close();
 $conn->close();
 
 $initials = strtoupper(implode('', array_map(fn($w)=>$w[0]??'', array_slice(explode(' ', trim($teacher_name)), 0, 2))));

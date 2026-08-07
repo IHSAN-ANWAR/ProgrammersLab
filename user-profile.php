@@ -1,5 +1,6 @@
 <?php
 require_once __DIR__ . '/config.php';
+send_security_headers();
 session_init();
 
 if (!isset($_SESSION['user_id'])) {
@@ -236,6 +237,38 @@ if (count($enroll_ids_arr)) {
     $ta_res = $ta_stmt->get_result();
     while ($tc = $ta_res->fetch_assoc()) $teacher_chats[] = $tc;
     $ta_stmt->close();
+}
+
+// ── Job Applications for this user ───────────────────────────
+$job_applications = [];
+$col_check2 = $conn->query("SHOW COLUMNS FROM job_applications LIKE 'user_id'");
+if ($col_check2 && $col_check2->num_rows > 0) {
+    $ja_stmt = $conn->prepare(
+        "SELECT id, position, full_name, email, phone, city, job_type,
+                experience, status, created_at
+         FROM job_applications
+         WHERE user_id = ?
+         ORDER BY id DESC"
+    );
+    $ja_stmt->bind_param('i', $uid);
+    $ja_stmt->execute();
+    $ja_res = $ja_stmt->get_result();
+    while ($ja = $ja_res->fetch_assoc()) $job_applications[] = $ja;
+    $ja_stmt->close();
+} else {
+    // Fallback: match by email if user_id column not yet added
+    $ja_stmt = $conn->prepare(
+        "SELECT id, position, full_name, email, phone, city, job_type,
+                experience, status, created_at
+         FROM job_applications
+         WHERE email = ?
+         ORDER BY id DESC"
+    );
+    $ja_stmt->bind_param('s', $user['email']);
+    $ja_stmt->execute();
+    $ja_res = $ja_stmt->get_result();
+    while ($ja = $ja_res->fetch_assoc()) $job_applications[] = $ja;
+    $ja_stmt->close();
 }
 
 $conn->close();
@@ -521,6 +554,12 @@ body{margin:0;font-family:'Inter',sans-serif;background:#f0f2f5;color:#1a1a2e;}
         <a href="enroll-form.html">
             <i class="fas fa-rocket"></i> Enroll in Course
         </a>
+        <a href="#jobApplicationsSection" onclick="document.getElementById('jobApplicationsSection').scrollIntoView({behavior:'smooth'});return false;">
+            <i class="fas fa-briefcase"></i> My Job Applications
+            <?php if (count($job_applications) > 0): ?>
+            <span style="margin-left:auto;background:rgba(240,123,20,.25);color:#f07b14;border-radius:20px;padding:1px 8px;font-size:11px;font-weight:700;"><?= count($job_applications) ?></span>
+            <?php endif; ?>
+        </a>
         <div class="sb-nav-label">Info</div>
         <a href="best-computer-courses-rawalpidni.html">
             <i class="fas fa-graduation-cap"></i> All Courses
@@ -537,7 +576,7 @@ body{margin:0;font-family:'Inter',sans-serif;background:#f0f2f5;color:#1a1a2e;}
     </nav>
 
     <div class="sb-footer">
-        <a href="user-logout.php">
+        <a href="user-logout.php?csrf_token=<?= urlencode(csrf_token()) ?>">
             <i class="fas fa-sign-out-alt"></i> Logout
         </a>
     </div>
@@ -805,6 +844,124 @@ body{margin:0;font-family:'Inter',sans-serif;background:#f0f2f5;color:#1a1a2e;}
                 </div>
             </div>
         </div>
+    </div>
+
+    <!-- JOB APPLICATIONS -->
+    <div class="pl-card" id="jobApplicationsSection">
+        <div class="pl-card-header">
+            <h5><i class="fas fa-briefcase" style="color:#f07b14;"></i> My Job Applications</h5>
+            <span style="font-size:13px;color:#9ca3af;"><?= count($job_applications) ?> application(s)</span>
+        </div>
+
+        <?php
+        $jaStatusColor = ['new'=>'#0094d9','reviewed'=>'#f59e0b','shortlisted'=>'#10b981','rejected'=>'#ef4444'];
+        $jaStatusBg    = ['new'=>'rgba(0,148,217,.12)','reviewed'=>'rgba(245,158,11,.12)','shortlisted'=>'rgba(16,185,129,.12)','rejected'=>'rgba(239,68,68,.12)'];
+        $jaStatusIcon  = ['new'=>'fa-paper-plane','reviewed'=>'fa-eye','shortlisted'=>'fa-check-circle','rejected'=>'fa-times-circle'];
+        $jaStatusLabel = ['new'=>'Submitted','reviewed'=>'Under Review','shortlisted'=>'Shortlisted','rejected'=>'Not Selected'];
+        ?>
+
+        <?php if (count($job_applications) > 0): ?>
+        <div style="padding:16px 20px;display:flex;flex-direction:column;gap:14px;">
+            <?php foreach ($job_applications as $ja):
+                $st  = $ja['status'] ?? 'new';
+                $col = $jaStatusColor[$st] ?? '#0094d9';
+                $bg  = $jaStatusBg[$st]    ?? 'rgba(0,148,217,.12)';
+                $ico = $jaStatusIcon[$st]  ?? 'fa-paper-plane';
+                $lbl = $jaStatusLabel[$st] ?? ucfirst($st);
+            ?>
+            <div style="border:1.5px solid #f0f2f5;border-left:4px solid <?= $col ?>;border-radius:14px;padding:18px 20px;background:#fff;transition:box-shadow .2s;"
+                 onmouseover="this.style.boxShadow='0 4px 20px rgba(0,0,0,.08)'"
+                 onmouseout="this.style.boxShadow='none'">
+
+                <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:12px;flex-wrap:wrap;">
+                    <!-- Left: position + meta -->
+                    <div style="flex:1;min-width:0;">
+                        <div style="font-size:15px;font-weight:800;color:#0d1b2a;margin-bottom:6px;">
+                            <i class="fas fa-briefcase" style="color:#f07b14;margin-right:7px;font-size:13px;"></i>
+                            <?= h($ja['position']) ?>
+                        </div>
+                        <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:10px;">
+                            <?php if ($ja['city']): ?>
+                            <span style="display:inline-flex;align-items:center;gap:5px;font-size:12px;color:#6b7280;background:#f8f9fb;padding:3px 10px;border-radius:8px;">
+                                <i class="fas fa-map-marker-alt" style="font-size:10px;color:#9ca3af;"></i> <?= h($ja['city']) ?>
+                            </span>
+                            <?php endif; ?>
+                            <?php if ($ja['job_type']): ?>
+                            <span style="display:inline-flex;align-items:center;gap:5px;font-size:12px;color:#6b7280;background:#f8f9fb;padding:3px 10px;border-radius:8px;">
+                                <i class="fas fa-clock" style="font-size:10px;color:#9ca3af;"></i> <?= h($ja['job_type']) ?>
+                            </span>
+                            <?php endif; ?>
+                            <?php if ($ja['experience']): ?>
+                            <span style="display:inline-flex;align-items:center;gap:5px;font-size:12px;color:#6b7280;background:#f8f9fb;padding:3px 10px;border-radius:8px;">
+                                <i class="fas fa-star" style="font-size:10px;color:#9ca3af;"></i> <?= h($ja['experience']) ?> exp
+                            </span>
+                            <?php endif; ?>
+                            <span style="display:inline-flex;align-items:center;gap:5px;font-size:12px;color:#6b7280;background:#f8f9fb;padding:3px 10px;border-radius:8px;">
+                                <i class="fas fa-calendar" style="font-size:10px;color:#9ca3af;"></i> <?= date('d M Y', strtotime($ja['created_at'])) ?>
+                            </span>
+                        </div>
+                    </div>
+
+                    <!-- Right: status badge -->
+                    <span style="display:inline-flex;align-items:center;gap:6px;padding:6px 14px;border-radius:20px;font-size:12.5px;font-weight:700;white-space:nowrap;
+                        background:<?= $bg ?>;color:<?= $col ?>;">
+                        <i class="fas <?= $ico ?>"></i> <?= $lbl ?>
+                    </span>
+                </div>
+
+                <!-- Status timeline -->
+                <div style="display:flex;align-items:center;gap:0;margin-top:12px;padding-top:12px;border-top:1px solid #f3f4f6;">
+                    <?php
+                    $steps = [
+                        ['new',         'fa-paper-plane',   'Submitted'],
+                        ['reviewed',    'fa-eye',           'Reviewed'],
+                        ['shortlisted', 'fa-check-circle',  'Shortlisted'],
+                    ];
+                    $order  = ['new'=>0,'reviewed'=>1,'shortlisted'=>2,'rejected'=>-1];
+                    $curIdx = $order[$st] ?? 0;
+                    foreach ($steps as $si => [$skey, $sico, $slbl]):
+                        $reached  = $curIdx >= $si && $st !== 'rejected';
+                        $scol     = $reached ? '#10b981' : '#d1d5db';
+                        $stextcol = $reached ? '#374151' : '#9ca3af';
+                    ?>
+                    <div style="display:flex;flex-direction:column;align-items:center;flex:1;position:relative;">
+                        <div style="width:28px;height:28px;border-radius:50%;background:<?= $reached ? 'rgba(16,185,129,.15)' : '#f3f4f6' ?>;
+                             border:2px solid <?= $scol ?>;display:flex;align-items:center;justify-content:center;font-size:11px;color:<?= $scol ?>;">
+                            <i class="fas <?= $sico ?>"></i>
+                        </div>
+                        <div style="font-size:10px;font-weight:600;color:<?= $stextcol ?>;margin-top:4px;text-align:center;"><?= $slbl ?></div>
+                        <?php if ($si < count($steps)-1): ?>
+                        <div style="position:absolute;top:14px;left:calc(50% + 14px);right:calc(-50% + 14px);height:2px;
+                             background:<?= ($curIdx > $si && $st!=='rejected') ? '#10b981' : '#e5e7eb' ?>;"></div>
+                        <?php endif; ?>
+                    </div>
+                    <?php endforeach; ?>
+
+                    <!-- Rejected state shown separately -->
+                    <?php if ($st === 'rejected'): ?>
+                    <div style="flex:1;display:flex;flex-direction:column;align-items:center;">
+                        <div style="width:28px;height:28px;border-radius:50%;background:rgba(239,68,68,.12);
+                             border:2px solid #ef4444;display:flex;align-items:center;justify-content:center;font-size:11px;color:#ef4444;">
+                            <i class="fas fa-times"></i>
+                        </div>
+                        <div style="font-size:10px;font-weight:600;color:#ef4444;margin-top:4px;">Not Selected</div>
+                    </div>
+                    <?php endif; ?>
+                </div>
+            </div>
+            <?php endforeach; ?>
+        </div>
+
+        <?php else: ?>
+        <div class="pg-empty">
+            <div class="pg-empty-ico"><i class="fas fa-briefcase"></i></div>
+            <h4>No Applications Yet</h4>
+            <p>You haven't applied for any job or internship. Check our current openings!</p>
+            <a href="career.html" style="background:#f07b14;color:#fff;border-radius:50px;padding:10px 24px;font-weight:700;font-size:13.5px;display:inline-flex;align-items:center;gap:8px;text-decoration:none;">
+                <i class="fas fa-search"></i> View Job Openings
+            </a>
+        </div>
+        <?php endif; ?>
     </div>
 
 </main>

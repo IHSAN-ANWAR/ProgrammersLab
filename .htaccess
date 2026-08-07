@@ -32,9 +32,9 @@ Options -Indexes
     RewriteRule ^logs/ - [F,L]
 </IfModule>
 
-# Block PHP execution inside uploads folder (security critical)
+# Block ALL script execution inside uploads folder (security critical)
 <IfModule mod_rewrite.c>
-    RewriteRule ^uploads/.*\.(php|php5|phtml|pl|py|cgi|sh)$ - [F,NC,L]
+    RewriteRule ^uploads/.*\.(php|php5|php7|phtml|phar|shtml|cgi|pl|py|sh|bash|jsp|asp|aspx)$ - [F,NC,L]
 </IfModule>
 
 # Block access to .git folder
@@ -63,6 +63,8 @@ Options -Indexes
     Header always set X-Content-Type-Options "nosniff"
     Header always set X-XSS-Protection "1; mode=block"
     Header always set Referrer-Policy "strict-origin-when-cross-origin"
+    # HSTS — tells browsers to always use HTTPS for 1 year (live server only)
+    Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains"
 </IfModule>
 
 # Disable server signature

@@ -1,5 +1,6 @@
 <?php
 require_once __DIR__ . '/config.php';
+send_security_headers();
 session_init();
 
 // Already logged in → redirect to dashboard
@@ -50,7 +51,7 @@ body{font-family:'Inter',sans-serif;background:linear-gradient(135deg,#0d1b2a 0%
 .auth-field label{display:block;font-size:12px;font-weight:700;color:#374151;text-transform:uppercase;letter-spacing:.5px;margin-bottom:7px;}
 .auth-input-wrap{position:relative;}
 .auth-input-wrap i{position:absolute;left:14px;top:50%;transform:translateY(-50%);color:#9ca3af;font-size:14px;}
-.auth-field input{width:100%;padding:13px 16px 13px 40px;border:1.5px solid #e5e7eb;border-radius:12px;font-size:14px;font-weight:500;color:#0d1b2a;outline:none;transition:border-color .2s,box-shadow .2s;font-family:inherit;background:#fafafa;}
+.auth-field input{width:100%;padding:13px 44px 13px 40px;border:1.5px solid #e5e7eb;border-radius:12px;font-size:14px;font-weight:500;color:#0d1b2a;outline:none;transition:border-color .2s,box-shadow .2s;font-family:inherit;background:#fafafa;}
 .auth-field input:focus{border-color:#f07b14;box-shadow:0 0 0 3px rgba(240,123,20,.1);background:#fff;}
 .auth-field input.error{border-color:#ef4444;}
 
@@ -127,6 +128,12 @@ body{font-family:'Inter',sans-serif;background:linear-gradient(135deg,#0d1b2a 0%
         <button class="auth-btn" id="loginBtn" onclick="doLogin()">
             <i class="fas fa-sign-in-alt"></i> Login
         </button>
+
+        <div style="text-align:right;margin-top:10px;">
+            <a href="forgot-password.php" style="font-size:13px;color:#f07b14;font-weight:600;text-decoration:none;">
+                <i class="fas fa-key" style="margin-right:4px;"></i>Forgot Password?
+            </a>
+        </div>
 
         <div class="auth-switch">
             Don't have an account? <a onclick="switchTab('register')">Register here</a>

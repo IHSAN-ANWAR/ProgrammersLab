@@ -143,6 +143,12 @@ if ($has_uid) {
 }
 
 if ($stmt->execute()) {
+    // Send confirmation email to student (non-blocking — don't fail enrollment if mail fails)
+    if (!empty($email)) {
+        require_once __DIR__ . '/mailer.php';
+        send_enrollment_confirmation($email, $fullName, $course);
+        send_admin_enrollment_notification($fullName, $email, $phone, $course);
+    }
     echo json_encode(['success' => true, 'message' => 'Enrollment submitted successfully! We will contact you soon.']);
 } else {
     error_log('enroll insert error: ' . $stmt->error);
